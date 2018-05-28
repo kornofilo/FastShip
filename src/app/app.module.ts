@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { OperacionesComponent } from './operaciones/operaciones.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar.component';
 
 /* Array de Rutas */
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     FooterComponent,
-    OperacionesComponent
+    OperacionesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

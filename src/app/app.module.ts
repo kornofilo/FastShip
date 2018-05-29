@@ -6,10 +6,13 @@ import { FooterComponent } from './footer/footer.component';
 import { OperacionesComponent } from './operaciones/operaciones.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 /* Array de Rutas */
 const routes: Routes = [
   {  path: 'operaciones', component: OperacionesComponent }
+  {  path: 'usuario', component: UsuarioComponent }
+
 ];
 
 @NgModule({
@@ -17,7 +20,8 @@ const routes: Routes = [
     AppComponent,
     FooterComponent,
     OperacionesComponent,
-    NavbarComponent
+    NavbarComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,

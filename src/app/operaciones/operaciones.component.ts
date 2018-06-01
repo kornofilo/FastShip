@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+//Firebase
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase/app';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-operaciones',
@@ -8,9 +13,10 @@ import { Component, OnInit } from '@angular/core';
 
 export class OperacionesComponent implements OnInit {
   title = 'Operaciones';
-  constructor() { }
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {
+    this.authService.checkLogin();
   }
 
 }

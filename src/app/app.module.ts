@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -10,6 +9,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+
+//Firebase
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthService } from './auth.service';
+import { AngularFireModule } from 'angularfire2';
+import * as firebase from 'firebase/app';
+import { environment } from '../environments/environment';
+
 
 /* Array de Rutas */
 const routes: Routes = [
@@ -32,10 +39,13 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthService],
+  bootstrap: [AppComponent],
+  
 })
 
 

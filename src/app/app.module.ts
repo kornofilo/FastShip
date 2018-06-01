@@ -10,8 +10,10 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import {OficinaComponent} from './oficina/oficina.component';
+import 'materialize-css';
 
-//Firebase
+
+// Firebase
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthService } from './auth.service';
 import { AngularFireModule } from 'angularfire2';
@@ -48,7 +50,6 @@ const routes: Routes = [
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
-  
 })
 
 

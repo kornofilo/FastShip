@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-//Firebase
+// Firebase
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 import { AuthService } from '../auth.service';
+declare let $: any;
+
 
 
 @Component({
@@ -16,7 +18,12 @@ export class OperacionesComponent implements OnInit {
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.checkLogin();
+    // this.authService.checkLogin();
+    $(function() {
+      $('.collapsible').collapsible();
+      $('.modal').modal();
+      $('select').formSelect();
+    });
   }
 
 }

@@ -11,21 +11,24 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import {OficinaComponent} from './oficina/oficina.component';
 import 'materialize-css';
+import { AuthService } from './services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth.guard';
 
 
 // Firebase
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AuthService } from './auth.service';
 import { AngularFireModule } from 'angularfire2';
 import * as firebase from 'firebase/app';
 import { environment } from '../environments/environment';
+
 
 
 /* Array de Rutas */
 const routes: Routes = [
   {  path: 'home', component: HomeComponent },
   {  path: 'login', component: LoginComponent },
-  {  path: 'operaciones', component: OperacionesComponent },
+  {  path: 'operaciones', component: OperacionesComponent, canActivate: [AuthGuard] },
   {  path: 'usuario', component: UsuarioComponent },
   {  path: 'oficina',  component: OficinaComponent }
 
@@ -46,9 +49,10 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 

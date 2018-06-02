@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // Firebase
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 declare let $: any;
 
 
@@ -14,16 +14,27 @@ declare let $: any;
 })
 
 export class OperacionesComponent implements OnInit {
-  title = 'Operaciones';
+  public isLogIn: boolean;
+  public email: string;
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
-    // this.authService.checkLogin();
+    this.authService.checkLogin().subscribe( auth => {
+      if (auth) {
+        this.email = auth.email;
+      }
+  });
+
     $(function() {
       $('.collapsible').collapsible();
       $('.modal').modal();
       $('select').formSelect();
+      $('.dropdown-trigger').dropdown();
     });
+  }
+
+  onClickLogout() {
+    this.authService.logout();
   }
 
 }

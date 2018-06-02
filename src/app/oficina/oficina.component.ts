@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-//Firebase
+// Firebase
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
-import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -12,10 +11,9 @@ import { AuthService } from '../auth.service';
 })
 export class OficinaComponent implements OnInit {
 
-  constructor(public authService: AuthService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.authService.checkLogin();
   }
 
 }

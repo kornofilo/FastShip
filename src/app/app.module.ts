@@ -30,7 +30,7 @@ const routes: Routes = [
   {  path: 'login', component: LoginComponent },
   {  path: 'operaciones', component: OperacionesComponent, canActivate: [AuthGuard] },
   {  path: 'usuario', component: UsuarioComponent },
-  {  path: 'oficina',  component: OficinaComponent }
+  {  path: 'oficina',  component: OficinaComponent, canActivate: [AuthGuard]}
 
 ];
 

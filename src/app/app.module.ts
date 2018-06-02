@@ -26,6 +26,7 @@ import { environment } from '../environments/environment';
 
 /* Array de Rutas */
 const routes: Routes = [
+  {  path: '', component: LoginComponent },
   {  path: 'home', component: HomeComponent },
   {  path: 'login', component: LoginComponent },
   {  path: 'operaciones', component: OperacionesComponent, canActivate: [AuthGuard] },

@@ -21,6 +21,7 @@ export class OperacionesComponent implements OnInit {
   public email: string;
   arr: MetodosEnvio[] = [];
   updClicked: boolean;
+  iME: string;
   // Elementos del Form
   cbTierra: boolean;
   cbMar: boolean;
@@ -66,6 +67,7 @@ export class OperacionesComponent implements OnInit {
   }
 
   onUpdate(metodoEnvio) {
+    this.iME = metodoEnvio.id;
     this.model.tiempo = metodoEnvio.tiempo;
     this.updClicked = true;
     metodoEnvio.tipos.forEach(element => {
@@ -78,13 +80,11 @@ export class OperacionesComponent implements OnInit {
       }
 
     });
-    this.model.tipos = metodoEnvio.tipos;
   }
 
-  updateSubmit(metodoEnvio) {
-    console.log(metodoEnvio);
+  updateSubmit() {
     this.feedTipos();
-    this._data.updateMetodosEnvio(metodoEnvio, this.model.tiempo, this.model.tipos);
+    this._data.updateMetodosEnvio(this.iME, this.model.tiempo, this.model.tipos);
     this.cleanForm();
   }
 

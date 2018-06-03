@@ -36,12 +36,12 @@ export class FirestoreMetodosEnvioService {
     this.metodosEnvioDoc.delete();
   }
 
-  updateMetodosEnvio(metodosEnvio, tiempoNew: string, tiposNew: string[]) {
-    //console.log(metodosEnvio);
-    //metodosEnvioDoc = this._afs.doc('metodosEnvio/' + metodosEnvio.id);
-    //this.metodosEnvioDoc.update({
-    //  tiempo : tiempoNew,
-    //  tipos: tiposNew
-    //});
+  updateMetodosEnvio(iME, tiempoNew: string, tiposNew: string[]) {
+    console.log(tiposNew);
+    this.metodosEnvioDoc = this._afs.doc('metodosEnvio/' + iME);
+    this.metodosEnvioDoc.update({
+     tiempo : tiempoNew,
+     tipos: tiposNew
+    });
   }
 }

@@ -21,8 +21,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import * as firebase from 'firebase/app';
 import { environment } from '../environments/environment';
-
-
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 /* Array de Rutas */
 const routes: Routes = [
@@ -51,6 +50,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirestoreModule,
     FormsModule
   ],
   providers: [AuthService, AuthGuard],

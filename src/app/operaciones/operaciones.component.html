@@ -43,8 +43,9 @@
               <a class="waves-effect waves-light btn-large col s3 offset-s1 green modal-trigger" href="#modalCrearME" materialize="modal">Crear Métodos de Envio</a>           
               <a class="waves-effect waves-light btn-large col s3 offset-s1 red">Eliminar Método de Envio</a>     
           </div>   
-          
-          <div class="col s11">
+          <hr>
+          <!-- Tabla con los métodos de envío -->
+          <div class="col s11" *ngIf="arr.length>0;else noData">
               <table>
                   <thead>
                     <tr>
@@ -55,16 +56,17 @@
                   </thead>
           
                   <tbody>
-                    <tr>
-                      <td>Envío al segundo día | 2 días | terrestre </td>
-                      <td><a href="#!" class="secondary-content"> 
-                          <i class="material-icons black-text">settings_application</i> 
-                        </a> 
+                    <tr *ngFor="let item of arr">
+                      <td> Entrega en: {{item.tiempo}} | Tipos de Transporte: {{item.tipos}}
+                      </td>
+                      <td><a (click)="onUpdate(item)" >
+                        <i class="material-icons black-text">settings_application</i> 
+                          </a>
                       </td>
                       <td>
-                          <a href="#!" class="secondary-content"> 
-                              <i class="material-icons black-text center-align">delete</i> 
-                          </a> 
+                        <a (click)="onDelete(item)" >
+                          <i class="material-icons black-text center-align">delete</i> 
+                        </a>
                       </td>                
                 </table>
 
@@ -76,14 +78,22 @@
 
     </div>
 
+  <!-- Mensaje en caso no existan métodos de envío -->
+  <div class="container">
+    <ng-template #noData>
+      
+      <h5 class="center-align">No existen métodos de Envío Registrados</h5>
+    </ng-template>
+  </div>
+
     <!-- Modal Structure -->
   <div id="modalCrearME" class="modal modal-fixed-footer">
       <div class="modal-content row">
         <h4>Crear Método de Envío</h4>
         <p>Los métodos de envio son los niveles de servicio que son usador por los clientes. </p>
-        <form>
+        <form (ngSubmit)="insertSubmit()" #addform="ngForm">
             <div class="input-field col s6">
-                <select>
+                <select [(ngModel)]="model.tiempo" name="tiempo" class="form-control" id="tiempo" required #tiempo="ngModel">
                   <option value="" disabled selected>Horas</option>
                   <option value="12">12 horas</option>
                   <option value="24">24 horas</option>
@@ -111,13 +121,16 @@
                         <span>Aire</span>
                       </label>
                     </p>                                 
-              </div>            
+              </div> 
+              
+              <div class="modal-footer">
+                <button type="submit" class="modal-close waves-effect waves-green btn-flat green-text" [disabled]="!addform.form.valid">Crear</button>
+        
+                <a class="modal-close waves-effect waves-green btn-flat red-text">Cancelar</a>
+              </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat green-text">Crear</a>
-        <a class="modal-close waves-effect waves-green btn-flat red-text">Cancelar</a>
-      </div>
+      
     </div>
 
           

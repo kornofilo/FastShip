@@ -5,6 +5,7 @@ import { auth } from 'firebase/app';
 import { AuthService } from '../services/auth.service';
 import { FirestoreMetodosEnvioService } from '../services/firestore-metodos-envio.service';
 import { MetodosEnvio } from '../classes/metodos-envio';
+import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 declare let $: any;
 
 
@@ -19,8 +20,14 @@ export class OperacionesComponent implements OnInit {
   public isLogIn: boolean;
   public email: string;
   arr: MetodosEnvio[] = [];
+  updClicked: boolean;
+  // Elementos del Form
+  cbTierra: boolean;
+  cbMar: boolean;
+  cbAire: boolean;
+
   title = 'app';
-  model = { tiempo: '', tipos: ''};
+  model = { tiempo: '', tipos: []};
   constructor(public authService: AuthService, public _data: FirestoreMetodosEnvioService) {}
 
   ngOnInit() {
@@ -49,22 +56,59 @@ export class OperacionesComponent implements OnInit {
   }
 
   insertSubmit() {
+    this.feedTipos();
     this._data.addMetodosEnvio(this.model);
-    this.model.tiempo = '';
-    this.model.tipos = '';
+    this.cleanForm();
   }
+
   onDelete(metodoEnvio) {
-    console.log('Delete!');
     this._data.deleteMetodosEnvio(metodoEnvio);
   }
 
   onUpdate(metodoEnvio) {
     this.model.tiempo = metodoEnvio.tiempo;
+    this.updClicked = true;
+    metodoEnvio.tipos.forEach(element => {
+      if (element === 'Tierra') {
+        this.cbTierra = true;
+      } else if (element === 'Mar') {
+        this.cbMar = true;
+      } else if (element === 'Aire') {
+        this.cbAire = true;
+      }
+
+    });
     this.model.tipos = metodoEnvio.tipos;
   }
 
   updateSubmit(metodoEnvio) {
+    console.log(metodoEnvio);
+    this.feedTipos();
     this._data.updateMetodosEnvio(metodoEnvio, this.model.tiempo, this.model.tipos);
+    this.cleanForm();
+  }
+
+  cleanForm() {
+    this.model.tiempo = '';
+    this.model.tipos = [];
+    this.cbTierra = false;
+    this.cbMar = false;
+    this.cbAire = false;
+    this.updClicked = false;
+  }
+
+  feedTipos() {
+    if (this.cbTierra) {
+      this.model.tipos.push('Tierra');
+    }
+
+    if (this.cbMar) {
+      this.model.tipos.push('Mar');
+    }
+
+    if (this.cbAire) {
+      this.model.tipos.push('Aire');
+    }
   }
 
 }

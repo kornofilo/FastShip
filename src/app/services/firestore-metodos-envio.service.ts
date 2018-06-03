@@ -26,23 +26,22 @@ export class FirestoreMetodosEnvioService {
   }
 
   getMetodosEnvio() {
-    console.log(this.metodosEnvio);
     return this.metodosEnvio;
   }
   addMetodosEnvio(metodosEnvio) {
     this.metodosEnvioCollection.add(metodosEnvio);
   }
   deleteMetodosEnvio(metodosEnvio) {
-    console.log(metodosEnvio.id);
     this.metodosEnvioDoc = this._afs.doc('metodosEnvio/' + metodosEnvio.id);
     this.metodosEnvioDoc.delete();
   }
 
   updateMetodosEnvio(metodosEnvio, tiempoNew: string, tiposNew: string[]) {
-    this.metodosEnvioDoc = this._afs.doc('metodosEnvio/' + metodosEnvio.id);
-    this.metodosEnvioDoc.update({
-      tiempo : tiempoNew,
-      tipos: tiposNew
-    });
+    //console.log(metodosEnvio);
+    //metodosEnvioDoc = this._afs.doc('metodosEnvio/' + metodosEnvio.id);
+    //this.metodosEnvioDoc.update({
+    //  tiempo : tiempoNew,
+    //  tipos: tiposNew
+    //});
   }
 }

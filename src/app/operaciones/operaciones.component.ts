@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MetodosEnvio } from '../classes/metodos-envio';
+
 // Firebase
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase/app';
 import { AuthService } from '../services/auth.service';
 import { FirestoreMetodosEnvioService } from '../services/firestore-metodos-envio.service';
-import { MetodosEnvio } from '../classes/metodos-envio';
 import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 declare let $: any;
-
-
 
 @Component({
   selector: 'app-operaciones',
@@ -20,38 +19,31 @@ export class OperacionesComponent implements OnInit {
   public isLogIn: boolean;
   public email: string;
   arr: MetodosEnvio[] = [];
-  updClicked: boolean;
+  updClicked = false;
   iME: string;
   // Elementos del Form
   cbTierra: boolean;
   cbMar: boolean;
   cbAire: boolean;
-
-  title = 'app';
   model = { tiempo: '', tipos: []};
   constructor(public authService: AuthService, public _data: FirestoreMetodosEnvioService) {}
 
   ngOnInit() {
-    this.authService.checkLogin().subscribe( auth => {
-      if (auth) {
-        this.email = auth.email;
-      }
-  });
+    this._data.getMetodosEnvio().subscribe(
+      (metodoEnvio: MetodosEnvio[]) => {
+      this.arr = metodoEnvio;
+     }
+    );
 
-  this._data.getMetodosEnvio().subscribe(
-    (metodoEnvio: MetodosEnvio[]) => {
-    this.arr = metodoEnvio;
-   }
-  );
-
+    // Inicialización de los elementos de Materialize que requieren Jquery.
     $(function() {
       $('.collapsible').collapsible();
-      $('.modal').modal();
       $('select').formSelect();
       $('.dropdown-trigger').dropdown();
     });
   }
 
+  // Función que al ser activada, cierra la sesión de Firebase.
   onClickLogout() {
     this.authService.logout();
   }

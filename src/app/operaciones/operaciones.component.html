@@ -1,29 +1,4 @@
-<header>
-    <nav class="grey darken-3">
-        <div class="nav-wrapper row">
-          <form class="col s6 offset-s3">
-            <div class="input-field">
-              <input class="center-align grey darken-2 white-text" placeholder="Ingrese un número de tracking, camión, etc." id="search" type="search" required>              
-              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
-            </div>
-          </form>
-
-          <div class="col s2 offset-s1 grey darken-3 white-text">
-            <!-- Dropdown Trigger -->
-            <span class='dropdown-trigger' data-target='dropdown1'>Conectado como: {{email}}</span>
-
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-              <li><a (click)='onClickLogout()'>Cerrar Sesión</a></li>              
-            </ul>
-          </div>
-          
-        </div>
-      </nav>
-</header> <br>
-    
-    <!-- Page Layout here -->
+<app-operaciones-navbar></app-operaciones-navbar>    
     <div class="row">
 
       <div class="col s3">        
@@ -32,16 +7,16 @@
                 <h1>FastShip</h1>
               </div>
           <li class="grey darken-3"><a class="white-text" href="#!">Métodos de Envio</a></li>
-          <li class="grey darken-3"><a class="white-text" href="#!">Administración de Oficinas</a></li>
+          <li class="grey darken-3"><a class="white-text" href="operaciones/oficinas">Administración de Oficinas</a></li>
           <li class="grey darken-3"><a class="white-text" href="#!">Administración de Rutas</a></li>
         </ul>
       </div>
 
       <div class="col s9">
           <div class="row">
-              <a class="waves-effect waves-light btn-large col s3 indigo">Métodos de Envío</a>   
-              <a class="waves-effect waves-light btn-large col s3 offset-s1 green modal-trigger" href="#modalCrearME" materialize="modal">Crear Métodos de Envio</a>           
-              <a class="waves-effect waves-light btn-large col s3 offset-s1 red">Eliminar Método de Envio</a>     
+              <a class="btn-large col s3 indigo">Métodos de Envío</a>   
+              <a class="btn-large col s3 offset-s1 green modal-trigger" href="#modalCrearME" materialize="modal">Crear Métodos de Envio</a>           
+              <a class="btn-large col s3 offset-s1 red">Eliminar Método de Envio</a>     
           </div>   
           <hr>
           <!-- Tabla con los métodos de envío -->
@@ -79,7 +54,7 @@
   <div class="container">
     <ng-template #noData>
       
-      <h5 class="center-align">No existen métodos de Envío Registrados</h5>
+      <h5 class="center-align">No existen métodos de envío registrados</h5>
     </ng-template>
   </div>
 

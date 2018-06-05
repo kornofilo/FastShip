@@ -1,0 +1,22 @@
+<!-- Barra de Navegación -->
+<header>
+  <nav class="grey darken-3">
+      <div class="nav-wrapper row">
+        <form class="col s6 offset-s3">
+          <div class="input-field">
+            <input class="center-align grey darken-2 white-text" placeholder="Ingrese un número de tracking, camión, etc." id="search" type="search" required>              
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
+        </form>
+
+        <div class="col s2 offset-s1 grey darken-3 white-text">
+          <span class='dropdown-trigger' data-target='dropdown1'>Conectado como: {{email}}</span>
+          <ul id='dropdown1' class='dropdown-content'>
+            <li><a (click)='onClickLogout()'>Cerrar Sesión</a></li>              
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+</header> <br>

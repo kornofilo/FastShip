@@ -10,10 +10,12 @@ import {NgForm} from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   constructor(public authService: AuthService) {}
   public email: string;
   public password: string;
+
   ngOnInit() {
   }
 

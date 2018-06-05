@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MetodosEnvio } from '../../classes/metodos-envio';
+declare let $: any;
 
 // Firebase
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -7,7 +8,6 @@ import { auth } from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-envio.service';
 import { FindValueSubscriber } from 'rxjs/internal/operators/find';
-declare let $: any;
 
 
 @Component({

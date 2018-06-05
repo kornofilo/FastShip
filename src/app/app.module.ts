@@ -12,6 +12,7 @@ import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { OperacionesNavbarComponent } from './operaciones/operaciones-navbar/operaciones-navbar.component';
+import { OperacionesSidenavComponent } from './operaciones/operaciones-sidenav/operaciones-sidenav.component';
 
 
 // Firebase
@@ -20,6 +21,8 @@ import { AngularFireModule } from 'angularfire2';
 import * as firebase from 'firebase/app';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { OperacionesMetodosEnvioComponent } from './operaciones/operaciones-metodos-envio/operaciones-metodos-envio.component';
+import { OperacionesOficinasComponent } from './operaciones/operaciones-oficinas/operaciones-oficinas.component';
 
 
 /* Array de Rutas */
@@ -27,9 +30,10 @@ const routes: Routes = [
   {  path: '', component: LoginComponent },
   {  path: 'login', component: LoginComponent },
   {  path: 'operaciones', component: OperacionesComponent, canActivate: [AuthGuard] },
+  {  path: 'metodosEnvio', component: OperacionesMetodosEnvioComponent, canActivate: [AuthGuard]},
+  {  path: 'admOficinas', component: OperacionesOficinasComponent, canActivate: [AuthGuard]},
   {  path: 'usuario', component: UsuarioComponent },
   {  path: 'oficina',  component: OficinaComponent, canActivate: [AuthGuard]}
-
 ];
 
 @NgModule({
@@ -39,7 +43,10 @@ const routes: Routes = [
     UsuarioComponent,
     LoginComponent,
     OficinaComponent,
-    OperacionesNavbarComponent
+    OperacionesNavbarComponent,
+    OperacionesSidenavComponent,
+    OperacionesMetodosEnvioComponent,
+    OperacionesOficinasComponent
   ],
   imports: [
     BrowserModule,

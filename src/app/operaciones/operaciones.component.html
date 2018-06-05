@@ -1,110 +1,62 @@
+<!-- Barra de Navegación Superior -->
 <app-operaciones-navbar></app-operaciones-navbar>    
-    <div class="row">
 
-      <div class="col s3">        
-        <ul id="slide-out" class="sidenav sidenav-fixed">
-            <div>
-                <h1>FastShip</h1>
-              </div>
-          <li class="grey darken-3"><a class="white-text" href="#!">Métodos de Envio</a></li>
-          <li class="grey darken-3"><a class="white-text" href="operaciones/oficinas">Administración de Oficinas</a></li>
-          <li class="grey darken-3"><a class="white-text" href="#!">Administración de Rutas</a></li>
-        </ul>
-      </div>
+<div class="row">
+  <!-- Barra de Navegación Lateral -->
+  <app-operaciones-sidenav></app-operaciones-sidenav>      
 
+      <!-- Cuerpo de la Sección -->
       <div class="col s9">
           <div class="row">
-              <a class="btn-large col s3 indigo">Métodos de Envío</a>   
-              <a class="btn-large col s3 offset-s1 green modal-trigger" href="#modalCrearME" materialize="modal">Crear Métodos de Envio</a>           
-              <a class="btn-large col s3 offset-s1 red">Eliminar Método de Envio</a>     
-          </div>   
-          <hr>
-          <!-- Tabla con los métodos de envío -->
-          <div class="col s11" *ngIf="arr.length>0;else noData">
-              <table>
-                  <thead>
-                    <tr>
-                        <th>Descripción</th>
-                        <th>Modificar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                  </thead>
-          
-                  <tbody>
-                    <tr *ngFor="let item of arr">
-                      <td> Entrega en: {{item.tiempo}} | Tipos de Transporte: {{item.tipos}}
-                      </td>
-                      <td><a class="modal-trigger" (click)="onUpdate(item)" href="#modalCrearME">
-                        <i class="material-icons black-text">settings_application</i> 
-                          </a>
-                      </td>
-                      <td>
-                        <a (click)="onDelete(item)" >
-                          <i class="material-icons black-text center-align">delete</i> 
-                        </a>
-                      </td>                
-                </table>
-
-          </div>                
-      </div>
-
-    </div>
-
-  <!-- Mensaje en caso no existan métodos de envío -->
-  <div class="container">
-    <ng-template #noData>
-      
-      <h5 class="center-align">No existen métodos de envío registrados</h5>
-    </ng-template>
-  </div>
-
-    <!-- Modal Structure -->
-  <div id="modalCrearME" class="modal modal-fixed-footer">
-      <div class="modal-content row">
-        <h4>Crear Método de Envío</h4>
-        <p>Los métodos de envio son los niveles de servicio que son usador por los clientes. </p>
-        <form #addform="ngForm">
-            <div class="input-field col s6">
-                <select [(ngModel)]="model.tiempo" [(ngModel)]="model.tiempo" name="tiempo" class="form-control" id="tiempo" required #tiempo="ngModel">
-                  <option value="" disabled selected>Horas</option>
-                  <option value="12 horas">12 horas</option>
-                  <option value="24 horas">24 horas</option>
-                  <option value="48 horas">48 horas</option>
-                </select>
-                <label>Tiempo de Envio</label>
+              <div class="col s3">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="assets/img/operaciones/metodosEnvio.jpg">
+                  </div>
+                  <div class="card-content">
+                    <span class="card-title grey-text text-darken-4">Métodos de Envío</span>
+                    <p>Servicios de Entrega con tiempos en tránsito definidos y garantizados.</p>
+                  </div>
+                  <div class="card-action">
+                    <a routerLink="/metodosEnvio">Ver más...</a>
+                  </div>
+                </div>
               </div>
-              <div class="col s6">
-                  <h5>Métodos de Envío</h5>
-                  <p>
-                   <label>
-                      <input type="checkbox" [(ngModel)]="cbTierra" class="form-control" id="checkBoxTierra" name="checkBoxTierra"/>
-                      <span>Tierra</span>
-                    </label>
-                  </p>       
-                  <p>
-                    <label>
-                        <input type="checkbox" [(ngModel)]="cbMar" class="form-control" id="checkBoxMar" name="checkBoxMar"/>
-                        <span>Mar</span>
-                    </label>
-                     </p>
-                  <p>
-                    <label>
-                        <input type="checkbox" [(ngModel)]="cbAire" class="form-control" id="checkBoxAire" name="checkBoxAire"/>
-                        <span>Aire</span>
-                      </label>
-                    </p>                                 
-              </div> 
-              
-             
-        </form>        
-      </div>
 
-      <div class="modal-footer">
-        <button (click)='insertSubmit()' *ngIf="updClicked === false" class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Crear</button>        
-        <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Actualizar</button>        
-        <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
-      </div>
-      
-    </div>
+              <div class="col s3">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="assets/img/operaciones/oficinas.jpeg">
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title grey-text text-darken-4">Administración de Oficinas</span>
+                      <p>Centros de Distribución, Oficinas de Servicio Locales y Hubs.</p>
+                    </div>
+                    <div class="card-action">
+                      <a routerLink="/metodosEnvio">Ver más...</a>
+                    </div>
+                  </div>
+                </div>
 
+                <div class="col s3">
+                    <div class="card">
+                      <div class="card-image">
+                        <img src="assets/img/operaciones/rutas.jpeg">
+                      </div>
+                      <div class="card-content">
+                        <span class="card-title grey-text text-darken-4">Administración de Rutas</span>
+                        <p>*Descripción*</p>
+                      </div>
+                      <div class="card-action">
+                        <a routerLink="/metodosEnvio">Ver más...</a>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+           
+        </div>
           
+                    
+      </div>
+

@@ -29,6 +29,7 @@ export class OperacionesMetodosEnvioComponent implements OnInit {
   constructor(public authService: AuthService, public _data: FirestoreMetodosEnvioService) {}
 
   ngOnInit() {
+    // Obtenemos los métodos envío registrados en la base de datos.
     this._data.getMetodosEnvio().subscribe(
       (metodoEnvio: MetodosEnvio[]) => {
       this.arr = metodoEnvio;
@@ -43,6 +44,7 @@ export class OperacionesMetodosEnvioComponent implements OnInit {
     });
   }
 
+  // Función que envía el modelo a la función de insertar método de envío en el service.
   insertSubmit() {
     this.feedTipos();
     this._data.addMetodosEnvio(this.model);

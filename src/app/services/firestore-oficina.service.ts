@@ -28,4 +28,8 @@ export class FirestoreOficinaService {
   getOficinas() {
     return this.oficinas;
   }
+
+  addOficina(oficina) {
+    this.oficinasCollection.add(oficina);
+  }
 }

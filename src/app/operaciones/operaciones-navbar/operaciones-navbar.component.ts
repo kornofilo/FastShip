@@ -15,6 +15,7 @@ export class OperacionesNavbarComponent implements OnInit {
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
+    // Obtenemos el e-mail del usuario logueado.
     this.authService.checkLogin().subscribe( authFB => {
       if (authFB) {
         this.email = authFB.email;

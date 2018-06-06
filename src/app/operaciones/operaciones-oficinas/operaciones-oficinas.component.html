@@ -17,14 +17,13 @@
             <hr>
             <!-- Lista de oficinas -->
             <div class="col s9" *ngIf="arr.length>0;else noData">
-              <div class="row">
-                  <div class="col s12 m6">
-                    <div class="card" *ngFor="let item of arr">
+                  <div class="col s4" *ngFor="let item of arr">
+                    <div class="card">
                       <div class="card-content">
                         <span class="card-title">{{item.nombre}}</span>
                         <p>Dirección: {{item.direccion}}</p>
                         <p>Tipos: {{item.tipo}}</p>
-                        <p>Horario: {{item.horario.diasOperacion}} ({{item.horario.abre}}-{{item.horario.cierra}})</p>
+                        <p>Horario: {{item.horario.diasOperacion}} ({{item.horario.horaApertura}}-{{item.horario.horaCierre}})</p>
                       </div>
                       <div class="card-action">
                         <a class="modal-trigger" (click)="onUpdate(item)" href="#modalCrearOficina">Modificar</a>
@@ -32,7 +31,6 @@
                       </div>
                     </div>
                   </div>
-                </div>                  
               </div>
       </div>
 
@@ -48,7 +46,7 @@
     <div id="modalCrearOficina" class="modal modal-fixed-footer">
         <div class="modal-content row">
           <h4>Creación de Oficina</h4>
-          <form #addform="ngForm">
+          <form name='formAddOficina' #addform="ngForm">
               <!-- Campo de Nombre de la Oficina -->
               <div class="input-field col s6">
                   <input [(ngModel)]="model.nombre" name="nombre" type="text" class="form-control validate" required #nombre="ngModel">
@@ -68,22 +66,25 @@
 
               <!-- Campo de Dirección de la Oficina -->
               <div class="input-field col s6">
-                  <input [(ngModel)]="model.direccion"  name="direccion" class="form-control validate" type="text" #direccion="ngModel">
+                  <input [(ngModel)]="model.direccion"  name="direccion" class="form-control validate" type="text" required #direccion="ngModel">
                   <label for="direccion">Dirección</label>
               </div> <br>
-              
+
+               <!-- Poscisión Geográfica -->              
               <div class="input-field col s3">                
-                  <input id="latitud" type="text" class="validate">
+                  <input [(ngModel)]="model.posGeografica.lat" name="latitud" type="number" class="form-control validate" required step="any" #latitud="ngModel">
                   <label for="latitud">Latitud</label>                               
               </div>
 
               <div class="input-field col s3">                
-                  <input id="longitud" type="text" class="validate">
+                  <input [(ngModel)]="model.posGeografica.long" name="longitud" type="number" step="any" class="form-control validate" required #longitud="ngModel">
                   <label for="longitud">Longitud</label>                               
               </div>
-
+              
+              <!-- Días Laborables -->              
               <div class="input-field col s6">
-                  <select name="diasLaborables" class="form-control" id="diasLaborables" required>
+                  <select [(ngModel)]="model.horario.diasLaborables" name="diasLaborables" class="form-control validate" required #diasLaborables="ngModel">
+                      <option disabled value="" disabled></option>
                       <option value="Lunes-Viernes">Lunes-Viernes</option>
                       <option value="Lunes-Sábado">Lunes-Sábado</option>
                       <option value="Todos los Días">Todos los Días</option>
@@ -91,28 +92,31 @@
                     <label>Días Laborables</label>
               </div> <br>
 
+              <!-- Hora de Apertura --> 
               <div class="input-field col s3">
-                  <input type="text" class="timepicker">  
+                  <input [(ngModel)]="model.horario.horaApertura" type="time" name="horaApertura" class="form-control validate" required #horaApertura="ngModel">
                   <label>Hora de Apertura</label>                                  
               </div>
 
+              <!-- Hora de Cierre --> 
               <div class="input-field col s3">
-                <input type="text" class="timepicker">  
+                  <input [(ngModel)]="model.horario.horaCierre" type="time" name="horaCierre" class="form-control validate" required #horaCierre="ngModel">
                 <label>Hora de Cierre</label>                                  
-            </div>
-            
+              </div>
+
+            <!-- Disponibilidad --> 
             <label>Disponibilidad</label> 
             <p>
               <label>
-                <input type="checkbox" />
+                <input [(ngModel)]="model.disponibilidad.envia" type="checkbox" name="envia" class="form-control validate" #envia="ngModel"/>
                 <span>Envía</span>
               </label>
             </p>
               <label>
-                <input type="checkbox" />
-                <span>Recibe</span>
+                  <input [(ngModel)]="model.disponibilidad.recibe" type="checkbox" name="recibe" class="form-control validate" #recibe="ngModel"/>
+                  <span>Recibe</span>
               </label>                                        
-          </form>
+          </form>          
                         
         </div>
 

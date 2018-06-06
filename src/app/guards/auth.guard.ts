@@ -23,6 +23,7 @@ export class AuthGuard implements CanActivate {
       .pipe(take(1), map(authState => !! authState), tap( authenticated => {
          if (!authenticated) {
            this.router.navigate(['/login']);
+           alert('Debe iniciar sesión para ingresar a esta sección');
          }
       }));
     }

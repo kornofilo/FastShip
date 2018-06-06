@@ -17,6 +17,12 @@ import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 })
 export class OperacionesOficinasComponent implements OnInit {
   arr: Oficina[] = [];
+  updClicked = false;
+  idOficina: string;
+  // Elementos del Form
+  model = { nombre: '', tipo: '', direccion: '', latitud: 0, longitud: 0,
+  diasLaborables: '', horaApertura: '', horaCierre: '', envia: false, recibe: false};
+
   constructor(public authService: AuthService, public _data: FirestoreOficinaService) {}
 
   ngOnInit() {
@@ -29,7 +35,24 @@ export class OperacionesOficinasComponent implements OnInit {
 
     $(function() {
       $('select').formSelect();
+      $('.timepicker').timepicker({
+        container: 'body'
+      });
     });
   }
+
+  insertSubmit() {
+    console.log(this.model);
+    this.cleanForm();
+  }
+
+  onUpdate(metodoEnvio) {
+    this.updClicked = true;
+  }
+
+  cleanForm() {
+    this.updClicked = false;
+  }
+
 
 }

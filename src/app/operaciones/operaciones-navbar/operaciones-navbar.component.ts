@@ -26,4 +26,9 @@ export class OperacionesNavbarComponent implements OnInit {
     });
   }
 
+  // Función que al ser activada, cierra la sesión de Firebase.
+  onClickLogout() {
+    this.authService.logout();
+  }
+
 }

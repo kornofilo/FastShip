@@ -43,11 +43,6 @@ export class OperacionesMetodosEnvioComponent implements OnInit {
     });
   }
 
-  // Función que al ser activada, cierra la sesión de Firebase.
-  onClickLogout() {
-    this.authService.logout();
-  }
-
   insertSubmit() {
     this.feedTipos();
     this._data.addMetodosEnvio(this.model);

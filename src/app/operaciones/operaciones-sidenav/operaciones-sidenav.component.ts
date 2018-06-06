@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+declare let $: any;
+
 
 @Component({
   selector: 'app-operaciones-sidenav',
@@ -10,6 +12,9 @@ export class OperacionesSidenavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $(document).ready(function() {
+      $('.sidenav').sidenav();
+    });
   }
 
 }

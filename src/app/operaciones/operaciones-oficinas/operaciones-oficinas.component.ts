@@ -23,8 +23,13 @@ export class OperacionesOficinasComponent implements OnInit {
     this._data.getOficinas().subscribe(
       (oficina: Oficina[]) => {
       this.arr = oficina;
+      console.log(this.arr);
      }
     );
+
+    $(function() {
+      $('select').formSelect();
+    });
   }
 
 }

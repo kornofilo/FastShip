@@ -55,8 +55,26 @@ export class OperacionesOficinasComponent implements OnInit {
   }
 
   // Función que desactiva el botón de submit de crear y activa el de actualizar.
-  onUpdate(metodoEnvio) {
+  onUpdate(oficina) {
+
+    this.idOficina=oficina.id;
+
+    this.model.nombre=oficina.nombre;
+    this.model.tipo=oficina.tipo;
+    this.model.direccion=oficina.direccion;
+    this.model.tipo=oficina.tipo;
+
+    this.model.posGeografica.lat=oficina.posGeografica.lat;
+    this.model.posGeografica.long=oficina.posGeografica.long;
+
+    this.model.horario.diasLaborables=oficina.horario.diasLaborables;
+    this.model.horario.horaApertura=oficina.horario.horaApertura;
+    this.model.horario.horaCierre=oficina.horario.horaCierre;
+
+    this.model.disponibilidad.envia=oficina.disponibilidad.envia;
+    this.model.disponibilidad.recibe=oficina.disponibilidad.recibe;
     this.updClicked = true;
+
   }
 
   // Función que limpia los elementos del modelo.
@@ -71,6 +89,15 @@ export class OperacionesOficinasComponent implements OnInit {
     this.model.nombre = '';
     this.model.tipo  = '';
     this.updClicked = false;
+  }
+
+  onDelete(metodoEnvio) {
+    if (confirm('¿Está seguro que desea borrar esta oficina?')) {
+      this._data.deleteOficina(metodoEnvio);
+    }
+  }
+  updateSubmit(){
+  this._data.updateOficina(this.idOficina,this.model);
   }
 
 

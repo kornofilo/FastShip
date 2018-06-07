@@ -32,4 +32,15 @@ export class FirestoreOficinaService {
   addOficina(oficina) {
     this.oficinasCollection.add(oficina);
   }
+
+  deleteOficina(metodosEnvio) {
+    this.oficinasDoc = this._afs.doc('oficinas/' + metodosEnvio.id);
+    this.oficinasDoc.delete();
+  }
+
+  updateOficina(id,oficina){
+    console.log(oficina);
+    this.oficinasDoc=this._afs.doc('oficinas/'+id);
+    this.oficinasDoc.update(oficina);
+  }
 }

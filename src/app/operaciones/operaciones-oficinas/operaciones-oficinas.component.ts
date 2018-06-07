@@ -73,5 +73,11 @@ export class OperacionesOficinasComponent implements OnInit {
     this.updClicked = false;
   }
 
+  onDelete(metodoEnvio) {
+    if (confirm('¿Está seguro que desea borrar esta oficina?')) {
+      this._data.deleteOficina(metodoEnvio);
+    }
+  }
+
 
 }

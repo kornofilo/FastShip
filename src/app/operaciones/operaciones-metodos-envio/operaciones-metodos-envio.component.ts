@@ -52,7 +52,9 @@ export class OperacionesMetodosEnvioComponent implements OnInit {
   }
 
   onDelete(metodoEnvio) {
-    this._data.deleteMetodosEnvio(metodoEnvio);
+    if (confirm('¿Está seguro que desea borrar este método de envío?')) {
+      this._data.deleteMetodosEnvio(metodoEnvio);
+    }
   }
 
   onUpdate(metodoEnvio) {

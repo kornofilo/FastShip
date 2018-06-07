@@ -616,13 +616,13 @@ if(false) {}
 
 /***/ 2:
 /*!***************************************************************************************************************************************!*\
-  !*** multi ./src/styles.css ./node_modules/materialize-css/dist/css/materialize.css ./node_modules/font-awesome/css/font-awesome.css ***!
+  !*** multi ./node_modules/materialize-css/dist/css/materialize.css ./src/styles.css ./node_modules/font-awesome/css/font-awesome.css ***!
   \***************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\r-2g-\Documents\git\ProyectoS9\src\styles.css */"./src/styles.css");
 __webpack_require__(/*! C:\Users\r-2g-\Documents\git\ProyectoS9\node_modules\materialize-css\dist\css\materialize.css */"./node_modules/materialize-css/dist/css/materialize.css");
+__webpack_require__(/*! C:\Users\r-2g-\Documents\git\ProyectoS9\src\styles.css */"./src/styles.css");
 module.exports = __webpack_require__(/*! C:\Users\r-2g-\Documents\git\ProyectoS9\node_modules\font-awesome\css\font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
 
 

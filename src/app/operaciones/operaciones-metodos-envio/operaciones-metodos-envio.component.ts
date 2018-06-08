@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MetodosEnvio } from '../../classes/metodos-envio';
 declare let $: any;
 
@@ -8,6 +8,7 @@ import { auth } from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-envio.service';
 import { FindValueSubscriber } from 'rxjs/internal/operators/find';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -15,8 +16,7 @@ import { FindValueSubscriber } from 'rxjs/internal/operators/find';
   templateUrl: './operaciones-metodos-envio.component.html',
   styleUrls: ['./operaciones-metodos-envio.component.css']
 })
-export class OperacionesMetodosEnvioComponent implements OnInit {
-  public isLogIn: boolean;
+export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy {
   public email: string;
   arr: MetodosEnvio[] = [];
   updClicked = false;
@@ -26,18 +26,16 @@ export class OperacionesMetodosEnvioComponent implements OnInit {
   cbMar: boolean;
   cbAire: boolean;
   model = { tiempo: '', tipos: []};
+  private firebaseSubscription: Subscription;
   constructor(public authService: AuthService, public _data: FirestoreMetodosEnvioService) {}
 
   ngOnInit() {
-    if ( this.arr.length === 0) {
-      console.log(this.arr.length);
       // Obtenemos los métodos envío registrados en la base de datos.
-      this._data.getMetodosEnvio().subscribe(
+      this.firebaseSubscription = this._data.getMetodosEnvio().subscribe(
         (metodoEnvio: MetodosEnvio[]) => {
          this.arr = metodoEnvio;
        }
       );
-    }
 
     // Inicialización de los elementos de Materialize que requieren Jquery.
     $(function() {
@@ -45,6 +43,11 @@ export class OperacionesMetodosEnvioComponent implements OnInit {
       $('select').formSelect();
       $('.dropdown-trigger').dropdown();
     });
+  }
+
+  // Finalizamos la suscripción con el servicio al cerrar el componente.
+  ngOnDestroy() {
+    this.firebaseSubscription.unsubscribe();
   }
 
   // Función que envía el modelo a la función de insertar método de envío en el service.

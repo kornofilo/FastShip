@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Oficina } from '../../classes/oficina';
 declare let $: any;
 
@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
 import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 import { Form } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,12 +17,13 @@ import { Form } from '@angular/forms';
   templateUrl: './operaciones-oficinas.component.html',
   styleUrls: ['./operaciones-oficinas.component.css']
 })
-export class OperacionesOficinasComponent implements OnInit {
+export class OperacionesOficinasComponent implements OnInit, OnDestroy {
   formAddOficina: Form;
   arr: Oficina[] = [];
   updClicked = false;
   newOficina: Oficina;
   idOficina: string;
+  private firebaseSubscription: Subscription;
   // Modelo con la estructura de la clase oficina que obtiene los datos ingresados en el form.
   model = { nombre: '', tipo: '', direccion: '', posGeografica: {lat: 0, long: 0},
   horario: {diasLaborables: '', horaApertura: '', horaCierre: ''}, disponibilidad: {envia: false, recibe: false}};
@@ -30,7 +32,7 @@ export class OperacionesOficinasComponent implements OnInit {
 
   ngOnInit() {
     // Obtenemos las oficinas registradas en la base de datos.
-    this._data.getOficinas().subscribe(
+    this.firebaseSubscription = this._data.getOficinas().subscribe(
       (oficina: Oficina[]) => {
       this.arr = oficina;
       console.log(this.arr);
@@ -45,6 +47,11 @@ export class OperacionesOficinasComponent implements OnInit {
         container: 'body'
       });
     });
+  }
+
+  // Finalizamos la suscripción con el servicio al cerrar el componente.
+  ngOnDestroy() {
+    this.firebaseSubscription.unsubscribe();
   }
 
   // Función que envía el modelo a la función de insertar oficina en el service.

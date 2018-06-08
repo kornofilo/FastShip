@@ -29,12 +29,15 @@ export class OperacionesMetodosEnvioComponent implements OnInit {
   constructor(public authService: AuthService, public _data: FirestoreMetodosEnvioService) {}
 
   ngOnInit() {
-    // Obtenemos los métodos envío registrados en la base de datos.
-    this._data.getMetodosEnvio().subscribe(
-      (metodoEnvio: MetodosEnvio[]) => {
-      this.arr = metodoEnvio;
-     }
-    );
+    if ( this.arr.length === 0) {
+      console.log(this.arr.length);
+      // Obtenemos los métodos envío registrados en la base de datos.
+      this._data.getMetodosEnvio().subscribe(
+        (metodoEnvio: MetodosEnvio[]) => {
+         this.arr = metodoEnvio;
+       }
+      );
+    }
 
     // Inicialización de los elementos de Materialize que requieren Jquery.
     $(function() {

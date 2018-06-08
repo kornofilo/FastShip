@@ -38,9 +38,9 @@ export class FirestoreOficinaService {
     this.oficinasDoc.delete();
   }
 
-  updateOficina(id,oficina){
+  updateOficina(id, oficina) {
     console.log(oficina);
-    this.oficinasDoc=this._afs.doc('oficinas/'+id);
+    this.oficinasDoc = this._afs.doc('oficinas/' + id);
     this.oficinasDoc.update(oficina);
   }
 }

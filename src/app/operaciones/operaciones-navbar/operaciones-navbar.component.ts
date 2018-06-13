@@ -23,7 +23,9 @@ export class OperacionesNavbarComponent implements OnInit {
     });
 
     $(function() {
-      $('.modal').modal();
+      $('.dropdown-trigger').dropdown({
+        coverTrigger: false;
+      });
     });
   }
 

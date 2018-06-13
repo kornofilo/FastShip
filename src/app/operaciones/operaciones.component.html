@@ -1,23 +1,42 @@
 <!-- Barra de Navegación Superior -->
-<app-operaciones-navbar></app-operaciones-navbar>    
 
-<div class="row">
-  <!-- Barra de Navegación Lateral -->
-  <app-operaciones-sidenav></app-operaciones-sidenav>      
+<header>
+    <app-operaciones-sidenav></app-operaciones-sidenav>      
+    
+</header> 
 
-      <!-- Cuerpo de la Sección -->
-      <div class="col s9">
-              <div class="col s3">
+<aside>
+    <app-operaciones-navbar></app-operaciones-navbar> 
+</aside>
+
+  <main class="row">
+        <div class="col s9 offset-s3">
+            <div class="col s3">
+              <div class="card">
+                <div class="card-image">
+                  <img src="assets/img/operaciones/metodosEnvio.jpg">
+                </div>
+                <div class="card-content grey darken-4 white-text">
+                  <span class="card-title">Métodos de Envío</span>
+                  <p>Servicios de Entrega con tiempos en tránsito definidos y garantizados.</p>
+                </div>
+                <div class="card-action grey darken-4 yellow darken-2-text">
+                  <a routerLink="/metodosEnvio">Ver más...</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col s3">
                 <div class="card">
                   <div class="card-image">
-                    <img src="assets/img/operaciones/metodosEnvio.jpg">
+                    <img src="assets/img/operaciones/oficinas.jpeg">
                   </div>
-                  <div class="card-content">
-                    <span class="card-title grey-text text-darken-4">Métodos de Envío</span>
-                    <p>Servicios de Entrega con tiempos en tránsito definidos y garantizados.</p>
+                  <div class="card-content grey darken-4 white-text">
+                    <span class="card-title">Administración de Oficinas</span>
+                    <p>Centros de Distribución, Oficinas de Servicio Locales y Hubs.</p>
                   </div>
-                  <div class="card-action">
-                    <a routerLink="/metodosEnvio">Ver más...</a>
+                  <div class="card-action grey darken-4 yellow darken-2-text">
+                    <a routerLink="/admOficinas">Ver más...</a>
                   </div>
                 </div>
               </div>
@@ -25,31 +44,18 @@
               <div class="col s3">
                   <div class="card">
                     <div class="card-image">
-                      <img src="assets/img/operaciones/oficinas.jpeg">
+                      <img src="assets/img/operaciones/rutas.jpeg">
                     </div>
-                    <div class="card-content">
-                      <span class="card-title grey-text text-darken-4">Administración de Oficinas</span>
-                      <p>Centros de Distribución, Oficinas de Servicio Locales y Hubs.</p>
+                    <div class="card-content grey darken-4 white-text">
+                      <span class="card-title">Administración de Rutas</span>
+                      <p>*Descripción*</p>
                     </div>
-                    <div class="card-action">
-                      <a routerLink="/admOficinas">Ver más...</a>
+                    <div class="card-action grey darken-4 yellow darken-2-text">
+                      <a routerLink="/metodosEnvio">Ver más...</a>
                     </div>
                   </div>
                 </div>
+  </div>
+  </main>
 
-                <div class="col s3">
-                    <div class="card">
-                      <div class="card-image">
-                        <img src="assets/img/operaciones/rutas.jpeg">
-                      </div>
-                      <div class="card-content">
-                        <span class="card-title grey-text text-darken-4">Administración de Rutas</span>
-                        <p>*Descripción*</p>
-                      </div>
-                      <div class="card-action">
-                        <a routerLink="/metodosEnvio">Ver más...</a>
-                      </div>
-                    </div>
-                  </div>
-      </div>
 

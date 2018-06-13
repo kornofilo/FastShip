@@ -25,6 +25,10 @@ export class FirestoreOficinaService {
       }));
   }
 
+  getOficinasType() {
+    this.oficinasCollection = this._afs.collection('/oficinas');
+  }
+
   getOficinas() {
     return this.oficinas;
   }

@@ -2,7 +2,6 @@
   <!-- Barra de Navegación Superior -->
   <app-operaciones-navbar></app-operaciones-navbar>
   <div class="row">
-
     <!-- Barra de Navegación Lateral -->
     <app-oficina-sidenav></app-oficina-sidenav>
 <!-- Lista de oficinas -->
@@ -10,7 +9,7 @@
       <div class="col s12 m7" *ngFor="let item of arr">
         <div class="card horizontal">
           <div class="card-image">
-            <img src="assets/img/operaciones/metodosEnvio.jpg">
+            <img src={{item.logo}} alt="image">
           </div>
             <div class="card-stacked">
           <div class="card-content">

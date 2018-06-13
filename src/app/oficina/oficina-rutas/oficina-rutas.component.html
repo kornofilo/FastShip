@@ -1,0 +1,30 @@
+<body>
+  <!-- Barra de Navegación Superior -->
+  <app-operaciones-navbar></app-operaciones-navbar>
+  <div class="row">
+
+    <!-- Barra de Navegación Lateral -->
+    <app-oficina-sidenav></app-oficina-sidenav>
+<!-- Lista de oficinas -->
+<div class="col s12 m7" *ngIf="arr.length>0;else noData">
+      <div class="col s12 m7" *ngFor="let item of arr">
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="assets/img/operaciones/metodosEnvio.jpg">
+          </div>
+            <div class="card-stacked">
+          <div class="card-content">
+            <span class="card-title">{{item.nombre}}</span>
+            <p>Dirección: {{item.direccion}}</p>
+            <p>Tipo: {{item.tipo}}</p>
+            <p>Días Laborables: {{item.horario.diasLaborables}}</p>
+            <p>Horario: {{item.horario.horaApertura}}-{{item.horario.horaCierre}}</p>
+            <p>Ubicacion Geografica: Latitud {{item.posGeografica.lat}} | Longitud {{item.posGeografica.long}}</p>
+          </div>
+  </div>
+        </div>
+      </div>
+  </div>
+    </div>
+
+  </body>

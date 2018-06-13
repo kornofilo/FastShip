@@ -23,6 +23,8 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { OperacionesMetodosEnvioComponent } from './operaciones/operaciones-metodos-envio/operaciones-metodos-envio.component';
 import { OperacionesOficinasComponent } from './operaciones/operaciones-oficinas/operaciones-oficinas.component';
+import { OficinaRutasComponent } from './oficina/oficina-rutas/oficina-rutas.component';
+import { OficinaSidenavComponent } from './oficina/oficina-sidenav/oficina-sidenav.component';
 
 
 /* Array de Rutas */
@@ -33,7 +35,8 @@ const routes: Routes = [
   {  path: 'metodosEnvio', component: OperacionesMetodosEnvioComponent, canActivate: [AuthGuard]},
   {  path: 'admOficinas', component: OperacionesOficinasComponent, canActivate: [AuthGuard]},
   {  path: 'usuario', component: UsuarioComponent },
-  {  path: 'oficina',  component: OficinaComponent, canActivate: [AuthGuard]}
+  {  path: 'oficina',  component: OficinaComponent, canActivate: [AuthGuard]},
+    {  path: 'tiendas',  component: OficinaRutasComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -46,7 +49,9 @@ const routes: Routes = [
     OperacionesNavbarComponent,
     OperacionesSidenavComponent,
     OperacionesMetodosEnvioComponent,
-    OperacionesOficinasComponent
+    OperacionesOficinasComponent,
+    OficinaRutasComponent,
+    OficinaSidenavComponent
   ],
   imports: [
     BrowserModule,

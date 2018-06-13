@@ -3,11 +3,8 @@ import { Oficina } from '../../classes/oficina';
 declare let $: any;
 
 // Firebase
-import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
-import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 import { Form } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -24,6 +21,7 @@ export class OperacionesOficinasComponent implements OnInit, OnDestroy {
   newOficina: Oficina;
   idOficina: string;
   private firebaseSubscription: Subscription;
+
   // Modelo con la estructura de la clase oficina que obtiene los datos ingresados en el form.
   model = { nombre: '', tipo: '', direccion: '', posGeografica: {lat: 0, long: 0},
   horario: {diasLaborables: '', horaApertura: '', horaCierre: ''}, disponibilidad: {envia: false, recibe: false}};
@@ -42,6 +40,7 @@ export class OperacionesOficinasComponent implements OnInit, OnDestroy {
     // Inicialización de los elementos de Materialize que requieren JQuery para su funcionamiento.
     $(function() {
       $('select').formSelect();
+      $('.modal').modal();
       $('.timepicker').timepicker({
         twelveHour:	false,
         container: 'body'

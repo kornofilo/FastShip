@@ -1,11 +1,35 @@
-<div class="col s12 m4 l3">        
-    <ul id="slide-out" class="sidenav sidenav-fixed">
-        <div>
-            <h1>FastShip</h1>
-          </div>
-      <li class="grey darken-3"><a class="white-text" routerLink="/metodosEnvio">Métodos de Envio</a></li>
-      <li class="grey darken-3"><a class="white-text" routerLink="/admOficinas">Administración de Oficinas</a></li>
-      <li class="grey darken-3"><a class="white-text" routerLink="">Administración de Rutas</a></li>      
+<ul id="slide-out" class="sidenav sidenav-fixed yellow darken-2">
+    <div class="logo center-align">
+        <h4>FastShip</h4>
+    </div>
+    
+    <ul class="collapsible grey darken-3 center-align">
+            <li>
+                <a class="grey darken-4 white-text" routerLink="/operaciones">Operaciones</a>    
+            <li>
+                <a class="white-text" routerLink="/metodosEnvio">Métodos de Envio</a>    
+            </li>
+            <li>
+                <a class="white-text" routerLink="/admOficinas">Administración de Oficinas</a>
+            </li>
+            <li>
+                <div class="collapsible-header white-text"> Administración de Rutas</div>
+                    <div class="collapsible-body">
+                        <ul>   
+                            <li class="grey darken-2">
+                                <a class="white-text" routerLink="">Rutas</a>
+                            </li>     
+                            <li class="grey darken-2">
+                                <a class="white-text" routerLink="">Subrutas</a>
+                            </li>     
+                        </ul>                        
+                    </div>
+            </li>
     </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>    
-</div>
+     <li><a class="subheader">Otras Secciones</a></li>
+     <ul class="collapsible grey darken-4 white-text center-align">
+        <li>
+            <a class="white-text" routerLink="/oficina">Oficina</a>    
+        </li>
+    </ul>
+</ul>

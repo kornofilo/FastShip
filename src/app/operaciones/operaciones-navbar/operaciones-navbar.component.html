@@ -1,27 +1,31 @@
 <!-- Barra de Navegación -->
-<header>
-  <div class="navbar-fixed col s9">
-    <nav class="grey darken-3">
+
+  <div class="navbar-fixed">
+
+      <ul id="dropdown1" class="dropdown-content">
+          <li><a (click)='onClickLogout()'>Cerrar Sesión</a></li>
+          
+        </ul>
+        
+
+    <nav class="yellow darken-2">
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>  
+
         <div class="nav-wrapper row">
           <form class="col s5 offset-s3">
             <div class="input-field">
-              <input class="center-align grey darken-2 white-text" placeholder="Ingrese un número de tracking, camión, etc." id="search" type="search" required>              
+              <input class="center-align grey darken-4 white-text" placeholder="Ingrese un número de tracking, camión, etc." id="search" type="search" required>              
               <label class="label-icon" for="search"><i class="material-icons">search</i></label>
               <i class="material-icons">close</i>
             </div>
           </form>
 
-          <!-- E-mail del Usuario Logueado -->
-          <div class="col s1 offset-s2 grey darken-3 white-text">
-            <span>{{email}}</span>
-          </div>
-          
-          <!-- Botón para cerrar sesión -->
-          <div class="col s1 red white-text pointer-cursor" (click)='onClickLogout()'>
-              <a>Cerrar Sesión</a>
-          </div>          
+          <ul class="right hide-on-med-and-down">            
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"> <span class="black-text email">{{email}} </span> <i class="material-icons black-text right">arrow_drop_down</i></a></li>
+          </ul>
 
+          
         </div>
       </nav>
-    </div>
-</header> <br>
+    </div> <br>

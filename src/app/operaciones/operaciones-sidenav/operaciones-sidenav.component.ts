@@ -14,6 +14,7 @@ export class OperacionesSidenavComponent implements OnInit {
   ngOnInit() {
     $(document).ready(function() {
       $('.sidenav').sidenav();
+      $('.collapsible').collapsible();
     });
   }
 

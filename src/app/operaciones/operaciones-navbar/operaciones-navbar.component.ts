@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
 
 export class OperacionesNavbarComponent implements OnInit {
   public email: string;
+  public profileImg: string;
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
@@ -23,7 +24,9 @@ export class OperacionesNavbarComponent implements OnInit {
     });
 
     $(function() {
-      $('.modal').modal();
+      $('.dropdown-trigger').dropdown({
+        coverTrigger: false
+      });
     });
   }
 

@@ -6,7 +6,7 @@
   <app-operaciones-sidenav></app-operaciones-sidenav>      
 
       <!-- Cuerpo de la Sección -->
-      <div class="col s9">
+      <div class="col s9 offset-s3">
           <div class="row">
               <a class="btn-large col s3 indigo">Métodos de Envío</a>   
               <a class="btn-large col s3 offset-s1 green modal-trigger" href="#modalCrearME" materialize="modal">Crear Métodos de Envio</a>           
@@ -39,7 +39,9 @@
                       </td>                
                 </table>
 
-          </div>                
+          </div>     
+          
+      
       </div>
 
     </div>
@@ -51,6 +53,7 @@
       <h5 class="center-align">No existen métodos de envío registrados</h5>
     </ng-template>
   </div>
+  
 
     <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->
   <div id="modalCrearME" class="modal modal-fixed-footer">

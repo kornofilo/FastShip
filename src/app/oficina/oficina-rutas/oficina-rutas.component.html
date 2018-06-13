@@ -6,14 +6,14 @@
     <!-- Barra de Navegación Lateral -->
     <app-oficina-sidenav></app-oficina-sidenav>
 <!-- Lista de oficinas -->
-<div class="col s12 m7" *ngIf="arr.length>0;else noData">
+<div class="col s9 offset-s3" *ngIf="arr.length>0;else noData">
       <div class="col s12 m7" *ngFor="let item of arr">
         <div class="card horizontal">
           <div class="card-image">
             <img src="assets/img/operaciones/metodosEnvio.jpg">
           </div>
             <div class="card-stacked">
-          <div class="card-content">
+          <div class="card-content grey darken-4 white-text">
             <span class="card-title">{{item.nombre}}</span>
             <p>Dirección: {{item.direccion}}</p>
             <p>Tipo: {{item.tipo}}</p>

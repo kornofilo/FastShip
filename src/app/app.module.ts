@@ -25,6 +25,7 @@ import { OperacionesMetodosEnvioComponent } from './operaciones/operaciones-meto
 import { OperacionesOficinasComponent } from './operaciones/operaciones-oficinas/operaciones-oficinas.component';
 import { OficinaRutasComponent } from './oficina/oficina-rutas/oficina-rutas.component';
 import { OficinaSidenavComponent } from './oficina/oficina-sidenav/oficina-sidenav.component';
+import { OficinaEnviosComponent } from './oficina/oficina-envios/oficina-envios.component';
 
 
 /* Array de Rutas */
@@ -36,7 +37,8 @@ const routes: Routes = [
   {  path: 'admOficinas', component: OperacionesOficinasComponent, canActivate: [AuthGuard]},
   {  path: 'usuario', component: UsuarioComponent },
   {  path: 'oficina',  component: OficinaComponent, canActivate: [AuthGuard]},
-    {  path: 'tiendas',  component: OficinaRutasComponent, canActivate: [AuthGuard]}
+  {  path: 'tiendas',  component: OficinaRutasComponent, canActivate: [AuthGuard]},
+  {  path: 'envios',  component: OficinaEnviosComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -51,7 +53,8 @@ const routes: Routes = [
     OperacionesMetodosEnvioComponent,
     OperacionesOficinasComponent,
     OficinaRutasComponent,
-    OficinaSidenavComponent
+    OficinaSidenavComponent,
+    OficinaEnviosComponent
   ],
   imports: [
     BrowserModule,

@@ -54,44 +54,89 @@
   </div>
   
 
-    <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->
+    <!-- Modal que contiene el formulario de inserción y actualización de los envíos. -->
   <div id="modalCrearME" class="modal modal-fixed-footer">
       <div class="modal-content row">
-        <h4>Crear Método de Envío</h4>
-        <p>Los métodos de envio son los niveles de servicio que son usador por los clientes. </p>
+        <h4>Creación de Envío</h4>
         <form #addform="ngForm">
-            <div class="input-field col s6">
-                <select [(ngModel)]="model.tiempo" name="tiempo" class="form-control" id="tiempo" required #tiempo="ngModel">
-                  <option value="" disabled selected>Horas</option>
-                  <option value="12 horas">12 horas</option>
-                  <option value="24 horas">24 horas</option>
-                  <option value="48 horas">48 horas</option>
+            <!-- Datos del Remitente-->
+            <h6>Remitente</h6>
+            <div class="input-field col s4">               
+                <input [(ngModel)]="model.remitente.nombre" name="nombre-remitente" class="form-control validate" required #nombreRemitente="ngModel">
+                <label for="nombre-remitente">Nombre</label>                               
+            </div>
+
+            <div class="input-field col s4">                
+                <input [(ngModel)]="model.remitente.apellido" name="apellido-remitente" class="form-control validate" required #apellidoRemitente="ngModel">
+                <label for="apellido-remitente">Apellido</label>                               
+            </div>
+
+            <div class="input-field col s4">                
+                <input [(ngModel)]="model.destinatario.telefono" name="telefono-destinatario" type="tel" class="form-control validate" required #telefonoDestinatario="ngModel">
+                <label for="telefono-remitente">Teléfono</label>                               
+            </div>
+
+             <!-- Datos del Destinatario-->
+             <h6>Destinatario</h6>
+             <div class="input-field col s3">               
+                 <input [(ngModel)]="model.destinatario.nombre" name="nombre-destinatario" class="form-control validate" required #nombreDestinatario="ngModel">
+                 <label for="nombre-destinatario">Nombre</label>                               
+             </div>
+
+             <div class="input-field col s3">               
+                <input [(ngModel)]="model.destinatario.apellido" name="apellido-destinatario" class="form-control validate" required #apellidoDestinatario="ngModel">
+                <label for="apellido-destinatario">Apellido</label>                               
+             </div>
+
+             <div class="input-field col s3">
+                <input [(ngModel)]="model.remitente.telefono" name="telefono-remitente" type="tel" class="form-control validate" required #telefonoDestinatario="ngModel">
+                <label for="telefono-destinatario">Teléfono</label>                               
+            </div>
+
+            <div class="input-field col s3">               
+                <input [(ngModel)]="model.destinatario.direccion" name="direccion-destinatario" class="form-control validate" required #direccionDestinatario="ngModel">
+                <label for="direccion-destinatario">Dirección</label>                               
+            </div>
+
+            <div class="input-field col s3">
+                <select [(ngModel)]="model.origen" name="origen" class="form-control validate" required #origen="ngModel">
+                  <option disabled>Origen</option>                   
                 </select>
-                <label>Tiempo de Envio</label>
+            </div>
+
+            <div class="input-field col s3">
+                <select [(ngModel)]="model.destino" name="destino" class="form-control validate" required #destino="ngModel">
+                  <option disabled>Destino</option>                   
+                </select>
+            </div>
+
+            <div class="input-field col s3">
+                <input type="text" name="fechaEnvio" class="datepicker">
+            </div>
+
+            <div class="input-field col s3">
+                <select [(ngModel)]="model.tipoEnvio" name="tipoEnvio" class="form-control validate" required #tipoEnvio="ngModel">
+                  <option disabled>Tipo de Envío</option>                   
+                </select>
+            </div>
+
+            <div class="input-field col s6">
+                <textarea [(ngModel)]="model.descripcion" name="descripcion" type="text" class="form-control validate materialize-textarea" required data-length="140" #descripcion="ngModel"></textarea>
+                <label for="descripcion">Información de Contenido</label>
               </div>
-              <div class="col s6">
-                  <h5>Métodos de Envío</h5>
-                  <p>
-                   <label>
-                      <input type="checkbox" [(ngModel)]="cbTierra" class="form-control" id="checkBoxTierra" name="checkBoxTierra"/>
-                      <span>Tierra</span>
-                    </label>
-                  </p>       
-                  <p>
-                    <label>
-                        <input type="checkbox" [(ngModel)]="cbMar" class="form-control" id="checkBoxMar" name="checkBoxMar"/>
-                        <span>Mar</span>
-                    </label>
-                     </p>
-                  <p>
-                    <label>
-                        <input type="checkbox" [(ngModel)]="cbAire" class="form-control" id="checkBoxAire" name="checkBoxAire"/>
-                        <span>Aire</span>
-                      </label>
-                    </p>                                 
-              </div> 
-              
+
+              <div class="input-field col s3">
+                  <label>
+                      <input type="checkbox" [(ngModel)]="perecedero" class="form-control" name="perecedero"/>
+                      <span>¿Perecedero?</span>
+                  </label>
+              </div>
+
              
+            
+
+
+                                              
         </form>        
       </div>
 

@@ -16,6 +16,10 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public _data: FirestoreEnviosService) {}
 
   ngOnInit() {
+    $('.modal').modal();
+    $('.datepicker').datepicker({
+        container: 'body'
+      });
   }
 
   ngOnDestroy() {

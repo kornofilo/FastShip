@@ -45,5 +45,6 @@ export class FirestoreMetodosEnvioService {
      tiempo : tiempoNew,
      tipos: tiposNew
     });
+
   }
 }

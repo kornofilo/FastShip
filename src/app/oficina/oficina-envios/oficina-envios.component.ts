@@ -15,12 +15,25 @@ import { FirestoreEnviosService } from '../../services/firestore-envios.service'
 })
 export class OficinaEnviosComponent implements OnInit, OnDestroy {
   formAddEnvio: Form;
+  arr: Envios[] = [];
   newEnvio: Envios;
   idEnvio: string;
   private firestoreSubscription: Subscription;
   constructor(public authService: AuthService, public _data: FirestoreEnviosService) {}
+  model = { numTracking: 0, remitente: {nombre: '', apellido: '', telefono: ''},
+  destinatario: {nombre: '', apellido: '', telefono: '', direccion: ''},
+  origen: '', fechaEnvio: '', tipoEnvio: '', descripcion: '',
+  perecedero : false};
+  private firebaseSubscription: Subscription;
 
   ngOnInit() {
+    this.firebaseSubscription = this._data.getEnvios().subscribe(
+      (oficina: Envios[]) => {
+      this.arr = oficina;
+      console.log(this.arr);
+     }
+    );
+
     $('select').formSelect();
     $('.modal').modal();
     $('.datepicker').datepicker({

@@ -7,3 +7,9 @@ header, nav, footer {
       padding-left: 0;
     }
   }
+
+.sectionFormHeader{
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+}

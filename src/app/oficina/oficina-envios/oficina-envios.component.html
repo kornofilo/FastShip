@@ -13,34 +13,7 @@
           </div>   
           <hr>
           <!-- Tabla con los métodos de envío -->
-          <div class="col s11" *ngIf="arr.length>0;else noData">
-              <table>
-                  <thead>
-                    <tr>
-                        <th>Descripción</th>
-                        <th>Modificar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                  </thead>
-          
-                  <tbody>
-                    <tr *ngFor="let item of arr">
-                      <td> Entrega en: {{item.tiempo}} | Tipos de Transporte: {{item.tipos}}
-                      </td>
-                      <td><a class="modal-trigger" (click)="onUpdate(item)" href="#modalCrearME">
-                        <i class="material-icons black-text">settings_application</i> 
-                          </a>
-                      </td>
-                      <td>
-                        <a class="pointer-delete" (click)="onDelete(item)" >
-                          <i class="material-icons black-text center-align">delete</i> 
-                        </a>
-                      </td>                
-                </table>
-
-          </div>     
-          
-      
+            
       </div>
 
     </div>
@@ -130,13 +103,7 @@
                       <input type="checkbox" [(ngModel)]="perecedero" class="form-control" name="perecedero"/>
                       <span>¿Perecedero?</span>
                   </label>
-              </div>
-
-             
-            
-
-
-                                              
+              </div>                                                                 
         </form>        
       </div>
 

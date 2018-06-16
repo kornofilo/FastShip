@@ -28,9 +28,11 @@ export class FirestoreMetodosEnvioService {
   getMetodosEnvio() {
     return this.metodosEnvio;
   }
+
   addMetodosEnvio(metodosEnvio) {
     this.metodosEnvioCollection.add(metodosEnvio);
   }
+
   deleteMetodosEnvio(metodosEnvio) {
     this.metodosEnvioDoc = this._afs.doc('metodosEnvio/' + metodosEnvio.id);
     this.metodosEnvioDoc.delete();

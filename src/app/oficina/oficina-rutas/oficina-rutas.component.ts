@@ -30,7 +30,7 @@ export class OficinaRutasComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
       // Obtenemos las oficinas registradas en la base de datos.
-      this.firebaseSubscription = this._data.getOficinas().subscribe(
+      this.firebaseSubscription = this._data.getOficinasType('Mixta').subscribe(
         (oficina: Oficina[]) => {
         this.arr = oficina;
         console.log(this.arr);

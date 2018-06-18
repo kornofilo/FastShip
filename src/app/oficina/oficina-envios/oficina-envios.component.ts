@@ -1,11 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 declare let $: any;
 import { Form } from '@angular/forms';
+import { MetodosEnvio } from '../../classes/metodos-envio';
 import { Envios } from '../../classes/envios';
 import { Subscription } from 'rxjs';
 
 // Firebase
 import { AuthService } from '../../services/auth.service';
+
+// Servicios
+import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-envio.service';
 import { FirestoreEnviosService } from '../../services/firestore-envios.service';
 
 @Component({
@@ -16,21 +20,42 @@ import { FirestoreEnviosService } from '../../services/firestore-envios.service'
 export class OficinaEnviosComponent implements OnInit, OnDestroy {
   formAddEnvio: Form;
   arr: Envios[] = [];
+  arrMetodosEnvio: MetodosEnvio[] = [];
+  metodosEnvioOptions: string[] = [];
   newEnvio: Envios;
   idEnvio: string;
   private firestoreSubscription: Subscription;
-  constructor(public authService: AuthService, public _data: FirestoreEnviosService) {}
-  model = { numTracking: 0, remitente: {nombre: '', apellido: '', telefono: ''},
+  constructor(public authService: AuthService, public _data: FirestoreEnviosService,
+    public _misMetodosDeEnvio: FirestoreMetodosEnvioService) {}
+
+  modelPaquete = { numTracking: 0, remitente: {nombre: '', apellido: '', telefono: ''},
   destinatario: {nombre: '', apellido: '', telefono: '', direccion: ''},
-  origen: '', fechaEnvio: '', tipoEnvio: '', descripcion: '',
+  origen: '', fechaEnvio: '', tipoEnvio: '', descripcion: '', dimensiones: {largo: 0} ,
   perecedero : false};
-  private firebaseSubscription: Subscription;
+
+  modelDocumento = { numTracking: 0, remitente: {nombre: '', apellido: '', telefono: ''},
+  destinatario: {nombre: '', apellido: '', telefono: '', direccion: ''},
+  origen: '', fechaEnvio: '', tipoEnvio: '', descripcion: ''};
+
+  // Suscripciones
+  private firestoreEnviosSubscription: Subscription;
+  private firestoreMetodosEnvioSubscription: Subscription;
 
   ngOnInit() {
-    this.firebaseSubscription = this._data.getEnvios().subscribe(
+    this.firestoreEnviosSubscription = this._data.getEnvios().subscribe(
       (oficina: Envios[]) => {
       this.arr = oficina;
       console.log(this.arr);
+     }
+    );
+
+    this.firestoreMetodosEnvioSubscription = this._misMetodosDeEnvio.getMetodosEnvio().subscribe(
+      (metodosEnvio: MetodosEnvio[]) => {
+        for (const key in metodosEnvio) {
+          if (metodosEnvio.hasOwnProperty(key)) {
+              this.metodosEnvioOptions[key] = metodosEnvio[key].tiempo;
+          }
+      }
      }
     );
 
@@ -39,10 +64,12 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy {
     $('.datepicker').datepicker({
         container: 'body'
       });
+    $('input#input_text, textarea#textarea2').characterCounter();
+
   }
 
   ngOnDestroy() {
-    this.firestoreSubscription.unsubscribe();
+    this.firestoreEnviosSubscription.unsubscribe();
   }
 
 }

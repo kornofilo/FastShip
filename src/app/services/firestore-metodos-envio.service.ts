@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 import { MetodosEnvio } from '../classes/metodos-envio';
 
+// Toast de Materialize para notificaciones de acciones.
+// import { toast } from 'angular2-materialize';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,10 +39,10 @@ export class FirestoreMetodosEnvioService {
   deleteMetodosEnvio(metodosEnvio) {
     this.metodosEnvioDoc = this._afs.doc('metodosEnvio/' + metodosEnvio.id);
     this.metodosEnvioDoc.delete();
+    // toast('Metodo de Envío eliminado de manera Exitosa.', 4000);
   }
 
   updateMetodosEnvio(iME, tiempoNew: string, tiposNew: string[]) {
-    console.log(tiposNew);
     this.metodosEnvioDoc = this._afs.doc('metodosEnvio/' + iME);
     this.metodosEnvioDoc.update({
      tiempo : tiempoNew,

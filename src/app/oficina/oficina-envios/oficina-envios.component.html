@@ -31,6 +31,10 @@
             
       </div>
 
+    
+
+      
+
     </div>
 
   <!-- Mensaje en caso no existan envíos.-->
@@ -115,9 +119,7 @@
             <div class="input-field col s3">
                 <select [(ngModel)]="modelPaquete.tipoEnvio" name="tipoEnvio" class="form-control validate" required #tipoEnvio="ngModel">
                   <option disabled>Tipo de Envío</option>  
-                  <option *ngFor="let metodo of metodosEnvioOptions" [value]="metodo"> 
-                        {{metodo}} 
-                  </option>                                      
+                  <option *ngFor="let metodo of arrMetodosEnvio" [value]="metodo.tiempo">{{metodo.tiempo}}</option>                                      
                 </select>
             </div>
            

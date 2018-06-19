@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 declare let $: any;
-import { FormGroup, FormControl, Form } from '@angular/forms';
+import { FormGroup, Form } from '@angular/forms';
 import { MetodosEnvio } from '../../classes/metodos-envio';
 import { Envios } from '../../classes/envios';
 import { Subscription } from 'rxjs';
@@ -52,12 +52,8 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy {
 
     this.firestoreMetodosEnvioSubscription = this._misMetodosDeEnvio.getMetodosEnvio().subscribe(
       (metodosEnvio: MetodosEnvio[]) => {
-        for (const key in metodosEnvio) {
-          if (metodosEnvio.hasOwnProperty(key)) {
-              this.metodosEnvioOptions[key] = metodosEnvio[key].tiempo;
-          }
+        this.arrMetodosEnvio = metodosEnvio;
       }
-     }
     );
 
     $('select').formSelect();
@@ -71,6 +67,7 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.firestoreEnviosSubscription.unsubscribe();
+    this.firestoreMetodosEnvioSubscription.unsubscribe();
   }
 
 }

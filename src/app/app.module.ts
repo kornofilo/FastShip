@@ -32,14 +32,14 @@ import { OficinaEnviosComponent } from './oficina/oficina-envios/oficina-envios.
 
 /* Array de Rutas */
 const routes: Routes = [
-  {  path: '', component: LoginComponent },
+  {  path: '', component: LoginComponent, canActivate: [IsLoggedGuard] },
   {  path: 'login', component: LoginComponent, canActivate: [IsLoggedGuard] },
   {  path: 'operaciones', component: OperacionesComponent, canActivate: [AuthGuard] },
   {  path: 'metodosEnvio', component: OperacionesMetodosEnvioComponent, canActivate: [AuthGuard]},
   {  path: 'admOficinas', component: OperacionesOficinasComponent, canActivate: [AuthGuard]},
   {  path: 'usuario', component: UsuarioComponent },
   {  path: 'oficina',  component: OficinaComponent, canActivate: [AuthGuard]},
-  {  path: 'tiendas',  component: OficinaRutasComponent, canActivate: [AuthGuard]},
+  {  path: 'tiendas/:tipo',  component: OficinaRutasComponent, canActivate: [AuthGuard]},
   {  path: 'envios',  component: OficinaEnviosComponent, canActivate: [AuthGuard]}
 ];
 

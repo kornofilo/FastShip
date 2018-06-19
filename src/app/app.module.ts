@@ -11,6 +11,8 @@ import 'materialize-css';
 import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
+import { IsLoggedGuard } from './guards/is-logged.guard';
+
 import { OperacionesNavbarComponent } from './operaciones/operaciones-navbar/operaciones-navbar.component';
 import { OperacionesSidenavComponent } from './operaciones/operaciones-sidenav/operaciones-sidenav.component';
 
@@ -31,7 +33,7 @@ import { OficinaEnviosComponent } from './oficina/oficina-envios/oficina-envios.
 /* Array de Rutas */
 const routes: Routes = [
   {  path: '', component: LoginComponent },
-  {  path: 'login', component: LoginComponent },
+  {  path: 'login', component: LoginComponent, canActivate: [IsLoggedGuard] },
   {  path: 'operaciones', component: OperacionesComponent, canActivate: [AuthGuard] },
   {  path: 'metodosEnvio', component: OperacionesMetodosEnvioComponent, canActivate: [AuthGuard]},
   {  path: 'admOficinas', component: OperacionesOficinasComponent, canActivate: [AuthGuard]},

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 declare let $: any;
-import { Form } from '@angular/forms';
+import { FormGroup, FormControl, Form } from '@angular/forms';
 import { MetodosEnvio } from '../../classes/metodos-envio';
 import { Envios } from '../../classes/envios';
 import { Subscription } from 'rxjs';
@@ -19,6 +19,7 @@ import { FirestoreEnviosService } from '../../services/firestore-envios.service'
 })
 export class OficinaEnviosComponent implements OnInit, OnDestroy {
   formAddEnvio: Form;
+  formGroupAddEnvio: FormGroup;
   arr: Envios[] = [];
   arrMetodosEnvio: MetodosEnvio[] = [];
   metodosEnvioOptions: string[] = [];

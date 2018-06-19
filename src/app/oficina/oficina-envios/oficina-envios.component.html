@@ -97,10 +97,7 @@
 
             <div class="input-field col s3">
                 <select [(ngModel)]="modelPaquete.origen" name="origen" class="form-control validate" required #origen="ngModel">
-                  <option disabled>Origen</option>   
-                  <option *ngFor="let metodo of metodosEnvioOptions" [value]="metodo"> 
-                        {{metodo}} 
-                  </option>                
+                  <option disabled>Origen</option>                              
                 </select>
             </div>
 
@@ -117,9 +114,13 @@
 
             <div class="input-field col s3">
                 <select [(ngModel)]="modelPaquete.tipoEnvio" name="tipoEnvio" class="form-control validate" required #tipoEnvio="ngModel">
-                  <option disabled>Tipo de Envío</option>                   
+                  <option disabled>Tipo de Envío</option>  
+                  <option *ngFor="let metodo of metodosEnvioOptions" [value]="metodo"> 
+                        {{metodo}} 
+                  </option>                                      
                 </select>
             </div>
+           
 
            
              <!-- Específicaciones del Paquete -->

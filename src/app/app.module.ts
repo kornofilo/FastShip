@@ -15,6 +15,9 @@ import { OperacionesOficinasComponent } from './operaciones/operaciones-oficinas
 import { OficinaRutasComponent } from './oficina/oficina-rutas/oficina-rutas.component';
 import { OficinaSidenavComponent } from './oficina/oficina-sidenav/oficina-sidenav.component';
 import { OficinaEnviosComponent } from './oficina/oficina-envios/oficina-envios.component';
+import { OperacionesRutasComponent } from './operaciones/operaciones-rutas/operaciones-rutas.component';
+import { OperacionesSubRutasComponent } from './operaciones/operaciones-sub-rutas/operaciones-sub-rutas.component';
+
 import 'materialize-css';
 // import { MaterializeModule } from 'angular2-materialize';
 import { AuthService } from './services/auth.service';
@@ -44,7 +47,9 @@ const routes: Routes = [
   {  path: 'usuario', component: UsuarioComponent },
   {  path: 'oficina',  component: OficinaComponent, canActivate: [AuthGuard]},
   {  path: 'tiendas/:tipo',  component: OficinaRutasComponent, canActivate: [AuthGuard]},
-  {  path: 'envios',  component: OficinaEnviosComponent, canActivate: [AuthGuard]}
+  {  path: 'envios',  component: OficinaEnviosComponent, canActivate: [AuthGuard]},
+  {  path: 'rutas',  component: OperacionesRutasComponent, canActivate: [AuthGuard]},
+  {  path: 'subrutas',  component: OperacionesSubRutasComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

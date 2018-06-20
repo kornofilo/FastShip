@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
-import { MetodosEnvio, TiposMetodosEnvio } from '../../classes/metodos-envio';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { MetodosEnvio } from '../../classes/metodos-envio';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 declare let $: any;
 import { Subscription } from 'rxjs';
 
 // Firebase
 import { AuthService } from '../../services/auth.service';
 
-// Services
+// Servicios
 import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-envio.service';
 
 
@@ -70,6 +70,7 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
 
   createForm() {
     this.metodosEnvioForm = this.fb.group({
+      nombre: ['', Validators.required],
       tiempo: ['', Validators.required],
       tipos: this.fb.group({
         tierra: [false, Validators.required],
@@ -89,6 +90,7 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
     this.iME = metodoEnvio.id;
     this.updClicked = true;
     this.metodosEnvioForm.patchValue({
+      nombre: metodoEnvio.nombre,
       tiempo: metodoEnvio.tiempo,
       tipos: ({
         tierra: metodoEnvio.tipos.tierra,
@@ -105,6 +107,7 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
 
   cleanForm() {
     this.metodosEnvioForm.reset({
+      nombre: '',
       tiempo: 'Horas',
       tipos: ({
         tierra: false,

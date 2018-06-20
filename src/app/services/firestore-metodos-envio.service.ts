@@ -16,7 +16,7 @@ export class FirestoreMetodosEnvioService {
   metodosEnvio: Observable<MetodosEnvio[]>;
   metodosEnvioDoc: AngularFirestoreDocument<MetodosEnvio>;
   constructor(public _afs: AngularFirestore) {
-    this.metodosEnvioCollection = this._afs.collection('/metodosEnvio');
+    this.metodosEnvioCollection = this._afs.collection('/metodosEnvio', ref => ref.orderBy('nombre'));
     this.metodosEnvio = this.metodosEnvioCollection.snapshotChanges().pipe(map(
       changes => {
         return changes.map(

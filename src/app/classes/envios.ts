@@ -1,6 +1,37 @@
 export class Envios {
-    public constructor(public id: string, numTracking: number,
-        remitente: object, destinatario: object,
-        origen: string, destino: string, fechaEnvio: Date, tipoEnvio: string, descripcion: string, perecedero: boolean) {
-    }
+        id: string;
+        numTracking: number;
+        remitente: Remitente;
+        destinatario: Destinatario;
+        detalles: Detalles;
+}
+
+
+export class Remitente {
+    nombre: string;
+    apellido: string;
+    telefono: string;
+}
+
+export class Destinatario {
+    nombre: string;
+    apellido: string;
+    telefono: string;
+    direccion: string;
+}
+
+export class Detalles {
+    origen: string;
+    destino: string;
+    fecha: Date;
+    tipoEnvio: string;
+}
+
+export class Especificaciones {
+    largo: number;
+    ancho: number;
+    alto: number;
+    peso: number;
+    información: string;
+    perecedero: boolean;
 }

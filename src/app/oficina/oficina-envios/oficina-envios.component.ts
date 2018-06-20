@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 declare let $: any;
-import { FormGroup, Form } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MetodosEnvio } from '../../classes/metodos-envio';
 import { Envios } from '../../classes/envios';
 import { Subscription } from 'rxjs';
@@ -18,29 +18,20 @@ import { FirestoreEnviosService } from '../../services/firestore-envios.service'
   styleUrls: ['./oficina-envios.component.css']
 })
 export class OficinaEnviosComponent implements OnInit, OnDestroy {
-  formAddEnvio: Form;
-  addPaqueteForm: FormGroup;
   arr: Envios[] = [];
-  arrMetodosEnvio: MetodosEnvio[] = [];
-  metodosEnvioOptions: ['Sierra', 'Hotel', 'Indie'];
-  newEnvio: Envios;
   idEnvio: string;
-  modelPaquete = { numTracking: 0, remitente: {nombre: '', apellido: '', telefono: ''},
-  destinatario: {nombre: '', apellido: '', telefono: '', direccion: ''},
-  origen: '', fechaEnvio: '', tipoEnvio: this.arrMetodosEnvio[0], descripcion: '', dimensiones: {largo: 0} ,
-  perecedero : false};
 
-  modelDocumento = { numTracking: 0, remitente: {nombre: '', apellido: '', telefono: ''},
-  destinatario: {nombre: '', apellido: '', telefono: '', direccion: ''},
-  origen: '', fechaEnvio: '', tipoEnvio: '', descripcion: ''};
-
-  private firestoreSubscription: Subscription;
-  constructor(public authService: AuthService, public _data: FirestoreEnviosService,
-    public _misMetodosDeEnvio: FirestoreMetodosEnvioService) {}
+  // Elementos de los form
+  paquetesForm: FormGroup;
+  arrMetodosEnvio: MetodosEnvio[] = [];
 
   // Suscripciones
   private firestoreEnviosSubscription: Subscription;
   private firestoreMetodosEnvioSubscription: Subscription;
+
+  constructor(public authService: AuthService, public _data: FirestoreEnviosService,
+    public _misMetodosDeEnvio: FirestoreMetodosEnvioService, private fb: FormBuilder) {}
+
 
   ngOnInit() {
     this.firestoreEnviosSubscription = this._data.getEnvios().subscribe(
@@ -50,12 +41,13 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy {
      }
     );
 
-    /* this.firestoreMetodosEnvioSubscription = this._misMetodosDeEnvio.getMetodosEnvio().subscribe(
+    this.firestoreMetodosEnvioSubscription = this._misMetodosDeEnvio.getMetodosEnvio().subscribe(
       (metodosEnvio: MetodosEnvio[]) => {
         this.arrMetodosEnvio = metodosEnvio;
       }
-    ); */
+    );
 
+    // Inicialización de elementos de Materialize.
     $('select').formSelect();
     $('.modal').modal();
     $('.datepicker').datepicker({
@@ -68,6 +60,25 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.firestoreEnviosSubscription.unsubscribe();
     this.firestoreMetodosEnvioSubscription.unsubscribe();
+  }
+
+  createForms() {
+    // Creación de formulario para inserción y actualización de envío de paquetes.
+    this.paquetesForm = this.fb.group({
+      remitente: this.fb.group({
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        telefono: ['', Validators.required]
+      }),
+
+      destinatario: this.fb.group({
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        telefono: ['', Validators.required],
+        direccion: ['', Validators.required]
+      }),
+
+    });
   }
 
 }

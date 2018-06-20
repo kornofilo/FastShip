@@ -15,10 +15,11 @@
           <hr>
           <!-- Tabla con los métodos de envío -->
           <div class="col s11" *ngIf="arr.length>0;else noData">
-              <table>
+              <table class="bordered highlight responsive-table">
                   <thead>
                     <tr>
-                        <th>Descripción</th>
+                        <th>Nombre</th>
+                        <th>Tipos de Transporte</th>
                         <th>Modificar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -26,17 +27,21 @@
           
                   <tbody>
                     <tr *ngFor="let item of arr">
-                      <td> Entrega en: {{item.tiempo}} | Tipos de Transporte: 
+                      <td>
+                          {{item.nombre}}
+                      </td>
+                      <td> 
                         <i class="material-icons" *ngIf="item.tipos.aire==true">airplanemode_active</i> 
                         <i class="material-icons" *ngIf="item.tipos.mar==true">directions_boat</i> 
                         <i class="material-icons" *ngIf="item.tipos.tierra==true">local_shipping</i> 
                       </td>
-                      <td><a class="modal-trigger" (click)="onUpdate(item)" href="#modalCrearME">
-                        <i class="material-icons black-text">settings_application</i> 
-                          </a>
+                      <td>
+                        <a class="modal-trigger" (click)="onUpdate(item)" href="#modalCrearME">
+                          <i class="material-icons black-text">settings_application</i> 
+                        </a>
                       </td>
                       <td>
-                        <a class="pointer-delete" (click)="onDelete(item)" >
+                        <a class="pointer-delete" (click)="onDelete(item)">
                           <i class="material-icons black-text center-align">delete</i> 
                         </a>
                       </td>                
@@ -63,7 +68,11 @@
       <div class="modal-content row">
         <h4>Crear Método de Envío</h4>
         <p>Los métodos de envio son los niveles de servicio que son usador por los clientes. </p>
-        <form [formGroup]="metodosEnvioForm">
+        <form [formGroup]="metodosEnvioForm"> 
+            <div class="input-field col s12">
+                <input formControlName="nombre" type="text" class="validate">
+                <label for="nombre">Nombre</label>
+            </div>         
             <div class="input-field col s6">                         
                   <select class="form-control" formControlName="tiempo">
                       <option value="Horas" disabled selected>Horas</option>
@@ -91,12 +100,8 @@
                         <span>Aire</span>
                       </label>
                     </p>                                 
-              </div> 
-              
-             
-        </form>       
-        <p>Form value: {{ metodosEnvioForm.value | json }}</p>
-        <p>Form status: {{ metodosEnvioForm.status | json }}</p>
+              </div>                            
+        </form>               
       </div>
 
       <div class="modal-footer">

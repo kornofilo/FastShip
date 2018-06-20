@@ -1,6 +1,7 @@
 /* Clase utilizada para armar la estructura de los documentos de la colección de métodos de envío en la base de datos. */
 export class MetodosEnvio {
     id: string;
+    nombre: string;
     tiempo: string;
     tipos: TiposMetodosEnvio;
 }

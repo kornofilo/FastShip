@@ -42,11 +42,15 @@ export class FirestoreMetodosEnvioService {
     // toast('Metodo de Envío eliminado de manera Exitosa.', 4000);
   }
 
-  updateMetodosEnvio(iME, tiempoNew: string, tiposNew: string[]) {
+  updateMetodosEnvio(iME, tiempoNew: string, aireVal: boolean, marVal: boolean, tierraVal: boolean) {
     this.metodosEnvioDoc = this._afs.doc('metodosEnvio/' + iME);
     this.metodosEnvioDoc.update({
      tiempo : tiempoNew,
-     tipos: tiposNew
+     tipos: {
+       aire: aireVal,
+       mar: marVal,
+       tierra: tierraVal
+     }
     });
 
   }

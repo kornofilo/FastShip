@@ -1,10 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MetodosEnvio } from '../../classes/metodos-envio';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { MetodosEnvio, TiposMetodosEnvio } from '../../classes/metodos-envio';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 declare let $: any;
 import { Subscription } from 'rxjs';
 
 // Firebase
 import { AuthService } from '../../services/auth.service';
+
+// Services
 import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-envio.service';
 
 
@@ -13,18 +16,22 @@ import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-e
   templateUrl: './operaciones-metodos-envio.component.html',
   styleUrls: ['./operaciones-metodos-envio.component.css']
 })
-export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy {
-  public email: string;
+
+export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnChanges {
   arr: MetodosEnvio[] = [];
   updClicked = false;
   iME: string;
+  newMetodoEnvio: MetodosEnvio;
   // Elementos del Form
-  cbTierra: boolean;
-  cbMar: boolean;
-  cbAire: boolean;
-  model = { tiempo: '', tipos: []};
+  form: FormGroup;
+  metodosEnvioForm: FormGroup;
+  opcionesTiempo = ['12 horas', '24 horas', '48 horas'];
+
+  // Suscripcipción
   private firebaseSubscription: Subscription;
-  constructor(public authService: AuthService, public _data: FirestoreMetodosEnvioService) {}
+
+  constructor(public authService: AuthService, public _data: FirestoreMetodosEnvioService, private fb: FormBuilder) {
+  }
 
   ngOnInit() {
       // Obtenemos los métodos envío registrados en la base de datos.
@@ -41,6 +48,8 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy {
       $('.dropdown-trigger').dropdown();
       $('.modal').modal();
     });
+
+    this.createForm();
   }
 
   // Finalizamos la suscripción con el servicio al cerrar el componente.
@@ -48,11 +57,26 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy {
     this.firebaseSubscription.unsubscribe();
   }
 
+  ngOnChanges() {
+    this.cleanForm();
+  }
+
   // Función que envía el modelo a la función de insertar método de envío en el service.
   insertSubmit() {
-    this.feedTipos();
-    this._data.addMetodosEnvio(this.model);
-    this.cleanForm();
+    console.log('Insertando...');
+    this._data.addMetodosEnvio(this.metodosEnvioForm.value);
+    this.newMetodoEnvio = new MetodosEnvio;
+  }
+
+  createForm() {
+    this.metodosEnvioForm = this.fb.group({
+      tiempo: ['', Validators.required],
+      tipos: this.fb.group({
+        tierra: [false, Validators.required],
+        mar: [false, Validators.required],
+        aire: [false, Validators.required]
+      })
+    });
   }
 
   onDelete(metodoEnvio) {
@@ -63,46 +87,22 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy {
 
   onUpdate(metodoEnvio) {
     this.iME = metodoEnvio.id;
-    this.model.tiempo = metodoEnvio.tiempo;
     this.updClicked = true;
-    metodoEnvio.tipos.forEach(element => {
-      if (element === 'Tierra') {
-        this.cbTierra = true;
-      } else if (element === 'Mar') {
-        this.cbMar = true;
-      } else if (element === 'Aire') {
-        this.cbAire = true;
-      }
-
-    });
   }
 
   updateSubmit() {
     this.feedTipos();
-    this._data.updateMetodosEnvio(this.iME, this.model.tiempo, this.model.tipos);
     this.cleanForm();
   }
 
   cleanForm() {
-    this.model.tiempo = '';
-    this.model.tipos = [];
-    this.cbTierra = false;
-    this.cbMar = false;
-    this.cbAire = false;
-    this.updClicked = false;
+    this.metodosEnvioForm.reset({
+      checkBoxTierra: false,
+      checkBoxMar: false,
+      checkBoxAire: false
+    });
   }
 
   feedTipos() {
-    if (this.cbTierra) {
-      this.model.tipos.push('Tierra');
-    }
-
-    if (this.cbMar) {
-      this.model.tipos.push('Mar');
-    }
-
-    if (this.cbAire) {
-      this.model.tipos.push('Aire');
-    }
   }
 }

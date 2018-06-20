@@ -26,7 +26,10 @@
           
                   <tbody>
                     <tr *ngFor="let item of arr">
-                      <td> Entrega en: {{item.tiempo}} | Tipos de Transporte: {{item.tipos}}
+                      <td> Entrega en: {{item.tiempo}} | Tipos de Transporte: 
+                        <i class="material-icons" *ngIf="item.tipos.aire==true">airplanemode_active</i> 
+                        <i class="material-icons" *ngIf="item.tipos.mar==true">directions_boat</i> 
+                        <i class="material-icons" *ngIf="item.tipos.tierra==true">local_shipping</i> 
                       </td>
                       <td><a class="modal-trigger" (click)="onUpdate(item)" href="#modalCrearME">
                         <i class="material-icons black-text">settings_application</i> 
@@ -60,45 +63,45 @@
       <div class="modal-content row">
         <h4>Crear Método de Envío</h4>
         <p>Los métodos de envio son los niveles de servicio que son usador por los clientes. </p>
-        <form #addform="ngForm">
-            <div class="input-field col s6">
-                <select [(ngModel)]="model.tiempo" name="tiempo" class="form-control" id="tiempo" required #tiempo="ngModel">
-                  <option value="" disabled selected>Horas</option>
-                  <option value="12 horas">12 horas</option>
-                  <option value="24 horas">24 horas</option>
-                  <option value="48 horas">48 horas</option>
-                </select>
+        <form [formGroup]="metodosEnvioForm">
+            <div class="input-field col s6">                         
+                  <select class="form-control" formControlName="tiempo">
+                      <option value="Horas" disabled selected>Horas</option>
+                      <option *ngFor="let opcion of opcionesTiempo" [value]="opcion">{{opcion}}</option>
+                  </select>                      
                 <label>Tiempo de Envio</label>
               </div>
-              <div class="col s6">
+              <div class="col s6" formGroupName="tipos">
                   <h5>Métodos de Envío</h5>
                   <p>
                    <label>
-                      <input type="checkbox" [(ngModel)]="cbTierra" class="form-control" id="checkBoxTierra" name="checkBoxTierra"/>
+                      <input type="checkbox" class="form-control" formControlName="tierra"/>
                       <span>Tierra</span>
                     </label>
                   </p>       
                   <p>
                     <label>
-                        <input type="checkbox" [(ngModel)]="cbMar" class="form-control" id="checkBoxMar" name="checkBoxMar"/>
+                        <input type="checkbox" class="form-control" formControlName="mar"/>
                         <span>Mar</span>
                     </label>
                      </p>
                   <p>
                     <label>
-                        <input type="checkbox" [(ngModel)]="cbAire" class="form-control" id="checkBoxAire" name="checkBoxAire"/>
+                        <input type="checkbox" formControlName="aire"/>
                         <span>Aire</span>
                       </label>
                     </p>                                 
               </div> 
               
              
-        </form>        
+        </form>       
+        <p>Form value: {{ metodosEnvioForm.value | json }}</p>
+        <p>Form status: {{ metodosEnvioForm.status | json }}</p>
       </div>
 
       <div class="modal-footer">
-        <button (click)='insertSubmit()' *ngIf="updClicked === false" class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Crear</button>        
-        <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Actualizar</button>        
+        <button (click)='insertSubmit()' type="submit"  *ngIf="updClicked === false" class="modal-close btn-flat green-text">Crear</button>        
+        <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text">Actualizar</button>        
         <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
       </div>
       

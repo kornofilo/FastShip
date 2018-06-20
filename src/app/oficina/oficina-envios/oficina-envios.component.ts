@@ -19,24 +19,24 @@ import { FirestoreEnviosService } from '../../services/firestore-envios.service'
 })
 export class OficinaEnviosComponent implements OnInit, OnDestroy {
   formAddEnvio: Form;
-  formGroupAddEnvio: FormGroup;
+  addPaqueteForm: FormGroup;
   arr: Envios[] = [];
   arrMetodosEnvio: MetodosEnvio[] = [];
-  metodosEnvioOptions: string[] = [];
+  metodosEnvioOptions: ['Sierra', 'Hotel', 'Indie'];
   newEnvio: Envios;
   idEnvio: string;
-  private firestoreSubscription: Subscription;
-  constructor(public authService: AuthService, public _data: FirestoreEnviosService,
-    public _misMetodosDeEnvio: FirestoreMetodosEnvioService) {}
-
   modelPaquete = { numTracking: 0, remitente: {nombre: '', apellido: '', telefono: ''},
   destinatario: {nombre: '', apellido: '', telefono: '', direccion: ''},
-  origen: '', fechaEnvio: '', tipoEnvio: '', descripcion: '', dimensiones: {largo: 0} ,
+  origen: '', fechaEnvio: '', tipoEnvio: this.arrMetodosEnvio[0], descripcion: '', dimensiones: {largo: 0} ,
   perecedero : false};
 
   modelDocumento = { numTracking: 0, remitente: {nombre: '', apellido: '', telefono: ''},
   destinatario: {nombre: '', apellido: '', telefono: '', direccion: ''},
   origen: '', fechaEnvio: '', tipoEnvio: '', descripcion: ''};
+
+  private firestoreSubscription: Subscription;
+  constructor(public authService: AuthService, public _data: FirestoreEnviosService,
+    public _misMetodosDeEnvio: FirestoreMetodosEnvioService) {}
 
   // Suscripciones
   private firestoreEnviosSubscription: Subscription;
@@ -50,11 +50,11 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy {
      }
     );
 
-    this.firestoreMetodosEnvioSubscription = this._misMetodosDeEnvio.getMetodosEnvio().subscribe(
+    /* this.firestoreMetodosEnvioSubscription = this._misMetodosDeEnvio.getMetodosEnvio().subscribe(
       (metodosEnvio: MetodosEnvio[]) => {
         this.arrMetodosEnvio = metodosEnvio;
       }
-    );
+    ); */
 
     $('select').formSelect();
     $('.modal').modal();

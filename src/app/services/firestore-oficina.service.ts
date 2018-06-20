@@ -25,8 +25,19 @@ export class FirestoreOficinaService {
       }));
   }
 
-  getOficinasType() {
-    this.oficinasCollection = this._afs.collection('/oficinas');
+  getOficinasType(tipo: string) {
+    this.oficinasCollection = this._afs.collection('/oficinas', ref => ref.where('tipo', '==', tipo));
+    this.oficinas = this.oficinasCollection.snapshotChanges().pipe(map(
+      changes => {
+        return changes.map(
+          a => {
+            const data = a.payload.doc.data() as Oficina;
+            data.id = a.payload.doc.id;
+            return data;
+          });
+
+      }));
+    return this.oficinas;
   }
 
   getOficinas() {

@@ -1,0 +1,397 @@
+<!-- Barra de Navegación Superior -->
+<app-operaciones-navbar></app-operaciones-navbar>    
+
+<div class="row">
+  <!-- Barra de Navegación Lateral -->
+  <app-oficina-sidenav></app-oficina-sidenav>      
+
+      <!-- Cuerpo de la Sección -->
+      <div class="col s9 offset-s3">
+          <div class="row">
+              <a class="btn-large col s3 yellow darken-2 black-text">Creación de Envío</a>   
+              <a class="btn-large col s3 offset-s1 green modal-trigger" href="#modalCrearEP" materialize="modal">Crear Envío (Paquete)</a>           
+              <a class="btn-large col s3 offset-s1 green modal-trigger" href="#modalCrearED" materialize="modal">Crear Envío (Documento)</a>           
+          </div>   
+          <hr>
+          <div class="col s9" *ngIf="arr.length>0;else noData">
+                <div class="col s4" *ngFor="let item of arr">
+                  <div class="card grey darken-4 white-text">
+                      <span class="card-title">Reciente: {{item.numTracking}}</span>
+                    <div class="card-content">  
+                      <p>Tipo: {{item.tipo}}</p>                      
+                      <p>{{item.direccion}}</p>
+                      <p>Destino: {{item.destino}}</p>
+                    </div>
+                    <div class="card-action">                      
+                      <a class="pointer-delete">Ver más</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
+      </div>
+
+    
+
+      
+
+    </div>
+
+  <!-- Mensaje en caso no existan envíos.-->
+  <div class="container">
+    <ng-template #noData>
+      
+      <h5 class="center-align">No existen envíos registrados.</h5>
+    </ng-template>
+  </div>
+  
+
+    <!-- Modal que contiene el formulario de creación de los envíos (paquetes). -->
+  <div id="modalCrearEP" class="modal modal-fixed-footer">
+      <div class="modal-content row">
+        <h4>Creación de Envío - Paquete</h4>
+        <form #addform="ngForm">
+            <!-- Datos del Remitente-->
+            <div class="input-field col s12">               
+               <h6 class="sectionFormHeader">Remitente</h6>
+            </div>
+            <div class="input-field col s4">                
+                <input [(ngModel)]="modelPaquete.remitente.nombre" name="nombre-remitente" class="form-control validate" required #nombreRemitente="ngModel">
+                <label for="nombre-remitente">Nombre</label>                               
+            </div>
+
+            <div class="input-field col s4">                
+                <input [(ngModel)]="modelPaquete.remitente.apellido" name="apellido-remitente" class="form-control validate" required #apellidoRemitente="ngModel">
+                <label for="apellido-remitente">Apellido</label>                               
+            </div>
+
+            <div class="input-field col s4">                
+                <input [(ngModel)]="modelPaquete.destinatario.telefono" name="telefono-destinatario" type="tel" class="form-control validate" required #telefonoDestinatario="ngModel">
+                <label for="telefono-remitente">Teléfono</label>                               
+            </div>
+
+             <!-- Datos del Destinatario-->
+             <div class="input-field col s12">               
+                <h6 class="sectionFormHeader">Destinatario</h6>
+            </div>
+             <div class="input-field col s3">               
+                 <input [(ngModel)]="modelPaquete.destinatario.nombre" name="nombre-destinatario" class="form-control validate" required #nombreDestinatario="ngModel">
+                 <label for="nombre-destinatario">Nombre</label>                               
+             </div>
+
+             <div class="input-field col s3">               
+                <input [(ngModel)]="modelPaquete.destinatario.apellido" name="apellido-destinatario" class="form-control validate" required #apellidoDestinatario="ngModel">
+                <label for="apellido-destinatario">Apellido</label>                               
+             </div>
+
+             <div class="input-field col s3">
+                <input [(ngModel)]="modelPaquete.remitente.telefono" name="telefono-remitente" type="tel" class="form-control validate" required #telefonoDestinatario="ngModel">
+                <label for="telefono-destinatario">Teléfono</label>                               
+            </div>
+
+            <div class="input-field col s3">               
+                <input [(ngModel)]="modelPaquete.destinatario.direccion" name="direccion-destinatario" class="form-control validate" required #direccionDestinatario="ngModel">
+                <label for="direccion-destinatario">Dirección</label>                               
+            </div>
+
+            <!-- Detalles del Envío-->
+            <div class="input-field col s12">               
+                <h6 class="sectionFormHeader">Detalles del Envío</h6>
+            </div>
+
+            <div class="input-field col s3">
+                <select [(ngModel)]="modelPaquete.origen" name="origen" class="form-control validate" required #origen="ngModel">
+                  <option disabled>Origen</option>                              
+                </select>
+            </div>
+
+            <div class="input-field col s3">
+                <select [(ngModel)]="modelPaquete.destino" name="destino" class="form-control validate" required #destino="ngModel">
+                  <option disabled>Destino</option>                   
+                </select>
+            </div>
+
+            <div class="input-field col s3">
+                <input type="text" name="fechaEnvio" class="datepicker">
+                <label for="fechaEnvio">Fecha de Envío</label>                               
+            </div>
+
+            <div class="input-field col s3">
+                <select [(ngModel)]="modelPaquete.tipoEnvio" name="tipoEnvio" class="form-control validate" required #tipoEnvio="ngModel">
+                  <option disabled>Tipo de Envío</option>  
+                  <option *ngFor="let metodo of arrMetodosEnvio" [value]="metodo.tiempo">{{metodo.tiempo}}</option>                                      
+                </select>
+            </div>
+           
+
+           
+             <!-- Específicaciones del Paquete -->
+              <div class="input-field col s12">               
+                    <h6 class="sectionFormHeader">Específicaciones del Paquete</h6>
+                </div>
+                
+                <div class="input-field col s3" >
+                        <input [(ngModel)]="modelPaquete.dimensiones.largo" name="largo" type="number" step="any" class="form-control validate" required #largo="ngModel">
+                        <label for="largo">Largo</label>            
+                </div>
+
+                <div class="input-field col s3">
+                    <input [(ngModel)]="modelPaquete.dimensiones.ancho" name="ancho" type="number" step="any" class="form-control validate" required #ancho="ngModel">
+                    <label for="ancho">Ancho</label>            
+                </div>
+            
+                <div class="input-field col s3">
+                    <input [(ngModel)]="modelPaquete.dimensiones.alto" name="alto" type="number" step="any" class="form-control validate" required #alto="ngModel">
+                    <label for="alto">Alto</label>            
+                </div> 
+                
+                <div class="input-field col s3">
+                    <input [(ngModel)]="modelPaquete.dimensiones.peso" name="peso" type="number" step="any" class="form-control validate" required #alto="ngModel">
+                    <label for="peso">Peso (en kg)</label>            
+                </div>      
+                
+                
+                
+                <div class="input-field col s10">
+                        <textarea [(ngModel)]="modelPaquete.descripcion" name="descripcion" type="text" class="form-control validate materialize-textarea" data-length="140" required  #descripcion="ngModel"></textarea>
+                        <label for="descripcion">Información de Contenido</label>
+                </div>
+
+                <div class="input-field col s2">
+                        <label>
+                            <input type="checkbox" [(ngModel)]="perecedero" class="form-control" name="perecedero"/>
+                            <span>¿Perecedero?</span>
+                        </label>
+                </div> <br>                                          
+        </form>        
+      </div>
+
+      <div class="modal-footer">
+        <button (click)='insertSubmit()' *ngIf="updClicked === false" class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Crear</button>        
+        <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Actualizar</button>        
+        <a class="modal-close btn-flat red-text">Cancelar</a>
+      </div>
+
+  <!-- Modal que contiene el formulario de creación de los envíos (paquetes). -->
+  <div id="modalCrearEP" class="modal modal-fixed-footer">
+        <div class="modal-content row">
+          <h4>Creación de Envío - Paquete</h4>
+          <form #addform="ngForm">
+              <!-- Datos del Remitente-->
+              <div class="input-field col s12">               
+                 <h6 class="sectionFormHeader">Remitente</h6>
+              </div>
+              <div class="input-field col s4">                
+                  <input [(ngModel)]="modelPaquete.remitente.nombre" name="nombre-remitente" class="form-control validate" required #nombreRemitente="ngModel">
+                  <label for="nombre-remitente">Nombre</label>                               
+              </div>
+  
+              <div class="input-field col s4">                
+                  <input [(ngModel)]="modelPaquete.remitente.apellido" name="apellido-remitente" class="form-control validate" required #apellidoRemitente="ngModel">
+                  <label for="apellido-remitente">Apellido</label>                               
+              </div>
+  
+              <div class="input-field col s4">                
+                  <input [(ngModel)]="modelPaquete.destinatario.telefono" name="telefono-destinatario" type="tel" class="form-control validate" required #telefonoDestinatario="ngModel">
+                  <label for="telefono-remitente">Teléfono</label>                               
+              </div>
+  
+               <!-- Datos del Destinatario-->
+               <div class="input-field col s12">               
+                  <h6 class="sectionFormHeader">Destinatario</h6>
+              </div>
+               <div class="input-field col s3">               
+                   <input [(ngModel)]="modelPaquete.destinatario.nombre" name="nombre-destinatario" class="form-control validate" required #nombreDestinatario="ngModel">
+                   <label for="nombre-destinatario">Nombre</label>                               
+               </div>
+  
+               <div class="input-field col s3">               
+                  <input [(ngModel)]="modelPaquete.destinatario.apellido" name="apellido-destinatario" class="form-control validate" required #apellidoDestinatario="ngModel">
+                  <label for="apellido-destinatario">Apellido</label>                               
+               </div>
+  
+               <div class="input-field col s3">
+                  <input [(ngModel)]="modelPaquete.remitente.telefono" name="telefono-remitente" type="tel" class="form-control validate" required #telefonoDestinatario="ngModel">
+                  <label for="telefono-destinatario">Teléfono</label>                               
+              </div>
+  
+              <div class="input-field col s3">               
+                  <input [(ngModel)]="modelPaquete.destinatario.direccion" name="direccion-destinatario" class="form-control validate" required #direccionDestinatario="ngModel">
+                  <label for="direccion-destinatario">Dirección</label>                               
+              </div>
+  
+              <!-- Detalles del Envío-->
+              <div class="input-field col s12">               
+                  <h6 class="sectionFormHeader">Detalles del Envío</h6>
+              </div>
+  
+              <div class="input-field col s3">
+                  <select [(ngModel)]="modelPaquete.origen" name="origen" class="form-control validate" required #origen="ngModel">
+                    <option disabled>Origen</option>                   
+                  </select>
+              </div>
+  
+              <div class="input-field col s3">
+                  <select [(ngModel)]="modelPaquete.destino" name="destino" class="form-control validate" required #destino="ngModel">
+                    <option disabled>Destino</option>                   
+                  </select>
+              </div>
+  
+              <div class="input-field col s3">
+                  <input type="text" name="fechaEnvio" class="datepicker">
+                  <label for="fechaEnvio">Fecha de Envío</label>                               
+              </div>
+  
+              <div class="input-field col s3">
+                  <select [(ngModel)]="modelPaquete.tipoEnvio" name="tipoEnvio" class="form-control validate" required #tipoEnvio="ngModel">
+                    <option disabled>Tipo de Envío</option>                   
+                  </select>
+              </div>
+  
+             
+               <!-- Específicaciones del Paquete -->
+                <div class="input-field col s12">               
+                      <h6 class="sectionFormHeader">Específicaciones del Paquete</h6>
+                  </div>
+                  
+                  <div class="input-field col s3" >
+                          <input [(ngModel)]="modelPaquete.dimensiones.largo" name="largo" type="number" step="any" class="form-control validate" required #largo="ngModel">
+                          <label for="largo">Largo</label>            
+                  </div>
+  
+                  <div class="input-field col s3">
+                      <input [(ngModel)]="modelPaquete.dimensiones.ancho" name="ancho" type="number" step="any" class="form-control validate" required #ancho="ngModel">
+                      <label for="ancho">Ancho</label>            
+                  </div>
+              
+                  <div class="input-field col s3">
+                      <input [(ngModel)]="modelPaquete.dimensiones.alto" name="alto" type="number" step="any" class="form-control validate" required #alto="ngModel">
+                      <label for="alto">Alto</label>            
+                  </div> 
+                  
+                  <div class="input-field col s3">
+                      <input [(ngModel)]="modelPaquete.dimensiones.peso" name="peso" type="number" step="any" class="form-control validate" required #alto="ngModel">
+                      <label for="peso">Peso (en kg)</label>            
+                  </div>      
+                  
+                  
+                  
+                  <div class="input-field col s10">
+                          <textarea [(ngModel)]="modelPaquete.descripcion" name="descripcion" type="text" class="form-control validate materialize-textarea" data-length="140" required  #descripcion="ngModel"></textarea>
+                          <label for="descripcion">Información de Contenido</label>
+                  </div>
+  
+                  <div class="input-field col s2">
+                          <label>
+                              <input type="checkbox" [(ngModel)]="perecedero" class="form-control" name="perecedero"/>
+                              <span>¿Perecedero?</span>
+                          </label>
+                  </div> <br>                                          
+          </form>        
+        </div>
+  
+        <div class="modal-footer">
+          <button (click)='insertSubmit()' *ngIf="updClicked === false" class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Crear</button>        
+          <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Actualizar</button>        
+          <a class="modal-close btn-flat red-text">Cancelar</a>
+        </div>
+      
+    </div>   
+</div>   
+
+    <!-- Modal que contiene el formulario de creación de los envíos (Documentos). -->
+  <div id="modalCrearED" class="modal modal-fixed-footer">
+    <div class="modal-content row">
+      <h4>Creación de Envío - Paquete</h4>
+      <form #addform="ngForm">
+          <!-- Datos del Remitente-->
+          <div class="input-field col s12">               
+             <h6 class="sectionFormHeader">Remitente</h6>
+          </div>
+          <div class="input-field col s4">                
+              <input [(ngModel)]="modelDocumento.remitente.nombre" name="nombre-remitente" class="form-control validate" required #nombreRemitente="ngModel">
+              <label for="nombre-remitente">Nombre</label>                               
+          </div>
+
+          <div class="input-field col s4">                
+              <input [(ngModel)]="modelDocumento.remitente.apellido" name="apellido-remitente" class="form-control validate" required #apellidoRemitente="ngModel">
+              <label for="apellido-remitente">Apellido</label>                               
+          </div>
+
+          <div class="input-field col s4">                
+              <input [(ngModel)]="modelDocumento.destinatario.telefono" name="telefono-destinatario" type="tel" class="form-control validate" required #telefonoDestinatario="ngModel">
+              <label for="telefono-remitente">Teléfono</label>                               
+          </div>
+
+           <!-- Datos del Destinatario-->
+           <div class="input-field col s12">               
+              <h6 class="sectionFormHeader">Destinatario</h6>
+          </div>
+           <div class="input-field col s3">               
+               <input [(ngModel)]="modelDocumento.destinatario.nombre" name="nombre-destinatario" class="form-control validate" required #nombreDestinatario="ngModel">
+               <label for="nombre-destinatario">Nombre</label>                               
+           </div>
+
+           <div class="input-field col s3">               
+              <input [(ngModel)]="modelDocumento.destinatario.apellido" name="apellido-destinatario" class="form-control validate" required #apellidoDestinatario="ngModel">
+              <label for="apellido-destinatario">Apellido</label>                               
+           </div>
+
+           <div class="input-field col s3">
+              <input [(ngModel)]="modelDocumento.remitente.telefono" name="telefono-remitente" type="tel" class="form-control validate" required #telefonoDestinatario="ngModel">
+              <label for="telefono-destinatario">Teléfono</label>                               
+          </div>
+
+          <div class="input-field col s3">               
+              <input [(ngModel)]="modelDocumento.destinatario.direccion" name="direccion-destinatario" class="form-control validate" required #direccionDestinatario="ngModel">
+              <label for="direccion-destinatario">Dirección</label>                               
+          </div>
+
+          <!-- Detalles del Envío-->
+          <div class="input-field col s12">               
+              <h6 class="sectionFormHeader">Detalles del Envío</h6>
+          </div>
+
+          <div class="input-field col s3">
+              <select [(ngModel)]="modelDocumento.origen" name="origen" class="form-control validate" required #origen="ngModel">
+                <option disabled>Origen</option>                   
+              </select>
+          </div>
+
+          <div class="input-field col s3">
+              <select [(ngModel)]="modelDocumento.destino" name="destino" class="form-control validate" required #destino="ngModel">
+                <option disabled>Destino</option>                   
+              </select>
+          </div>
+
+          <div class="input-field col s3">
+              <input type="text" name="fechaEnvio" class="datepicker">
+              <label for="fechaEnvio">Fecha de Envío</label>                               
+          </div>
+
+          <div class="input-field col s3">
+              <select [(ngModel)]="modelDocumento.tipoEnvio" name="tipoEnvio" class="form-control validate" required #tipoEnvio="ngModel">
+                <option disabled>Tipo de Envío</option>                   
+              </select>
+          </div>
+
+         
+           <!-- Específicaciones del Paquete -->
+            <div class="input-field col s12">               
+                  <h6 class="sectionFormHeader">Específicaciones del Documento</h6>
+              </div>                          
+                                          
+              <div class="input-field col s12">
+                      <textarea [(ngModel)]="modelDocumento.descripcion" name="descripcion" type="text" class="form-control validate materialize-textarea" data-length="140" required  #descripcion="ngModel"></textarea>
+                      <label for="descripcion">Información de Contenido</label>
+              </div>                                                   
+      </form>        
+    </div>
+
+        <div class="modal-footer">
+            <button (click)='insertSubmit()' *ngIf="updClicked === false" class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Crear</button>        
+            <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Actualizar</button>        
+            <a class="modal-close btn-flat red-text">Cancelar</a>
+        </div>
+    </div>
+  

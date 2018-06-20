@@ -112,6 +112,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
 /* harmony import */ var _operaciones_operaciones_metodos_envio_operaciones_metodos_envio_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./operaciones/operaciones-metodos-envio/operaciones-metodos-envio.component */ "./src/app/operaciones/operaciones-metodos-envio/operaciones-metodos-envio.component.ts");
 /* harmony import */ var _operaciones_operaciones_oficinas_operaciones_oficinas_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./operaciones/operaciones-oficinas/operaciones-oficinas.component */ "./src/app/operaciones/operaciones-oficinas/operaciones-oficinas.component.ts");
+/* harmony import */ var _oficina_oficina_rutas_oficina_rutas_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./oficina/oficina-rutas/oficina-rutas.component */ "./src/app/oficina/oficina-rutas/oficina-rutas.component.ts");
+/* harmony import */ var _oficina_oficina_sidenav_oficina_sidenav_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./oficina/oficina-sidenav/oficina-sidenav.component */ "./src/app/oficina/oficina-sidenav/oficina-sidenav.component.ts");
+/* harmony import */ var _oficina_oficina_envios_oficina_envios_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./oficina/oficina-envios/oficina-envios.component */ "./src/app/oficina/oficina-envios/oficina-envios.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -139,6 +142,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
 /* Array de Rutas */
 var routes = [
     { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_6__["LoginComponent"] },
@@ -147,7 +153,9 @@ var routes = [
     { path: 'metodosEnvio', component: _operaciones_operaciones_metodos_envio_operaciones_metodos_envio_component__WEBPACK_IMPORTED_MODULE_18__["OperacionesMetodosEnvioComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'admOficinas', component: _operaciones_operaciones_oficinas_operaciones_oficinas_component__WEBPACK_IMPORTED_MODULE_19__["OperacionesOficinasComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
     { path: 'usuario', component: _usuario_usuario_component__WEBPACK_IMPORTED_MODULE_5__["UsuarioComponent"] },
-    { path: 'oficina', component: _oficina_oficina_component__WEBPACK_IMPORTED_MODULE_7__["OficinaComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] }
+    { path: 'oficina', component: _oficina_oficina_component__WEBPACK_IMPORTED_MODULE_7__["OficinaComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'tiendas', component: _oficina_oficina_rutas_oficina_rutas_component__WEBPACK_IMPORTED_MODULE_20__["OficinaRutasComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] },
+    { path: 'envios', component: _oficina_oficina_envios_oficina_envios_component__WEBPACK_IMPORTED_MODULE_22__["OficinaEnviosComponent"], canActivate: [_guards_auth_guard__WEBPACK_IMPORTED_MODULE_11__["AuthGuard"]] }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -163,7 +171,10 @@ var AppModule = /** @class */ (function () {
                 _operaciones_operaciones_navbar_operaciones_navbar_component__WEBPACK_IMPORTED_MODULE_12__["OperacionesNavbarComponent"],
                 _operaciones_operaciones_sidenav_operaciones_sidenav_component__WEBPACK_IMPORTED_MODULE_13__["OperacionesSidenavComponent"],
                 _operaciones_operaciones_metodos_envio_operaciones_metodos_envio_component__WEBPACK_IMPORTED_MODULE_18__["OperacionesMetodosEnvioComponent"],
-                _operaciones_operaciones_oficinas_operaciones_oficinas_component__WEBPACK_IMPORTED_MODULE_19__["OperacionesOficinasComponent"]
+                _operaciones_operaciones_oficinas_operaciones_oficinas_component__WEBPACK_IMPORTED_MODULE_19__["OperacionesOficinasComponent"],
+                _oficina_oficina_rutas_oficina_rutas_component__WEBPACK_IMPORTED_MODULE_20__["OficinaRutasComponent"],
+                _oficina_oficina_sidenav_oficina_sidenav_component__WEBPACK_IMPORTED_MODULE_21__["OficinaSidenavComponent"],
+                _oficina_oficina_envios_oficina_envios_component__WEBPACK_IMPORTED_MODULE_22__["OficinaEnviosComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -327,6 +338,251 @@ var LoginComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/oficina/oficina-envios/oficina-envios.component.css":
+/*!*********************************************************************!*\
+  !*** ./src/app/oficina/oficina-envios/oficina-envios.component.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "header, nav, footer {\r\n    padding-left: 300px;\r\n}\r\n\r\n  @media only screen and (max-width : 992px) {\r\n    header, main, footer {\r\n      padding-left: 0;\r\n    }\r\n  }\r\n\r\n  .sectionFormHeader{\r\n    display: block;\r\n    font-size: 16px;\r\n    font-weight: 500;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/oficina/oficina-envios/oficina-envios.component.html":
+/*!**********************************************************************!*\
+  !*** ./src/app/oficina/oficina-envios/oficina-envios.component.html ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- Barra de Navegación Superior -->\r\n<app-operaciones-navbar></app-operaciones-navbar>    \r\n\r\n<div class=\"row\">\r\n  <!-- Barra de Navegación Lateral -->\r\n  <app-oficina-sidenav></app-oficina-sidenav>      \r\n\r\n      <!-- Cuerpo de la Sección -->\r\n      <div class=\"col s9 offset-s3\">\r\n          <div class=\"row\">\r\n              <a class=\"btn-large col s3 yellow darken-2 black-text\">Creación de Envío</a>   \r\n              <a class=\"btn-large col s3 offset-s1 green modal-trigger\" href=\"#modalCrearEP\" materialize=\"modal\">Crear Envío (Paquete)</a>           \r\n              <a class=\"btn-large col s3 offset-s1 green modal-trigger\" href=\"#modalCrearME\" materialize=\"modal\">Crear Envío (Documento)</a>           \r\n          </div>   \r\n          <hr>\r\n          <div class=\"col s9\" *ngIf=\"arr.length>0;else noData\">\r\n                <div class=\"col s4\" *ngFor=\"let item of arr\">\r\n                  <div class=\"card grey darken-4 white-text\">\r\n                      <span class=\"card-title\">Reciente: {{item.numTracking}}</span>\r\n                    <div class=\"card-content\">  \r\n                      <p>Tipo: {{item.tipo}}</p>                      \r\n                      <p>{{item.direccion}}</p>\r\n                      <p>Destino: {{item.destino}}</p>\r\n                    </div>\r\n                    <div class=\"card-action\">                      \r\n                      <a class=\"pointer-delete\">Ver más</a>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n            </div>\r\n            \r\n      </div>\r\n\r\n    </div>\r\n\r\n  <!-- Mensaje en caso no existan envíos.-->\r\n  <div class=\"container\">\r\n    <ng-template #noData>\r\n      \r\n      <h5 class=\"center-align\">No existen envíos registrados</h5>\r\n    </ng-template>\r\n  </div>\r\n  \r\n\r\n    <!-- Modal que contiene el formulario de creación de los envíos (paquetes). -->\r\n  <div id=\"modalCrearEP\" class=\"modal modal-fixed-footer\">\r\n      <div class=\"modal-content row\">\r\n        <h4>Creación de Envío - Paquete</h4>\r\n        <form #addform=\"ngForm\">\r\n            <!-- Datos del Remitente-->\r\n            <div class=\"input-field col s12\">               \r\n               <h6 class=\"sectionFormHeader\">Remitente</h6>\r\n            </div>\r\n            <div class=\"input-field col s4\">                \r\n                <input [(ngModel)]=\"model.remitente.nombre\" name=\"nombre-remitente\" class=\"form-control validate\" required #nombreRemitente=\"ngModel\">\r\n                <label for=\"nombre-remitente\">Nombre</label>                               \r\n            </div>\r\n\r\n            <div class=\"input-field col s4\">                \r\n                <input [(ngModel)]=\"model.remitente.apellido\" name=\"apellido-remitente\" class=\"form-control validate\" required #apellidoRemitente=\"ngModel\">\r\n                <label for=\"apellido-remitente\">Apellido</label>                               \r\n            </div>\r\n\r\n            <div class=\"input-field col s4\">                \r\n                <input [(ngModel)]=\"model.destinatario.telefono\" name=\"telefono-destinatario\" type=\"tel\" class=\"form-control validate\" required #telefonoDestinatario=\"ngModel\">\r\n                <label for=\"telefono-remitente\">Teléfono</label>                               \r\n            </div>\r\n\r\n             <!-- Datos del Destinatario-->\r\n             <div class=\"input-field col s12\">               \r\n                <h6 class=\"sectionFormHeader\">Destinatario</h6>\r\n            </div>\r\n             <div class=\"input-field col s3\">               \r\n                 <input [(ngModel)]=\"model.destinatario.nombre\" name=\"nombre-destinatario\" class=\"form-control validate\" required #nombreDestinatario=\"ngModel\">\r\n                 <label for=\"nombre-destinatario\">Nombre</label>                               \r\n             </div>\r\n\r\n             <div class=\"input-field col s3\">               \r\n                <input [(ngModel)]=\"model.destinatario.apellido\" name=\"apellido-destinatario\" class=\"form-control validate\" required #apellidoDestinatario=\"ngModel\">\r\n                <label for=\"apellido-destinatario\">Apellido</label>                               \r\n             </div>\r\n\r\n             <div class=\"input-field col s3\">\r\n                <input [(ngModel)]=\"model.remitente.telefono\" name=\"telefono-remitente\" type=\"tel\" class=\"form-control validate\" required #telefonoDestinatario=\"ngModel\">\r\n                <label for=\"telefono-destinatario\">Teléfono</label>                               \r\n            </div>\r\n\r\n            <div class=\"input-field col s3\">               \r\n                <input [(ngModel)]=\"model.destinatario.direccion\" name=\"direccion-destinatario\" class=\"form-control validate\" required #direccionDestinatario=\"ngModel\">\r\n                <label for=\"direccion-destinatario\">Dirección</label>                               \r\n            </div>\r\n\r\n            <!-- Detalles del Envío-->\r\n            <div class=\"input-field col s12\">               \r\n                <h6 class=\"sectionFormHeader\">Detalles del Envío</h6>\r\n            </div>\r\n\r\n            <div class=\"input-field col s3\">\r\n                <select [(ngModel)]=\"model.origen\" name=\"origen\" class=\"form-control validate\" required #origen=\"ngModel\">\r\n                  <option disabled>Origen</option>                   \r\n                </select>\r\n            </div>\r\n\r\n            <div class=\"input-field col s3\">\r\n                <select [(ngModel)]=\"model.destino\" name=\"destino\" class=\"form-control validate\" required #destino=\"ngModel\">\r\n                  <option disabled>Destino</option>                   \r\n                </select>\r\n            </div>\r\n\r\n            <div class=\"input-field col s3\">\r\n                <input type=\"text\" name=\"fechaEnvio\" class=\"datepicker\">\r\n                <label for=\"fechaEnvio\">Fecha de Envío</label>                               \r\n            </div>\r\n\r\n            <div class=\"input-field col s3\">\r\n                <select [(ngModel)]=\"model.tipoEnvio\" name=\"tipoEnvio\" class=\"form-control validate\" required #tipoEnvio=\"ngModel\">\r\n                  <option disabled>Tipo de Envío</option>                   \r\n                </select>\r\n            </div>\r\n\r\n           \r\n             <!-- Específicaciones del Paquete -->\r\n              <div class=\"input-field col s12\">               \r\n                    <h6 class=\"sectionFormHeader\">Específicaciones del Paquete</h6>\r\n                </div>\r\n                \r\n                <div class=\"input-field col s3\" >\r\n                        <input [(ngModel)]=\"model.dimensiones.largo\" name=\"largo\" type=\"number\" step=\"any\" class=\"form-control validate\" required #largo=\"ngModel\">\r\n                        <label for=\"largo\">Largo</label>            \r\n                </div>\r\n\r\n                <div class=\"input-field col s3\">\r\n                    <input [(ngModel)]=\"model.dimensiones.ancho\" name=\"ancho\" type=\"number\" step=\"any\" class=\"form-control validate\" required #ancho=\"ngModel\">\r\n                    <label for=\"ancho\">Ancho</label>            \r\n                </div>\r\n            \r\n                <div class=\"input-field col s3\">\r\n                    <input [(ngModel)]=\"model.dimensiones.alto\" name=\"alto\" type=\"number\" step=\"any\" class=\"form-control validate\" required #alto=\"ngModel\">\r\n                    <label for=\"alto\">Alto</label>            \r\n                </div> \r\n                \r\n                <div class=\"input-field col s3\">\r\n                    <input [(ngModel)]=\"model.dimensiones.peso\" name=\"peso\" type=\"number\" step=\"any\" class=\"form-control validate\" required #alto=\"ngModel\">\r\n                    <label for=\"peso\">Peso (en kg)</label>            \r\n                </div>      \r\n                \r\n                \r\n                \r\n                <div class=\"input-field col s10\">\r\n                        <textarea [(ngModel)]=\"model.descripcion\" name=\"descripcion\" type=\"text\" class=\"form-control validate materialize-textarea\" data-length=\"140\" required  #descripcion=\"ngModel\"></textarea>\r\n                        <label for=\"descripcion\">Información de Contenido</label>\r\n                </div>\r\n\r\n                <div class=\"input-field col s2\">\r\n                        <label>\r\n                            <input type=\"checkbox\" [(ngModel)]=\"perecedero\" class=\"form-control\" name=\"perecedero\"/>\r\n                            <span>¿Perecedero?</span>\r\n                        </label>\r\n                </div> <br>                                          \r\n        </form>        \r\n      </div>\r\n\r\n      <div class=\"modal-footer\">\r\n        <button (click)='insertSubmit()' *ngIf=\"updClicked === false\" class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Crear</button>        \r\n        <button (click)='updateSubmit(metodoEnvio)' *ngIf=\"updClicked === true\"  class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Actualizar</button>        \r\n        <a class=\"modal-close btn-flat red-text\" (click)='cleanForm()'>Cancelar</a>\r\n      </div>\r\n\r\n       <!-- Modal que contiene el formulario de creación de los envíos (paquetes). -->\r\n  <div id=\"modalCrearEP\" class=\"modal modal-fixed-footer\">\r\n        <div class=\"modal-content row\">\r\n          <h4>Creación de Envío - Paquete</h4>\r\n          <form #addform=\"ngForm\">\r\n              <!-- Datos del Remitente-->\r\n              <div class=\"input-field col s12\">               \r\n                 <h6 class=\"sectionFormHeader\">Remitente</h6>\r\n              </div>\r\n              <div class=\"input-field col s4\">                \r\n                  <input [(ngModel)]=\"model.remitente.nombre\" name=\"nombre-remitente\" class=\"form-control validate\" required #nombreRemitente=\"ngModel\">\r\n                  <label for=\"nombre-remitente\">Nombre</label>                               \r\n              </div>\r\n  \r\n              <div class=\"input-field col s4\">                \r\n                  <input [(ngModel)]=\"model.remitente.apellido\" name=\"apellido-remitente\" class=\"form-control validate\" required #apellidoRemitente=\"ngModel\">\r\n                  <label for=\"apellido-remitente\">Apellido</label>                               \r\n              </div>\r\n  \r\n              <div class=\"input-field col s4\">                \r\n                  <input [(ngModel)]=\"model.destinatario.telefono\" name=\"telefono-destinatario\" type=\"tel\" class=\"form-control validate\" required #telefonoDestinatario=\"ngModel\">\r\n                  <label for=\"telefono-remitente\">Teléfono</label>                               \r\n              </div>\r\n  \r\n               <!-- Datos del Destinatario-->\r\n               <div class=\"input-field col s12\">               \r\n                  <h6 class=\"sectionFormHeader\">Destinatario</h6>\r\n              </div>\r\n               <div class=\"input-field col s3\">               \r\n                   <input [(ngModel)]=\"model.destinatario.nombre\" name=\"nombre-destinatario\" class=\"form-control validate\" required #nombreDestinatario=\"ngModel\">\r\n                   <label for=\"nombre-destinatario\">Nombre</label>                               \r\n               </div>\r\n  \r\n               <div class=\"input-field col s3\">               \r\n                  <input [(ngModel)]=\"model.destinatario.apellido\" name=\"apellido-destinatario\" class=\"form-control validate\" required #apellidoDestinatario=\"ngModel\">\r\n                  <label for=\"apellido-destinatario\">Apellido</label>                               \r\n               </div>\r\n  \r\n               <div class=\"input-field col s3\">\r\n                  <input [(ngModel)]=\"model.remitente.telefono\" name=\"telefono-remitente\" type=\"tel\" class=\"form-control validate\" required #telefonoDestinatario=\"ngModel\">\r\n                  <label for=\"telefono-destinatario\">Teléfono</label>                               \r\n              </div>\r\n  \r\n              <div class=\"input-field col s3\">               \r\n                  <input [(ngModel)]=\"model.destinatario.direccion\" name=\"direccion-destinatario\" class=\"form-control validate\" required #direccionDestinatario=\"ngModel\">\r\n                  <label for=\"direccion-destinatario\">Dirección</label>                               \r\n              </div>\r\n  \r\n              <!-- Detalles del Envío-->\r\n              <div class=\"input-field col s12\">               \r\n                  <h6 class=\"sectionFormHeader\">Detalles del Envío</h6>\r\n              </div>\r\n  \r\n              <div class=\"input-field col s3\">\r\n                  <select [(ngModel)]=\"model.origen\" name=\"origen\" class=\"form-control validate\" required #origen=\"ngModel\">\r\n                    <option disabled>Origen</option>                   \r\n                  </select>\r\n              </div>\r\n  \r\n              <div class=\"input-field col s3\">\r\n                  <select [(ngModel)]=\"model.destino\" name=\"destino\" class=\"form-control validate\" required #destino=\"ngModel\">\r\n                    <option disabled>Destino</option>                   \r\n                  </select>\r\n              </div>\r\n  \r\n              <div class=\"input-field col s3\">\r\n                  <input type=\"text\" name=\"fechaEnvio\" class=\"datepicker\">\r\n                  <label for=\"fechaEnvio\">Fecha de Envío</label>                               \r\n              </div>\r\n  \r\n              <div class=\"input-field col s3\">\r\n                  <select [(ngModel)]=\"model.tipoEnvio\" name=\"tipoEnvio\" class=\"form-control validate\" required #tipoEnvio=\"ngModel\">\r\n                    <option disabled>Tipo de Envío</option>                   \r\n                  </select>\r\n              </div>\r\n  \r\n             \r\n               <!-- Específicaciones del Paquete -->\r\n                <div class=\"input-field col s12\">               \r\n                      <h6 class=\"sectionFormHeader\">Específicaciones del Paquete</h6>\r\n                  </div>\r\n                  \r\n                  <div class=\"input-field col s3\" >\r\n                          <input [(ngModel)]=\"model.dimensiones.largo\" name=\"largo\" type=\"number\" step=\"any\" class=\"form-control validate\" required #largo=\"ngModel\">\r\n                          <label for=\"largo\">Largo</label>            \r\n                  </div>\r\n  \r\n                  <div class=\"input-field col s3\">\r\n                      <input [(ngModel)]=\"model.dimensiones.ancho\" name=\"ancho\" type=\"number\" step=\"any\" class=\"form-control validate\" required #ancho=\"ngModel\">\r\n                      <label for=\"ancho\">Ancho</label>            \r\n                  </div>\r\n              \r\n                  <div class=\"input-field col s3\">\r\n                      <input [(ngModel)]=\"model.dimensiones.alto\" name=\"alto\" type=\"number\" step=\"any\" class=\"form-control validate\" required #alto=\"ngModel\">\r\n                      <label for=\"alto\">Alto</label>            \r\n                  </div> \r\n                  \r\n                  <div class=\"input-field col s3\">\r\n                      <input [(ngModel)]=\"model.dimensiones.peso\" name=\"peso\" type=\"number\" step=\"any\" class=\"form-control validate\" required #alto=\"ngModel\">\r\n                      <label for=\"peso\">Peso (en kg)</label>            \r\n                  </div>      \r\n                  \r\n                  \r\n                  \r\n                  <div class=\"input-field col s10\">\r\n                          <textarea [(ngModel)]=\"model.descripcion\" name=\"descripcion\" type=\"text\" class=\"form-control validate materialize-textarea\" data-length=\"140\" required  #descripcion=\"ngModel\"></textarea>\r\n                          <label for=\"descripcion\">Información de Contenido</label>\r\n                  </div>\r\n  \r\n                  <div class=\"input-field col s2\">\r\n                          <label>\r\n                              <input type=\"checkbox\" [(ngModel)]=\"perecedero\" class=\"form-control\" name=\"perecedero\"/>\r\n                              <span>¿Perecedero?</span>\r\n                          </label>\r\n                  </div> <br>                                          \r\n          </form>        \r\n        </div>\r\n  \r\n        <div class=\"modal-footer\">\r\n          <button (click)='insertSubmit()' *ngIf=\"updClicked === false\" class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Crear</button>        \r\n          <button (click)='updateSubmit(metodoEnvio)' *ngIf=\"updClicked === true\"  class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Actualizar</button>        \r\n          <a class=\"modal-close btn-flat red-text\" (click)='cleanForm()'>Cancelar</a>\r\n        </div>\r\n      \r\n    </div>      "
+
+/***/ }),
+
+/***/ "./src/app/oficina/oficina-envios/oficina-envios.component.ts":
+/*!********************************************************************!*\
+  !*** ./src/app/oficina/oficina-envios/oficina-envios.component.ts ***!
+  \********************************************************************/
+/*! exports provided: OficinaEnviosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OficinaEnviosComponent", function() { return OficinaEnviosComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _services_firestore_envios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/firestore-envios.service */ "./src/app/services/firestore-envios.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+// Firebase
+
+
+var OficinaEnviosComponent = /** @class */ (function () {
+    function OficinaEnviosComponent(authService, _data) {
+        this.authService = authService;
+        this._data = _data;
+        this.arr = [];
+        this.model = { numTracking: 0, remitente: { nombre: '', apellido: '', telefono: '' },
+            destinatario: { nombre: '', apellido: '', telefono: '', direccion: '' },
+            origen: '', fechaEnvio: '', tipoEnvio: '', descripcion: '',
+            perecedero: false };
+    }
+    OficinaEnviosComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.firebaseSubscription = this._data.getEnvios().subscribe(function (oficina) {
+            _this.arr = oficina;
+            console.log(_this.arr);
+        });
+        $('select').formSelect();
+        $('.modal').modal();
+        $('.datepicker').datepicker({
+            container: 'body'
+        });
+    };
+    OficinaEnviosComponent.prototype.ngOnDestroy = function () {
+        this.firestoreSubscription.unsubscribe();
+    };
+    OficinaEnviosComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-oficina-envios',
+            template: __webpack_require__(/*! ./oficina-envios.component.html */ "./src/app/oficina/oficina-envios/oficina-envios.component.html"),
+            styles: [__webpack_require__(/*! ./oficina-envios.component.css */ "./src/app/oficina/oficina-envios/oficina-envios.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"], _services_firestore_envios_service__WEBPACK_IMPORTED_MODULE_2__["FirestoreEnviosService"]])
+    ], OficinaEnviosComponent);
+    return OficinaEnviosComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/oficina/oficina-rutas/oficina-rutas.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/oficina/oficina-rutas/oficina-rutas.component.css ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "header, nav, footer {\r\n    padding-left: 300px;\r\n}\r\n\r\n  @media only screen and (max-width : 992px) {\r\n    header, main, footer {\r\n      padding-left: 0;\r\n    }\r\n  }"
+
+/***/ }),
+
+/***/ "./src/app/oficina/oficina-rutas/oficina-rutas.component.html":
+/*!********************************************************************!*\
+  !*** ./src/app/oficina/oficina-rutas/oficina-rutas.component.html ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<body>\r\n  <!-- Barra de Navegación Superior -->\r\n  <app-operaciones-navbar></app-operaciones-navbar>\r\n  <div class=\"row\">\r\n    <!-- Barra de Navegación Lateral -->\r\n    <app-oficina-sidenav></app-oficina-sidenav>\r\n<!-- Lista de oficinas -->\r\n<div class=\"col s9 offset-s3\" *ngIf=\"arr.length>0;else noData\">\r\n      <div class=\"col s12 m7\" *ngFor=\"let item of arr\">\r\n        <div class=\"card horizontal\">\r\n          <div class=\"card-image\">\r\n            <img src={{item.logo}} alt=\"image\">\r\n          </div>\r\n            <div class=\"card-stacked\">\r\n          <div class=\"card-content grey darken-4 white-text\">\r\n            <span class=\"card-title\">{{item.nombre}}</span>\r\n            <p>Dirección: {{item.direccion}}</p>\r\n            <p>Tipo: {{item.tipo}}</p>\r\n            <p>Días Laborables: {{item.horario.diasLaborables}}</p>\r\n            <p>Horario: {{item.horario.horaApertura}}-{{item.horario.horaCierre}}</p>\r\n            <p>Ubicacion Geografica: Latitud {{item.posGeografica.lat}} | Longitud {{item.posGeografica.long}}</p>\r\n          </div>\r\n  </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n    </div>\r\n\r\n</body>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/oficina/oficina-rutas/oficina-rutas.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/oficina/oficina-rutas/oficina-rutas.component.ts ***!
+  \******************************************************************/
+/*! exports provided: OficinaRutasComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OficinaRutasComponent", function() { return OficinaRutasComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _services_firestore_oficina_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/firestore-oficina.service */ "./src/app/services/firestore-oficina.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var OficinaRutasComponent = /** @class */ (function () {
+    function OficinaRutasComponent(authService, _data) {
+        this.authService = authService;
+        this._data = _data;
+        this.arr = [];
+        // Modelo con la estructura de la clase oficina que obtiene los datos ingresados en el form.
+        this.model = { nombre: '', tipo: '', direccion: '', posGeografica: { lat: 0, long: 0 },
+            horario: { diasLaborables: '', horaApertura: '', horaCierre: '' }, disponibilidad: { envia: false, recibe: false } };
+    }
+    OficinaRutasComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // Obtenemos las oficinas registradas en la base de datos.
+        this.firebaseSubscription = this._data.getOficinasType('Mixta').subscribe(function (oficina) {
+            _this.arr = oficina;
+            console.log(_this.arr);
+        });
+        // Inicialización de los elementos de Materialize que requieren JQuery para su funcionamiento.
+        $(function () {
+            $('select').formSelect();
+            $('.timepicker').timepicker({
+                twelveHour: false,
+                container: 'body'
+            });
+        });
+    };
+    // Finalizamos la suscripción con el servicio al cerrar el componente.
+    OficinaRutasComponent.prototype.ngOnDestroy = function () {
+        this.firebaseSubscription.unsubscribe();
+    };
+    OficinaRutasComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-oficina-rutas',
+            template: __webpack_require__(/*! ./oficina-rutas.component.html */ "./src/app/oficina/oficina-rutas/oficina-rutas.component.html"),
+            styles: [__webpack_require__(/*! ./oficina-rutas.component.css */ "./src/app/oficina/oficina-rutas/oficina-rutas.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"], _services_firestore_oficina_service__WEBPACK_IMPORTED_MODULE_2__["FirestoreOficinaService"]])
+    ], OficinaRutasComponent);
+    return OficinaRutasComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/oficina/oficina-sidenav/oficina-sidenav.component.css":
+/*!***********************************************************************!*\
+  !*** ./src/app/oficina/oficina-sidenav/oficina-sidenav.component.css ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".logo {\r\n    height: 40px;\r\n}\r\n\r\n.collapsible-header{\r\n    display: block;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/oficina/oficina-sidenav/oficina-sidenav.component.html":
+/*!************************************************************************!*\
+  !*** ./src/app/oficina/oficina-sidenav/oficina-sidenav.component.html ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ul id=\"slide-out\" class=\"sidenav sidenav-fixed yellow darken-2\">\r\n        <!-- Logo -->\r\n        <div class=\"logo center-align\">\r\n            <h4>FastShip</h4>\r\n        </div>\r\n\r\n        <!-- Menú de la Sección -->\r\n        <ul class=\"collapsible grey darken-3 center-align\">\r\n            <li>\r\n                <a class=\"grey darken-4 white-text\" routerLink=\"/oficina\">Oficina</a>    \r\n            <li>\r\n            <ul class=\"collapsible grey darken-3 center-align\">\r\n                <li class=\"grey darken-3\"><a class=\"white-text\" routerLink=\"/tiendas\">Nuestras Tiendas</a></li>  \r\n                <li class=\"grey darken-3\"><a class=\"white-text\" routerLink=\"/envios\">Envíos</a></li>                                \r\n            </ul>            \r\n        </ul>\r\n\r\n        <!-- Menú de Otras Secciones -->        \r\n        <li>\r\n            <a class=\"subheader\">Otras Secciones</a></li>\r\n            <ul class=\"collapsible grey darken-4 white-text center-align\">\r\n                <li>\r\n                    <a class=\"grey darken-4 white-text\" routerLink=\"/operaciones\">Operaciones</a>    \r\n                <li>\r\n        </ul>\r\n        \r\n        \r\n</ul>"
+
+/***/ }),
+
+/***/ "./src/app/oficina/oficina-sidenav/oficina-sidenav.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/oficina/oficina-sidenav/oficina-sidenav.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: OficinaSidenavComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OficinaSidenavComponent", function() { return OficinaSidenavComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var OficinaSidenavComponent = /** @class */ (function () {
+    function OficinaSidenavComponent() {
+    }
+    OficinaSidenavComponent.prototype.ngOnInit = function () {
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+    };
+    OficinaSidenavComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-oficina-sidenav',
+            template: __webpack_require__(/*! ./oficina-sidenav.component.html */ "./src/app/oficina/oficina-sidenav/oficina-sidenav.component.html"),
+            styles: [__webpack_require__(/*! ./oficina-sidenav.component.css */ "./src/app/oficina/oficina-sidenav/oficina-sidenav.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], OficinaSidenavComponent);
+    return OficinaSidenavComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/oficina/oficina.component.css":
 /*!***********************************************!*\
   !*** ./src/app/oficina/oficina.component.css ***!
@@ -334,7 +590,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "header, nav, footer {\r\n    padding-left: 300px;\r\n}\r\n\r\n  @media only screen and (max-width : 992px) {\r\n    header, main, footer {\r\n      padding-left: 0;\r\n    }\r\n  }"
 
 /***/ }),
 
@@ -345,7 +601,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<title>Oficina</title>\r\n<p>Esta es la oficina</p>\r\n"
+module.exports = "<!-- Barra de Navegación Superior -->\r\n<app-operaciones-navbar></app-operaciones-navbar>\r\n\r\n<div class=\"row\">\r\n  <!-- Barra de Navegación Lateral -->\r\n  <app-oficina-sidenav></app-oficina-sidenav>\r\n\r\n        <!-- Cuerpo de la Sección -->\r\n        <div class=\"col s9 offset-s3\">\r\n                <div class=\"col s3\">\r\n                  <div class=\"card\">\r\n                    <div class=\"card-image\">\r\n                      <img src=\"assets/img/operaciones/metodosEnvio.jpg\">\r\n                    </div>\r\n                    <div class=\"card-content grey darken-4 white-text\">\r\n                        <span class=\"card-title\">Tiendas</span>\r\n                      <p>Servicios de Entrega con tiempos en tránsito definidos y garantizados.</p>\r\n                    </div>\r\n                    <div class=\"card-action grey darken-4 yellow darken-2-text\">\r\n                        <a routerLink=\"/tiendas\">Ver más...</a>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n\r\n                <div class=\"col s3\">\r\n                    <div class=\"card\">\r\n                      <div class=\"card-image\">\r\n                        <img src=\"assets/img/operaciones/oficinas.jpeg\">\r\n                      </div>\r\n                      <div class=\"card-content grey darken-4 white-text\">\r\n                          <span class=\"card-title\">Centro de Distribución</span>\r\n                        <p>Centros de Distribución, Oficinas de Servicio Locales y Hubs.</p>\r\n                      </div>\r\n                      <div class=\"card-action grey darken-4 yellow darken-2-text\">\r\n                          <a routerLink=\"/tiendas\">Ver más...</a>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <div class=\"col s3\">\r\n                      <div class=\"card\">\r\n                        <div class=\"card-image\">\r\n                          <img src=\"assets/img/operaciones/oficinas.jpeg\">\r\n                        </div>\r\n                        <div class=\"card-content grey darken-4 white-text\">\r\n                            <span class=\"card-title\">Mixtas</span>\r\n                          <p>Centros de Distribución, Oficinas de Servicio Locales y Hubs.</p>\r\n                        </div>\r\n                        <div class=\"card-action grey darken-4 yellow darken-2-text\">\r\n                            <a routerLink=\"/tiendas\">Ver más...</a>\r\n                        </div>\r\n                      </div>\r\n                    </div>\r\n\r\n          </div>\r\n"
 
 /***/ }),
 
@@ -397,7 +653,7 @@ var OficinaComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".pointer-cursor {\r\n    cursor: pointer;\r\n}"
+module.exports = ".pointer-cursor {\r\n    cursor: pointer;\r\n}\r\n\r\nheader, nav, footer {\r\n    padding-left: 300px;\r\n}\r\n\r\n@media only screen and (max-width : 992px) {\r\n    header, main, footer {\r\n      padding-left: 0;\r\n    }\r\n  }"
 
 /***/ }),
 
@@ -408,7 +664,7 @@ module.exports = ".pointer-cursor {\r\n    cursor: pointer;\r\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Barra de Navegación Superior -->\r\n<app-operaciones-navbar></app-operaciones-navbar>    \r\n\r\n<div class=\"row\">\r\n  <!-- Barra de Navegación Lateral -->\r\n  <app-operaciones-sidenav></app-operaciones-sidenav>      \r\n\r\n      <!-- Cuerpo de la Sección -->\r\n      <div class=\"col s9\">\r\n          <div class=\"row\">\r\n              <a class=\"btn-large col s3 indigo\">Métodos de Envío</a>   \r\n              <a class=\"btn-large col s3 offset-s1 green modal-trigger\" href=\"#modalCrearME\" materialize=\"modal\">Crear Métodos de Envio</a>           \r\n              <a class=\"btn-large col s3 offset-s1 red\">Eliminar Método de Envio</a>     \r\n          </div>   \r\n          <hr>\r\n          <!-- Tabla con los métodos de envío -->\r\n          <div class=\"col s11\" *ngIf=\"arr.length>0;else noData\">\r\n              <table>\r\n                  <thead>\r\n                    <tr>\r\n                        <th>Descripción</th>\r\n                        <th>Modificar</th>\r\n                        <th>Eliminar</th>\r\n                    </tr>\r\n                  </thead>\r\n          \r\n                  <tbody>\r\n                    <tr *ngFor=\"let item of arr\">\r\n                      <td> Entrega en: {{item.tiempo}} | Tipos de Transporte: {{item.tipos}}\r\n                      </td>\r\n                      <td><a class=\"modal-trigger\" (click)=\"onUpdate(item)\" href=\"#modalCrearME\">\r\n                        <i class=\"material-icons black-text\">settings_application</i> \r\n                          </a>\r\n                      </td>\r\n                      <td>\r\n                        <a class=\"pointer-delete\" (click)=\"onDelete(item)\" >\r\n                          <i class=\"material-icons black-text center-align\">delete</i> \r\n                        </a>\r\n                      </td>                \r\n                </table>\r\n\r\n          </div>                \r\n      </div>\r\n\r\n    </div>\r\n\r\n  <!-- Mensaje en caso no existan métodos de envío -->\r\n  <div class=\"container\">\r\n    <ng-template #noData>\r\n      \r\n      <h5 class=\"center-align\">No existen métodos de envío registrados</h5>\r\n    </ng-template>\r\n  </div>\r\n\r\n    <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->\r\n  <div id=\"modalCrearME\" class=\"modal modal-fixed-footer\">\r\n      <div class=\"modal-content row\">\r\n        <h4>Crear Método de Envío</h4>\r\n        <p>Los métodos de envio son los niveles de servicio que son usador por los clientes. </p>\r\n        <form #addform=\"ngForm\">\r\n            <div class=\"input-field col s6\">\r\n                <select [(ngModel)]=\"model.tiempo\" name=\"tiempo\" class=\"form-control\" id=\"tiempo\" required #tiempo=\"ngModel\">\r\n                  <option value=\"\" disabled selected>Horas</option>\r\n                  <option value=\"12 horas\">12 horas</option>\r\n                  <option value=\"24 horas\">24 horas</option>\r\n                  <option value=\"48 horas\">48 horas</option>\r\n                </select>\r\n                <label>Tiempo de Envio</label>\r\n              </div>\r\n              <div class=\"col s6\">\r\n                  <h5>Métodos de Envío</h5>\r\n                  <p>\r\n                   <label>\r\n                      <input type=\"checkbox\" [(ngModel)]=\"cbTierra\" class=\"form-control\" id=\"checkBoxTierra\" name=\"checkBoxTierra\"/>\r\n                      <span>Tierra</span>\r\n                    </label>\r\n                  </p>       \r\n                  <p>\r\n                    <label>\r\n                        <input type=\"checkbox\" [(ngModel)]=\"cbMar\" class=\"form-control\" id=\"checkBoxMar\" name=\"checkBoxMar\"/>\r\n                        <span>Mar</span>\r\n                    </label>\r\n                     </p>\r\n                  <p>\r\n                    <label>\r\n                        <input type=\"checkbox\" [(ngModel)]=\"cbAire\" class=\"form-control\" id=\"checkBoxAire\" name=\"checkBoxAire\"/>\r\n                        <span>Aire</span>\r\n                      </label>\r\n                    </p>                                 \r\n              </div> \r\n              \r\n             \r\n        </form>        \r\n      </div>\r\n\r\n      <div class=\"modal-footer\">\r\n        <button (click)='insertSubmit()' *ngIf=\"updClicked === false\" class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Crear</button>        \r\n        <button (click)='updateSubmit(metodoEnvio)' *ngIf=\"updClicked === true\"  class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Actualizar</button>        \r\n        <a class=\"modal-close btn-flat red-text\" (click)='cleanForm()'>Cancelar</a>\r\n      </div>\r\n      \r\n    </div>      "
+module.exports = "<!-- Barra de Navegación Superior -->\r\n<app-operaciones-navbar></app-operaciones-navbar>    \r\n\r\n<div class=\"row\">\r\n  <!-- Barra de Navegación Lateral -->\r\n  <app-operaciones-sidenav></app-operaciones-sidenav>      \r\n\r\n      <!-- Cuerpo de la Sección -->\r\n      <div class=\"col s9 offset-s3\">\r\n          <div class=\"row\">\r\n              <a class=\"btn-large col s3 indigo\">Métodos de Envío</a>   \r\n              <a class=\"btn-large col s3 offset-s1 green modal-trigger\" href=\"#modalCrearME\" materialize=\"modal\">Crear Métodos de Envio</a>           \r\n              <a class=\"btn-large col s3 offset-s1 red\">Eliminar Método de Envio</a>     \r\n          </div>   \r\n          <hr>\r\n          <!-- Tabla con los métodos de envío -->\r\n          <div class=\"col s11\" *ngIf=\"arr.length>0;else noData\">\r\n              <table>\r\n                  <thead>\r\n                    <tr>\r\n                        <th>Descripción</th>\r\n                        <th>Modificar</th>\r\n                        <th>Eliminar</th>\r\n                    </tr>\r\n                  </thead>\r\n          \r\n                  <tbody>\r\n                    <tr *ngFor=\"let item of arr\">\r\n                      <td> Entrega en: {{item.tiempo}} | Tipos de Transporte: {{item.tipos}}\r\n                      </td>\r\n                      <td><a class=\"modal-trigger\" (click)=\"onUpdate(item)\" href=\"#modalCrearME\">\r\n                        <i class=\"material-icons black-text\">settings_application</i> \r\n                          </a>\r\n                      </td>\r\n                      <td>\r\n                        <a class=\"pointer-delete\" (click)=\"onDelete(item)\" >\r\n                          <i class=\"material-icons black-text center-align\">delete</i> \r\n                        </a>\r\n                      </td>                \r\n                </table>\r\n\r\n          </div>     \r\n          \r\n      \r\n      </div>\r\n\r\n    </div>\r\n\r\n  <!-- Mensaje en caso no existan métodos de envío -->\r\n  <div class=\"container\">\r\n    <ng-template #noData>\r\n      \r\n      <h5 class=\"center-align\">No existen métodos de envío registrados</h5>\r\n    </ng-template>\r\n  </div>\r\n  \r\n\r\n    <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->\r\n  <div id=\"modalCrearME\" class=\"modal modal-fixed-footer\">\r\n      <div class=\"modal-content row\">\r\n        <h4>Crear Método de Envío</h4>\r\n        <p>Los métodos de envio son los niveles de servicio que son usador por los clientes. </p>\r\n        <form #addform=\"ngForm\">\r\n            <div class=\"input-field col s6\">\r\n                <select [(ngModel)]=\"model.tiempo\" name=\"tiempo\" class=\"form-control\" id=\"tiempo\" required #tiempo=\"ngModel\">\r\n                  <option value=\"\" disabled selected>Horas</option>\r\n                  <option value=\"12 horas\">12 horas</option>\r\n                  <option value=\"24 horas\">24 horas</option>\r\n                  <option value=\"48 horas\">48 horas</option>\r\n                </select>\r\n                <label>Tiempo de Envio</label>\r\n              </div>\r\n              <div class=\"col s6\">\r\n                  <h5>Métodos de Envío</h5>\r\n                  <p>\r\n                   <label>\r\n                      <input type=\"checkbox\" [(ngModel)]=\"cbTierra\" class=\"form-control\" id=\"checkBoxTierra\" name=\"checkBoxTierra\"/>\r\n                      <span>Tierra</span>\r\n                    </label>\r\n                  </p>       \r\n                  <p>\r\n                    <label>\r\n                        <input type=\"checkbox\" [(ngModel)]=\"cbMar\" class=\"form-control\" id=\"checkBoxMar\" name=\"checkBoxMar\"/>\r\n                        <span>Mar</span>\r\n                    </label>\r\n                     </p>\r\n                  <p>\r\n                    <label>\r\n                        <input type=\"checkbox\" [(ngModel)]=\"cbAire\" class=\"form-control\" id=\"checkBoxAire\" name=\"checkBoxAire\"/>\r\n                        <span>Aire</span>\r\n                      </label>\r\n                    </p>                                 \r\n              </div> \r\n              \r\n             \r\n        </form>        \r\n      </div>\r\n\r\n      <div class=\"modal-footer\">\r\n        <button (click)='insertSubmit()' *ngIf=\"updClicked === false\" class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Crear</button>        \r\n        <button (click)='updateSubmit(metodoEnvio)' *ngIf=\"updClicked === true\"  class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Actualizar</button>        \r\n        <a class=\"modal-close btn-flat red-text\" (click)='cleanForm()'>Cancelar</a>\r\n      </div>\r\n      \r\n    </div>      "
 
 /***/ }),
 
@@ -435,6 +691,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+// Firebase
 
 
 var OperacionesMetodosEnvioComponent = /** @class */ (function () {
@@ -448,7 +705,7 @@ var OperacionesMetodosEnvioComponent = /** @class */ (function () {
     OperacionesMetodosEnvioComponent.prototype.ngOnInit = function () {
         var _this = this;
         // Obtenemos los métodos envío registrados en la base de datos.
-        this._data.getMetodosEnvio().subscribe(function (metodoEnvio) {
+        this.firebaseSubscription = this._data.getMetodosEnvio().subscribe(function (metodoEnvio) {
             _this.arr = metodoEnvio;
         });
         // Inicialización de los elementos de Materialize que requieren Jquery.
@@ -456,7 +713,12 @@ var OperacionesMetodosEnvioComponent = /** @class */ (function () {
             $('.collapsible').collapsible();
             $('select').formSelect();
             $('.dropdown-trigger').dropdown();
+            $('.modal').modal();
         });
+    };
+    // Finalizamos la suscripción con el servicio al cerrar el componente.
+    OperacionesMetodosEnvioComponent.prototype.ngOnDestroy = function () {
+        this.firebaseSubscription.unsubscribe();
     };
     // Función que envía el modelo a la función de insertar método de envío en el service.
     OperacionesMetodosEnvioComponent.prototype.insertSubmit = function () {
@@ -532,7 +794,7 @@ var OperacionesMetodosEnvioComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".pointer-cursor {\r\n    cursor: pointer;\r\n}"
+module.exports = ".pointer-cursor {\r\n    cursor: pointer;\r\n}\r\n\r\n.email{\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n}"
 
 /***/ }),
 
@@ -543,7 +805,7 @@ module.exports = ".pointer-cursor {\r\n    cursor: pointer;\r\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Barra de Navegación -->\r\n<header>\r\n  <div class=\"navbar-fixed col s9\">\r\n    <nav class=\"grey darken-3\">\r\n        <div class=\"nav-wrapper row\">\r\n          <form class=\"col s5 offset-s3\">\r\n            <div class=\"input-field\">\r\n              <input class=\"center-align grey darken-2 white-text\" placeholder=\"Ingrese un número de tracking, camión, etc.\" id=\"search\" type=\"search\" required>              \r\n              <label class=\"label-icon\" for=\"search\"><i class=\"material-icons\">search</i></label>\r\n              <i class=\"material-icons\">close</i>\r\n            </div>\r\n          </form>\r\n\r\n          <!-- E-mail del Usuario Logueado -->\r\n          <div class=\"col s1 offset-s2 grey darken-3 white-text\">\r\n            <span>{{email}}</span>\r\n          </div>\r\n          \r\n          <!-- Botón para cerrar sesión -->\r\n          <div class=\"col s1 red white-text pointer-cursor\" (click)='onClickLogout()'>\r\n              <a>Cerrar Sesión</a>\r\n          </div>          \r\n\r\n        </div>\r\n      </nav>\r\n    </div>\r\n</header> <br>"
+module.exports = "<!-- Barra de Navegación -->\r\n\r\n  <div class=\"navbar-fixed\">\r\n\r\n      <ul id=\"dropdown1\" class=\"dropdown-content\">\r\n          <li><a (click)='onClickLogout()'>Cerrar Sesión</a></li>\r\n          \r\n        </ul>\r\n        \r\n\r\n    <nav class=\"yellow darken-2\">\r\n        <a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger\"><i class=\"material-icons\">menu</i></a>  \r\n\r\n        <div class=\"nav-wrapper row\">\r\n          <form class=\"col s5 offset-s3\">\r\n            <div class=\"input-field\">\r\n              <input class=\"center-align grey darken-4 white-text\" placeholder=\"Ingrese un número de tracking, camión, etc.\" id=\"search\" type=\"search\" required>              \r\n              <label class=\"label-icon\" for=\"search\"><i class=\"material-icons\">search</i></label>\r\n              <i class=\"material-icons\">close</i>\r\n            </div>\r\n          </form>\r\n\r\n          <ul class=\"right hide-on-med-and-down\">            \r\n            <!-- Dropdown Trigger -->\r\n            <li><a class=\"dropdown-trigger\" href=\"#!\" data-target=\"dropdown1\"> <span class=\"black-text email\">{{email}} </span> <i class=\"material-icons black-text right\">arrow_drop_down</i></a></li>\r\n          </ul>\r\n\r\n          \r\n        </div>\r\n      </nav>\r\n    </div> <br>"
 
 /***/ }),
 
@@ -584,7 +846,9 @@ var OperacionesNavbarComponent = /** @class */ (function () {
             }
         });
         $(function () {
-            $('.modal').modal();
+            $('.dropdown-trigger').dropdown({
+                coverTrigger: false
+            });
         });
     };
     // Función que al ser activada, cierra la sesión de Firebase.
@@ -624,7 +888,7 @@ module.exports = ".pointer-delete {\r\n    cursor: pointer;\r\n}"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "   \r\n<body>\r\n  <!-- Barra de Navegación Superior -->\r\n  <app-operaciones-navbar></app-operaciones-navbar> \r\n  <div class=\"row\">\r\n    \r\n    <!-- Barra de Navegación Lateral -->\r\n    <app-operaciones-sidenav></app-operaciones-sidenav>      \r\n\r\n        <!-- Cuerpo de la Sección -->\r\n        <div class=\"col s9\">\r\n            <div class=\"row\">\r\n                <a class=\"btn-large col s3 indigo\">Administración de Oficinas</a>   \r\n                <a class=\"btn-large col s3 offset-s1 green modal-trigger\" href=\"#modalCrearOficina\" materialize=\"modal\">Crear Oficina</a>           \r\n                <a class=\"btn-large col s3 offset-s1 red\">Eliminar Oficina</a>     \r\n            </div>   \r\n            <hr>\r\n            <!-- Lista de oficinas -->\r\n            <div class=\"col s9\" *ngIf=\"arr.length>0;else noData\">\r\n                  <div class=\"col s4\" *ngFor=\"let item of arr\">\r\n                    <div class=\"card\">\r\n                      <div class=\"card-content\">\r\n                        <span class=\"card-title\">{{item.nombre}}</span>\r\n                        <p>Dirección: {{item.direccion}}</p>\r\n                        <p>Tipos: {{item.tipo}}</p>\r\n                        <p>Horario: {{item.horario.diasOperacion}} ({{item.horario.horaApertura}}-{{item.horario.horaCierre}})</p>\r\n                      </div>\r\n                      <div class=\"card-action\">\r\n                        <a class=\"modal-trigger\" (click)=\"onUpdate(item)\" href=\"#modalCrearOficina\">Modificar</a>\r\n                        <a class=\"pointer-delete\" (click)=\"onDelete(item)\"> Eliminar</a>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n              </div>\r\n      </div>\r\n\r\n    <!-- Mensaje en caso no existan métodos de envío -->\r\n    <div class=\"container\">\r\n      <ng-template #noData>\r\n        \r\n        <h5 class=\"center-align\">No existen oficinas registradas</h5>\r\n      </ng-template>\r\n    </div>\r\n\r\n      <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->\r\n    <div id=\"modalCrearOficina\" class=\"modal modal-fixed-footer\">\r\n        <div class=\"modal-content row\">\r\n          <h4>Creación de Oficina</h4>\r\n          <form name='formAddOficina' #addform=\"ngForm\">\r\n              <!-- Campo de Nombre de la Oficina -->\r\n              <div class=\"input-field col s6\">\r\n                  <input [(ngModel)]=\"model.nombre\" name=\"nombre\" type=\"text\" class=\"form-control validate\" required #nombre=\"ngModel\">\r\n                  <label for=\"nombre\">Nombre de la Oficina</label>\r\n              </div>\r\n              \r\n              <!-- Campo de Tipo de la Oficina -->\r\n              <div class=\"input-field col s6\">\r\n                  <select [(ngModel)]=\"model.tipo\" class=\"form-control validate\" name=\"tipo\" required #tipo=\"ngModel\">\r\n                      <option disabled value=\"\" disabled></option>\r\n                      <option value=\"Centro de Distribución\">Centro de Distribución</option>\r\n                      <option value=\"Tienda\">Tienda</option>\r\n                      <option value=\"Mixta\">Mixta</option>\r\n                    </select>\r\n                    <label>Tipo</label>\r\n              </div>\r\n\r\n              <!-- Campo de Dirección de la Oficina -->\r\n              <div class=\"input-field col s6\">\r\n                  <input [(ngModel)]=\"model.direccion\"  name=\"direccion\" class=\"form-control validate\" type=\"text\" required #direccion=\"ngModel\">\r\n                  <label for=\"direccion\">Dirección</label>\r\n              </div> <br>\r\n\r\n               <!-- Poscisión Geográfica -->              \r\n              <div class=\"input-field col s3\">                \r\n                  <input [(ngModel)]=\"model.posGeografica.lat\" name=\"latitud\" type=\"number\" class=\"form-control validate\" required step=\"any\" #latitud=\"ngModel\">\r\n                  <label for=\"latitud\">Latitud</label>                               \r\n              </div>\r\n\r\n              <div class=\"input-field col s3\">                \r\n                  <input [(ngModel)]=\"model.posGeografica.long\" name=\"longitud\" type=\"number\" step=\"any\" class=\"form-control validate\" required #longitud=\"ngModel\">\r\n                  <label for=\"longitud\">Longitud</label>                               \r\n              </div>\r\n              \r\n              <!-- Días Laborables -->              \r\n              <div class=\"input-field col s6\">\r\n                  <select [(ngModel)]=\"model.horario.diasLaborables\" name=\"diasLaborables\" class=\"form-control validate\" required #diasLaborables=\"ngModel\">\r\n                      <option disabled value=\"\" disabled></option>\r\n                      <option value=\"Lunes-Viernes\">Lunes-Viernes</option>\r\n                      <option value=\"Lunes-Sábado\">Lunes-Sábado</option>\r\n                      <option value=\"Todos los Días\">Todos los Días</option>\r\n                    </select>\r\n                    <label>Días Laborables</label>\r\n              </div> <br>\r\n\r\n              <!-- Hora de Apertura --> \r\n              <div class=\"input-field col s3\">\r\n                  <input [(ngModel)]=\"model.horario.horaApertura\" type=\"time\" name=\"horaApertura\" class=\"form-control validate\" required #horaApertura=\"ngModel\">\r\n                  <label>Hora de Apertura</label>                                  \r\n              </div>\r\n\r\n              <!-- Hora de Cierre --> \r\n              <div class=\"input-field col s3\">\r\n                  <input [(ngModel)]=\"model.horario.horaCierre\" type=\"time\" name=\"horaCierre\" class=\"form-control validate\" required #horaCierre=\"ngModel\">\r\n                <label>Hora de Cierre</label>                                  \r\n              </div>\r\n\r\n            <!-- Disponibilidad --> \r\n            <label>Disponibilidad</label> \r\n            <p>\r\n              <label>\r\n                <input [(ngModel)]=\"model.disponibilidad.envia\" type=\"checkbox\" name=\"envia\" class=\"form-control validate\" #envia=\"ngModel\"/>\r\n                <span>Envía</span>\r\n              </label>\r\n            </p>\r\n              <label>\r\n                  <input [(ngModel)]=\"model.disponibilidad.recibe\" type=\"checkbox\" name=\"recibe\" class=\"form-control validate\" #recibe=\"ngModel\"/>\r\n                  <span>Recibe</span>\r\n              </label>                                        \r\n          </form>          \r\n                        \r\n        </div>\r\n\r\n        <div class=\"modal-footer\">\r\n          <button (click)='insertSubmit()' *ngIf=\"updClicked === false\" class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Crear</button>        \r\n          <button (click)='updateSubmit(metodoEnvio)' *ngIf=\"updClicked === true\"  class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Actualizar</button>        \r\n          <a class=\"modal-close btn-flat red-text\" (click)='cleanForm()'>Cancelar</a>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n\r\n</body>      "
+module.exports = "<body>\r\n  <!-- Barra de Navegación Superior -->\r\n  <app-operaciones-navbar></app-operaciones-navbar> \r\n  <div class=\"row\">\r\n    \r\n    <!-- Barra de Navegación Lateral -->\r\n    <app-operaciones-sidenav></app-operaciones-sidenav>      \r\n\r\n        <!-- Cuerpo de la Sección -->\r\n        <div class=\"col s9 offset-s3\">\r\n            <div class=\"row\">\r\n                <a class=\"btn-large col s3 indigo\">Administración de Oficinas</a>   \r\n                <a class=\"btn-large col s3 offset-s1 green modal-trigger\" href=\"#modalCrearOficina\" materialize=\"modal\">Crear Oficina</a>           \r\n                <a class=\"btn-large col s3 offset-s1 red\">Eliminar Oficina</a>     \r\n            </div>   \r\n            <hr>\r\n            <!-- Lista de oficinas -->\r\n            <div class=\"col s9\" *ngIf=\"arr.length>0;else noData\">\r\n                  <div class=\"col s4\" *ngFor=\"let item of arr\">\r\n                    <div class=\"card grey darken-4 white-text\">\r\n                        <span class=\"card-title\">{{item.nombre}}</span>\r\n                      <div class=\"card-content\">                        \r\n                        <p>Dirección: {{item.direccion}}</p>\r\n                        <p>Tipo: {{item.tipo}}</p>\r\n                        <p>Días Laborables: {{item.horario.diasLaborables}}</p>\r\n                        <p>Horario: {{item.horario.horaApertura}}-{{item.horario.horaCierre}}</p>\r\n                      </div>\r\n                      <div class=\"card-action\">\r\n                        <a class=\"modal-trigger\" (click)=\"onUpdate(item)\" href=\"#modalCrearOficina\">Modificar</a>\r\n                        <a class=\"pointer-delete\" (click)=\"onDelete(item)\"> Eliminar</a>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n              </div>\r\n      </div>\r\n\r\n    <!-- Mensaje en caso no existan métodos de envío -->\r\n    <div class=\"container\">\r\n      <ng-template #noData>\r\n        \r\n        <h5 class=\"center-align\">No existen oficinas registradas</h5>\r\n      </ng-template>\r\n    </div>\r\n\r\n      <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->\r\n    <div id=\"modalCrearOficina\" class=\"modal modal-fixed-footer\">\r\n        <div class=\"modal-content row\">\r\n          <h4>Creación de Oficina</h4>\r\n          <form name='formAddOficina' #addform=\"ngForm\">\r\n              <!-- Campo de Nombre de la Oficina -->\r\n              <div class=\"input-field col s6\">\r\n                  <input [(ngModel)]=\"model.nombre\" name=\"nombre\" type=\"text\" class=\"form-control validate\" required #nombre=\"ngModel\">\r\n                  <label for=\"nombre\">Nombre de la Oficina</label>\r\n              </div>\r\n              \r\n              <!-- Campo de Tipo de la Oficina -->\r\n              <div class=\"input-field col s6\">\r\n                  <select [(ngModel)]=\"model.tipo\" class=\"form-control validate\" name=\"tipo\" required #tipo=\"ngModel\">\r\n                      <option disabled></option>\r\n                      <option value=\"Centro de Distribución\">Centro de Distribución</option>\r\n                      <option value=\"Tienda\">Tienda</option>\r\n                      <option value=\"Mixta\">Mixta</option>\r\n                    </select>\r\n                    <label>Tipo</label>\r\n              </div>\r\n\r\n              <!-- Campo de Dirección de la Oficina -->\r\n              <div class=\"input-field col s6\">\r\n                  <input [(ngModel)]=\"model.direccion\"  name=\"direccion\" class=\"form-control validate\" type=\"text\" required #direccion=\"ngModel\">\r\n                  <label for=\"direccion\">Dirección</label>\r\n              </div> <br>\r\n\r\n               <!-- Poscisión Geográfica -->              \r\n              <div class=\"input-field col s3\">                \r\n                  <input [(ngModel)]=\"model.posGeografica.lat\" name=\"latitud\" type=\"number\" class=\"form-control validate\" required step=\"any\" #latitud=\"ngModel\">\r\n                  <label for=\"latitud\">Latitud</label>                               \r\n              </div>\r\n\r\n              <div class=\"input-field col s3\">                \r\n                  <input [(ngModel)]=\"model.posGeografica.long\" name=\"longitud\" type=\"number\" step=\"any\" class=\"form-control validate\" required #longitud=\"ngModel\">\r\n                  <label for=\"longitud\">Longitud</label>                               \r\n              </div>\r\n              \r\n              <!-- Días Laborables -->              \r\n              <div class=\"input-field col s6\">\r\n                  <select [(ngModel)]=\"model.horario.diasLaborables\" name=\"diasLaborables\" class=\"form-control validate\" required #diasLaborables=\"ngModel\">\r\n                      <option disabled></option>\r\n                      <option value=\"Lunes-Viernes\">Lunes-Viernes</option>\r\n                      <option value=\"Lunes-Sábado\">Lunes-Sábado</option>\r\n                      <option value=\"Todos los Días\">Todos los Días</option>\r\n                    </select>\r\n                    <label>Días Laborables</label>\r\n              </div> <br>\r\n\r\n              <!-- Hora de Apertura --> \r\n              <div class=\"input-field col s3\">\r\n                  <input [(ngModel)]=\"model.horario.horaApertura\" type=\"time\" name=\"horaApertura\" class=\"form-control validate\" required #horaApertura=\"ngModel\">\r\n                  <label>Hora de Apertura</label>                                  \r\n              </div>\r\n\r\n              <!-- Hora de Cierre --> \r\n              <div class=\"input-field col s3\">\r\n                  <input [(ngModel)]=\"model.horario.horaCierre\" type=\"time\" name=\"horaCierre\" class=\"form-control validate\" required #horaCierre=\"ngModel\">\r\n                <label>Hora de Cierre</label>                                  \r\n              </div>\r\n\r\n            <!-- Disponibilidad --> \r\n            <label>Disponibilidad</label> \r\n            <p>\r\n              <label>\r\n                <input [(ngModel)]=\"model.disponibilidad.envia\" type=\"checkbox\" name=\"envia\" class=\"form-control validate\" #envia=\"ngModel\"/>\r\n                <span>Envía</span>\r\n              </label>\r\n            </p>\r\n              <label>\r\n                  <input [(ngModel)]=\"model.disponibilidad.recibe\" type=\"checkbox\" name=\"recibe\" class=\"form-control validate\" #recibe=\"ngModel\"/>\r\n                  <span>Recibe</span>\r\n              </label>                                        \r\n          </form>          \r\n                        \r\n        </div>\r\n\r\n        <div class=\"modal-footer\">\r\n          <button (click)='insertSubmit()' *ngIf=\"updClicked === false\" class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Crear</button>        \r\n          <button (click)='updateSubmit(metodoEnvio)' *ngIf=\"updClicked === true\"  class=\"modal-close btn-flat green-text\" [disabled]=\"!addform.form.valid\">Actualizar</button>        \r\n          <a class=\"modal-close btn-flat red-text\" (click)='cleanForm()'>Cancelar</a>\r\n        </div>\r\n        \r\n      </div>\r\n    </div>\r\n\r\n</body>      "
 
 /***/ }),
 
@@ -651,6 +915,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+// Firebase
 
 
 var OperacionesOficinasComponent = /** @class */ (function () {
@@ -666,18 +931,23 @@ var OperacionesOficinasComponent = /** @class */ (function () {
     OperacionesOficinasComponent.prototype.ngOnInit = function () {
         var _this = this;
         // Obtenemos las oficinas registradas en la base de datos.
-        this._data.getOficinas().subscribe(function (oficina) {
+        this.firebaseSubscription = this._data.getOficinas().subscribe(function (oficina) {
             _this.arr = oficina;
             console.log(_this.arr);
         });
         // Inicialización de los elementos de Materialize que requieren JQuery para su funcionamiento.
         $(function () {
             $('select').formSelect();
+            $('.modal').modal();
             $('.timepicker').timepicker({
                 twelveHour: false,
                 container: 'body'
             });
         });
+    };
+    // Finalizamos la suscripción con el servicio al cerrar el componente.
+    OperacionesOficinasComponent.prototype.ngOnDestroy = function () {
+        this.firebaseSubscription.unsubscribe();
     };
     // Función que envía el modelo a la función de insertar oficina en el service.
     OperacionesOficinasComponent.prototype.insertSubmit = function () {
@@ -744,7 +1014,7 @@ var OperacionesOficinasComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".logo {\r\n    height: 40px;\r\n}\r\n\r\n.collapsible-header{\r\n    display: block;\r\n    font-size: 14px;\r\n    font-weight: 500;\r\n}"
 
 /***/ }),
 
@@ -755,7 +1025,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col s12 m4 l3\">        \r\n    <ul id=\"slide-out\" class=\"sidenav sidenav-fixed\">\r\n        <div>\r\n            <h1>FastShip</h1>\r\n          </div>\r\n      <li class=\"grey darken-3\"><a class=\"white-text\" routerLink=\"/metodosEnvio\">Métodos de Envio</a></li>\r\n      <li class=\"grey darken-3\"><a class=\"white-text\" routerLink=\"/admOficinas\">Administración de Oficinas</a></li>\r\n      <li class=\"grey darken-3\"><a class=\"white-text\" routerLink=\"\">Administración de Rutas</a></li>      \r\n    </ul>\r\n    <a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger\"><i class=\"material-icons\">menu</i></a>    \r\n</div>"
+module.exports = "<ul id=\"slide-out\" class=\"sidenav sidenav-fixed yellow darken-2\">\r\n    <div class=\"logo center-align\">\r\n        <h4>FastShip</h4>\r\n    </div>\r\n    \r\n    <ul class=\"collapsible grey darken-3 center-align\">\r\n            <li>\r\n                <a class=\"grey darken-4 white-text\" routerLink=\"/operaciones\">Operaciones</a>    \r\n            <li>\r\n                <a class=\"white-text\" routerLink=\"/metodosEnvio\">Métodos de Envio</a>    \r\n            </li>\r\n            <li>\r\n                <a class=\"white-text\" routerLink=\"/admOficinas\">Administración de Oficinas</a>\r\n            </li>\r\n            <li>\r\n                <div class=\"collapsible-header white-text\"> Administración de Rutas</div>\r\n                    <div class=\"collapsible-body\">\r\n                        <ul>   \r\n                            <li class=\"grey darken-2\">\r\n                                <a class=\"white-text\" routerLink=\"\">Rutas</a>\r\n                            </li>     \r\n                            <li class=\"grey darken-2\">\r\n                                <a class=\"white-text\" routerLink=\"\">Subrutas</a>\r\n                            </li>     \r\n                        </ul>                        \r\n                    </div>\r\n            </li>\r\n    </ul>\r\n     <li><a class=\"subheader\">Otras Secciones</a></li>\r\n     <ul class=\"collapsible grey darken-4 white-text center-align\">\r\n        <li>\r\n            <a class=\"white-text\" routerLink=\"/oficina\">Oficina</a>    \r\n        </li>\r\n    </ul>\r\n</ul>"
 
 /***/ }),
 
@@ -786,6 +1056,7 @@ var OperacionesSidenavComponent = /** @class */ (function () {
     OperacionesSidenavComponent.prototype.ngOnInit = function () {
         $(document).ready(function () {
             $('.sidenav').sidenav();
+            $('.collapsible').collapsible();
         });
     };
     OperacionesSidenavComponent = __decorate([
@@ -810,7 +1081,7 @@ var OperacionesSidenavComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "header, nav, footer {\r\n    padding-left: 300px;\r\n}\r\n\r\n  @media only screen and (max-width : 992px) {\r\n    header, main, footer {\r\n      padding-left: 0;\r\n    }\r\n  }"
 
 /***/ }),
 
@@ -821,7 +1092,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Barra de Navegación Superior -->\r\n<app-operaciones-navbar></app-operaciones-navbar>    \r\n\r\n<div class=\"row\">\r\n  <!-- Barra de Navegación Lateral -->\r\n  <app-operaciones-sidenav></app-operaciones-sidenav>      \r\n\r\n      <!-- Cuerpo de la Sección -->\r\n      <div class=\"col s9\">\r\n              <div class=\"col s3\">\r\n                <div class=\"card\">\r\n                  <div class=\"card-image\">\r\n                    <img src=\"assets/img/operaciones/metodosEnvio.jpg\">\r\n                  </div>\r\n                  <div class=\"card-content\">\r\n                    <span class=\"card-title grey-text text-darken-4\">Métodos de Envío</span>\r\n                    <p>Servicios de Entrega con tiempos en tránsito definidos y garantizados.</p>\r\n                  </div>\r\n                  <div class=\"card-action\">\r\n                    <a routerLink=\"/metodosEnvio\">Ver más...</a>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n\r\n              <div class=\"col s3\">\r\n                  <div class=\"card\">\r\n                    <div class=\"card-image\">\r\n                      <img src=\"assets/img/operaciones/oficinas.jpeg\">\r\n                    </div>\r\n                    <div class=\"card-content\">\r\n                      <span class=\"card-title grey-text text-darken-4\">Administración de Oficinas</span>\r\n                      <p>Centros de Distribución, Oficinas de Servicio Locales y Hubs.</p>\r\n                    </div>\r\n                    <div class=\"card-action\">\r\n                      <a routerLink=\"/admOficinas\">Ver más...</a>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n\r\n                <div class=\"col s3\">\r\n                    <div class=\"card\">\r\n                      <div class=\"card-image\">\r\n                        <img src=\"assets/img/operaciones/rutas.jpeg\">\r\n                      </div>\r\n                      <div class=\"card-content\">\r\n                        <span class=\"card-title grey-text text-darken-4\">Administración de Rutas</span>\r\n                        <p>*Descripción*</p>\r\n                      </div>\r\n                      <div class=\"card-action\">\r\n                        <a routerLink=\"/metodosEnvio\">Ver más...</a>\r\n                      </div>\r\n                    </div>\r\n                  </div>\r\n      </div>\r\n\r\n"
+module.exports = "<!-- Barra de Navegación Superior -->\r\n\r\n<header>\r\n    <app-operaciones-sidenav></app-operaciones-sidenav>      \r\n    \r\n</header> \r\n\r\n<aside>\r\n    <app-operaciones-navbar></app-operaciones-navbar> \r\n</aside>\r\n\r\n  <main class=\"row\">\r\n        <div class=\"col s9 offset-s3\">\r\n            <div class=\"col s3\">\r\n              <div class=\"card\">\r\n                <div class=\"card-image\">\r\n                  <img src=\"assets/img/operaciones/metodosEnvio.jpg\">\r\n                </div>\r\n                <div class=\"card-content grey darken-4 white-text\">\r\n                  <span class=\"card-title\">Métodos de Envío</span>\r\n                  <p>Servicios de Entrega con tiempos en tránsito definidos y garantizados.</p>\r\n                </div>\r\n                <div class=\"card-action grey darken-4 yellow darken-2-text\">\r\n                  <a routerLink=\"/metodosEnvio\">Ver más...</a>\r\n                </div>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"col s3\">\r\n                <div class=\"card\">\r\n                  <div class=\"card-image\">\r\n                    <img src=\"assets/img/operaciones/oficinas.jpeg\">\r\n                  </div>\r\n                  <div class=\"card-content grey darken-4 white-text\">\r\n                    <span class=\"card-title\">Administración de Oficinas</span>\r\n                    <p>Centros de Distribución, Oficinas de Servicio Locales y Hubs.</p>\r\n                  </div>\r\n                  <div class=\"card-action grey darken-4 yellow darken-2-text\">\r\n                    <a routerLink=\"/admOficinas\">Ver más...</a>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n\r\n              <div class=\"col s3\">\r\n                  <div class=\"card\">\r\n                    <div class=\"card-image\">\r\n                      <img src=\"assets/img/operaciones/rutas.jpeg\">\r\n                    </div>\r\n                    <div class=\"card-content grey darken-4 white-text\">\r\n                      <span class=\"card-title\">Administración de Rutas</span>\r\n                      <p>*Descripción*</p>\r\n                    </div>\r\n                    <div class=\"card-action grey darken-4 yellow darken-2-text\">\r\n                      <a routerLink=\"/metodosEnvio\">Ver más...</a>\r\n                    </div>\r\n                  </div>\r\n                </div>\r\n  </div>\r\n  </main>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -923,6 +1194,59 @@ var AuthService = /** @class */ (function () {
         __metadata("design:paramtypes", [angularfire2_auth__WEBPACK_IMPORTED_MODULE_1__["AngularFireAuth"]])
     ], AuthService);
     return AuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/firestore-envios.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/services/firestore-envios.service.ts ***!
+  \******************************************************/
+/*! exports provided: FirestoreEnviosService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FirestoreEnviosService", function() { return FirestoreEnviosService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var FirestoreEnviosService = /** @class */ (function () {
+    function FirestoreEnviosService(_afs) {
+        this._afs = _afs;
+        this.enviosCollection = this._afs.collection('/guias');
+        this.envios = this.enviosCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (changes) {
+            return changes.map(function (a) {
+                var data = a.payload.doc.data();
+                data.id = a.payload.doc.id;
+                return data;
+            });
+        }));
+    }
+    FirestoreEnviosService.prototype.getEnvios = function () {
+        return this.envios;
+    };
+    FirestoreEnviosService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [angularfire2_firestore__WEBPACK_IMPORTED_MODULE_1__["AngularFirestore"]])
+    ], FirestoreEnviosService);
+    return FirestoreEnviosService;
 }());
 
 
@@ -1034,6 +1358,17 @@ var FirestoreOficinaService = /** @class */ (function () {
             });
         }));
     }
+    FirestoreOficinaService.prototype.getOficinasType = function (tipo) {
+        this.oficinasCollection = this._afs.collection('/oficinas', function (ref) { return ref.where('tipo', '==', tipo); });
+        this.oficinas = this.oficinasCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (changes) {
+            return changes.map(function (a) {
+                var data = a.payload.doc.data();
+                data.id = a.payload.doc.id;
+                return data;
+            });
+        }));
+        return this.oficinas;
+    };
     FirestoreOficinaService.prototype.getOficinas = function () {
         return this.oficinas;
     };

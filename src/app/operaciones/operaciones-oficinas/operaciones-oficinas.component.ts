@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Oficina } from '../../classes/oficina';
 declare let $: any;
+import { Form } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 // Firebase
 import { AuthService } from '../../services/auth.service';
 import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
-import { Form } from '@angular/forms';
-import { Subscription } from 'rxjs';
+
 
 
 @Component({

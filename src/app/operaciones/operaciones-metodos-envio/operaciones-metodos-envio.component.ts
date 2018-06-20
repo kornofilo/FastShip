@@ -1,14 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MetodosEnvio } from '../../classes/metodos-envio';
 declare let $: any;
+import { Subscription } from 'rxjs';
 
 // Firebase
-import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-envio.service';
-import { FindValueSubscriber } from 'rxjs/internal/operators/find';
-import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -42,6 +39,7 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy {
       $('.collapsible').collapsible();
       $('select').formSelect();
       $('.dropdown-trigger').dropdown();
+      $('.modal').modal();
     });
   }
 

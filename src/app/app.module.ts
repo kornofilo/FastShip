@@ -60,7 +60,9 @@ const routes: Routes = [
     OperacionesOficinasComponent,
     OficinaRutasComponent,
     OficinaSidenavComponent,
-    OficinaEnviosComponent
+    OficinaEnviosComponent,
+    OperacionesRutasComponent,
+    OperacionesSubRutasComponent
   ],
   imports: [
     BrowserModule,

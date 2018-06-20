@@ -28,6 +28,8 @@ import { OperacionesOficinasComponent } from './operaciones/operaciones-oficinas
 import { OficinaRutasComponent } from './oficina/oficina-rutas/oficina-rutas.component';
 import { OficinaSidenavComponent } from './oficina/oficina-sidenav/oficina-sidenav.component';
 import { OficinaEnviosComponent } from './oficina/oficina-envios/oficina-envios.component';
+import { OperacionesRutasComponent } from './operaciones/operaciones-rutas/operaciones-rutas.component';
+import { OperacionesSubRutasComponent } from './operaciones/operaciones-sub-rutas/operaciones-sub-rutas.component';
 
 
 /* Array de Rutas */
@@ -56,7 +58,9 @@ const routes: Routes = [
     OperacionesOficinasComponent,
     OficinaRutasComponent,
     OficinaSidenavComponent,
-    OficinaEnviosComponent
+    OficinaEnviosComponent,
+    OperacionesRutasComponent,
+    OperacionesSubRutasComponent
   ],
   imports: [
     BrowserModule,

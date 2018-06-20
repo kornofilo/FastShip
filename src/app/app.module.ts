@@ -17,17 +17,19 @@ import { OficinaSidenavComponent } from './oficina/oficina-sidenav/oficina-siden
 import { OficinaEnviosComponent } from './oficina/oficina-envios/oficina-envios.component';
 import { OperacionesRutasComponent } from './operaciones/operaciones-rutas/operaciones-rutas.component';
 import { OperacionesSubRutasComponent } from './operaciones/operaciones-sub-rutas/operaciones-sub-rutas.component';
+import { OperacionesNavbarComponent } from './operaciones/operaciones-navbar/operaciones-navbar.component';
+import { OperacionesSidenavComponent } from './operaciones/operaciones-sidenav/operaciones-sidenav.component';
 
-import 'materialize-css';
+
 // import { MaterializeModule } from 'angular2-materialize';
 import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
+
+
+// Guards
 import { AuthGuard } from './guards/auth.guard';
 import { IsLoggedGuard } from './guards/is-logged.guard';
 
-// Guards
-import { OperacionesNavbarComponent } from './operaciones/operaciones-navbar/operaciones-navbar.component';
-import { OperacionesSidenavComponent } from './operaciones/operaciones-sidenav/operaciones-sidenav.component';
 
 // Firebase
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -76,7 +78,7 @@ const routes: Routes = [
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],

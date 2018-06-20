@@ -88,21 +88,30 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
   onUpdate(metodoEnvio) {
     this.iME = metodoEnvio.id;
     this.updClicked = true;
+    this.metodosEnvioForm.patchValue({
+      tiempo: metodoEnvio.tiempo,
+      tipos: ({
+        tierra: metodoEnvio.tipos.tierra,
+        mar: metodoEnvio.tipos.mar,
+        aire: metodoEnvio.tipos.aire
+      })
+    });
   }
 
   updateSubmit() {
-    this.feedTipos();
+    this._data.updateMetodosEnvio(this.iME, this.metodosEnvioForm.value);
     this.cleanForm();
   }
 
   cleanForm() {
     this.metodosEnvioForm.reset({
-      checkBoxTierra: false,
-      checkBoxMar: false,
-      checkBoxAire: false
+      tiempo: 'Horas',
+      tipos: ({
+        tierra: false,
+        mar: false,
+        aire: false
+      })
     });
   }
 
-  feedTipos() {
-  }
 }

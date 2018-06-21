@@ -1,0 +1,52 @@
+<body>
+  <!-- Barra de Navegación Superior -->
+  <app-operaciones-navbar></app-operaciones-navbar>
+  <div class="row">
+    <!-- Barra de Navegación Lateral -->
+    <app-operaciones-sidenav></app-operaciones-sidenav>
+
+    <!-- Cuerpo de la Sección -->
+    <div class="col s9 offset-s3">
+        <div class="row">
+            <a class="btn-large col s3 indigo">Administración de Cargamentos</a>
+            <a class="btn-large col s3 offset-s1 green modal-trigger" href="#modalCrearCarga" materialize="modal">Crear Cargamento</a>
+            <a class="btn-large col s3 offset-s1 red">Ver Cargamentos</a>
+        </div>
+            <hr>
+
+  </div>
+    </div>
+  <!-- Mensaje en caso no existan métodos de envío -->
+  <div class="container">
+    <ng-template #noData>
+
+      <h5 class="center-align">No existen oficinas registradas</h5>
+    </ng-template>
+  </div>
+
+  <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->
+  <div id="modalCrearCarga" class="modal modal-fixed-footer">
+    <div class="modal-content row">
+      <h4>Creación de Cargamento</h4>
+      <form [formGroup]="metodosEnvioForm">
+          <div class="input-field col s6">
+                <select class="form-control" formControlName="tipos">
+                    <option value="Tipos" disabled selected>Transportes</option>
+                    <option *ngFor="let opcion of opcionesTipos" [value]="opcion">{{opcion}}</option>
+                </select>
+              <label>Tipos de Transportes</label>
+            </div>
+
+      </form>
+
+    </div>
+
+    <div class="modal-footer">
+      <button (click)='insertSubmit()' type="submit"  *ngIf="updClicked === false" class="modal-close btn-flat green-text">Crear</button>
+      <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text">Actualizar</button>
+      <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
+    </div>
+
+  </div>
+
+</body>

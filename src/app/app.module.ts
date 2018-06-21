@@ -19,7 +19,7 @@ import { OperacionesRutasComponent } from './operaciones/operaciones-rutas/opera
 import { OperacionesSubRutasComponent } from './operaciones/operaciones-sub-rutas/operaciones-sub-rutas.component';
 import { OperacionesNavbarComponent } from './operaciones/operaciones-navbar/operaciones-navbar.component';
 import { OperacionesSidenavComponent } from './operaciones/operaciones-sidenav/operaciones-sidenav.component';
-
+import { OperacionesCargamentosComponent } from './operaciones/operaciones-cargamentos/operaciones-cargamentos.component';
 
 // import { MaterializeModule } from 'angular2-materialize';
 import { AuthService } from './services/auth.service';
@@ -39,6 +39,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 
+
 /* Array de Rutas */
 const routes: Routes = [
   {  path: '', component: LoginComponent, canActivate: [IsLoggedGuard] },
@@ -51,7 +52,8 @@ const routes: Routes = [
   {  path: 'tiendas/:tipo',  component: OficinaRutasComponent, canActivate: [AuthGuard]},
   {  path: 'envios',  component: OficinaEnviosComponent, canActivate: [AuthGuard]},
   {  path: 'rutas',  component: OperacionesRutasComponent, canActivate: [AuthGuard]},
-  {  path: 'subrutas',  component: OperacionesSubRutasComponent, canActivate: [AuthGuard]}
+  {  path: 'subrutas',  component: OperacionesSubRutasComponent, canActivate: [AuthGuard]},
+  {  path: 'cargamentos',  component: OperacionesCargamentosComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -69,7 +71,8 @@ const routes: Routes = [
     OficinaSidenavComponent,
     OficinaEnviosComponent,
     OperacionesRutasComponent,
-    OperacionesSubRutasComponent
+    OperacionesSubRutasComponent,
+    OperacionesCargamentosComponent
   ],
   imports: [
     BrowserModule,

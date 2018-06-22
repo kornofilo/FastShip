@@ -23,7 +23,7 @@ export class Destinatario {
 export class Detalles {
     origen: string;
     destino: string;
-    fecha: Date;
+    fechaEnvio: Date;
     tipoEnvio: string;
 }
 

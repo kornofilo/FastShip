@@ -71,7 +71,7 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
   createForm() {
     this.metodosEnvioForm = this.fb.group({
       nombre: ['', Validators.required],
-      tiempo: ['', Validators.required],
+      tiempo: ['Horas', Validators.required],
       tipos: this.fb.group({
         tierra: [false, Validators.required],
         mar: [false, Validators.required],

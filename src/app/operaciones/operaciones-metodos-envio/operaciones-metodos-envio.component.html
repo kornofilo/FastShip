@@ -74,11 +74,10 @@
                 <label for="nombre">Nombre</label>
             </div>         
             <div class="input-field col s6">                         
-                  <select class="form-control" formControlName="tiempo">
+                  <select class="form-control browser-default" formControlName="tiempo">
                       <option value="Horas" disabled selected>Horas</option>
                       <option *ngFor="let opcion of opcionesTiempo" [value]="opcion">{{opcion}}</option>
                   </select>                      
-                <label>Tiempo de Envio</label>
               </div>
               <div class="col s6" formGroupName="tipos">
                   <h5>Métodos de Envío</h5>

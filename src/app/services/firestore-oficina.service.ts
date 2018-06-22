@@ -27,20 +27,17 @@ export class FirestoreOficinaService {
 
   getOficinasType(tipo: string) {
     this.oficinasCollection = this._afs.collection('/oficinas', ref => ref.where('tipo', '==', tipo));
-    this.oficinas = this.oficinasCollection.snapshotChanges().pipe(map(
-      changes => {
-        return changes.map(
-          a => {
-            const data = a.payload.doc.data() as Oficina;
-            data.id = a.payload.doc.id;
-            return data;
-          });
-
-      }));
+    this.oficinas = this.oficinasCollection.valueChanges();
     return this.oficinas;
   }
 
   getOficinas() {
+    return this.oficinas;
+  }
+
+  getOficinasNRT() {
+    this.oficinasCollection = this._afs.collection('/oficinas');
+    this.oficinas = this.oficinasCollection.valueChanges();
     return this.oficinas;
   }
 

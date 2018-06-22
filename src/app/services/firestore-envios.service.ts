@@ -28,4 +28,8 @@ export class FirestoreEnviosService {
   getEnvios() {
     return this.envios;
   }
+
+  addEnvio(envios) {
+    this.enviosCollection.add(envios);
+  }
 }

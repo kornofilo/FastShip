@@ -32,5 +32,8 @@ getSubRutas() {
   return this.subRutas;
 }
 
+addSubruta(subruta) {
+  this.subRutacollection.add(subruta);
+}
 
 }

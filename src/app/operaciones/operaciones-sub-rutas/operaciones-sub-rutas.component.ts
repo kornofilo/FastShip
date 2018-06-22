@@ -20,7 +20,7 @@ export class OperacionesSubRutasComponent implements OnInit {
   arr: Subruta[] = [];
   // Elementos del Form
   subRutaform: FormGroup;
-  
+  tipoRuta = ['Aereo', 'Terreste', 'Maritimo'];
   // Suscripcipción
   private firebaseSubscription: Subscription;
 
@@ -30,6 +30,7 @@ export class OperacionesSubRutasComponent implements OnInit {
   ngOnInit() {
     this.firebaseSubscription=this._data.getSubRutas().subscribe((Subruta:Subruta[])=>{
       this.arr=Subruta;
+      console.log(this.arr)
     }
   );
 
@@ -37,6 +38,25 @@ export class OperacionesSubRutasComponent implements OnInit {
     $('.modal').modal();
     $('select').formSelect();
   });
+
+  this.createForm();
+  }
+
+  createForm() {
+    this.subRutaform = this.fb.group({
+      tiendaOrigen: ['', Validators.required],
+      tiendaDestino: ['', Validators.required],
+      horarioSalida: ['', Validators.required],
+      tiempoRecorrido: ['', Validators.required],
+      tipoRuta: ['', Validators.required],
+      
+    });
+  }
+
+  insertSubmit() {
+    console.log('Insertando...');
+    this._data.addSubruta(this.subRutaform.value);
   }
 
 }
+

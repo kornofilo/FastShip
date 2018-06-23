@@ -22,16 +22,17 @@ import { FirestoreOficinaService } from '../../services/firestore-oficina.servic
 })
 export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
   arr: Envios[] = [];
+  newEnvio: Envios;
   arrMetodosEnvio: MetodosEnvio[] = [];
   arrOficinas: Oficina[] = [];
   idEnvio: string;
 
-  // Elementos de los form
+  // Inicialización de las variables de los elementos de los form.
   paquetesForm: FormGroup;
+  documentosForm: FormGroup;
   opcionesME = [];
 
-
-  // Suscripciones
+  // Inicialización de las Suscripciones.
   private firestoreEnviosSubscription: Subscription;
   private firestoreMetodosEnvioSubscription: Subscription;
   private firestoreOficinasEnvioSubscription: Subscription;
@@ -42,13 +43,14 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit() {
     this.firestoreEnviosSubscription = this._misEnvios.getEnvios().subscribe(
-      (oficina: Envios[]) => {
-      this.arr = oficina;
+      (envio: Envios[]) => {
+      this.arr = envio;
       console.log(this.arr);
      }
 
     );
 
+    // Obtenemos los métodos de envío registrados en la base de datos.
     this.firestoreMetodosEnvioSubscription = this._misMetodosDeEnvio.getMetodosEnvio().subscribe(
       (metodoEnvio: MetodosEnvio[]) => {
         this.arrMetodosEnvio = metodoEnvio;
@@ -61,6 +63,7 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
       this.arrOficinas = oficina;
      }
     );
+
 
     // Inicialización de elementos de Materialize.
 
@@ -84,11 +87,15 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges() {
+    this.cleanForms();
   }
 
+  // Función que inicializa los modelos de los formularios para creación de envíos.
   createForms() {
-    // Creación de formulario para inserción y actualización de envío de paquetes.
+    // Fomulario de creación de envío de paquetes.
     this.paquetesForm = this.fb.group({
+      estado: 'Creado',
+      tipo: 'Paquete',
       remitente: this.fb.group({
         nombre: ['', Validators.required],
         apellido: ['', Validators.required],
@@ -116,15 +123,114 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
         peso: ['', Validators.required],
         descripcion: ['', Validators.required],
         perecedero: false
+      })
+
+    });
+
+    // Fomulario de creación de envío de documentos.
+    this.documentosForm = this.fb.group({
+      estado: 'Creado',
+      tipo: 'Documentos',
+      remitente: this.fb.group({
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        telefono: ['', Validators.required]
       }),
 
+      destinatario: this.fb.group({
+        nombre: ['', Validators.required],
+        apellido: ['', Validators.required],
+        telefono: ['', Validators.required],
+        direccion: ['', Validators.required]
+      }),
+
+      detalles: this.fb.group({
+        origen: ['Origen', Validators.required],
+        destino: ['Destino', Validators.required],
+        fechaEnvio: ['', Validators.required],
+        tipoEnvio: ['Tipo de Envío', Validators.required]
+      }),
+
+      especificaciones: this.fb.group({
+        descripcion: ['', Validators.required],
+      })
+    });
+  } // Fin de clase 'createForms'.
+
+  // Función que limpia los modelos de los formularios para creación de envíos.
+  cleanForms() {
+    // Fomulario de creación de envío de paquetes.
+    this.paquetesForm.reset({
+      remitente: ({
+        nombre: '',
+        apellido: '',
+        telefono: ''
+      }),
+
+      destinatario: ({
+        nombre: '',
+        apellido: '',
+        telefono: '',
+        direccion: ''
+      }),
+
+      detalles: ({
+        origen: 'Origen',
+        destino: 'Destino',
+        fechaEnvio: '',
+        tipoEnvio: 'Tipo de Envío'
+      }),
+
+      especificaciones: ({
+        largo: '',
+        ancho: '',
+        alto: '',
+        peso: '',
+        descripcion: '',
+        perecedero: false
+      }),
+    });
+
+    // Fomulario de creación de envío de documentos.
+    this.documentosForm.reset({
+      remitente: ({
+        nombre: '',
+        apellido: '',
+        telefono: ''
+      }),
+
+      destinatario: ({
+        nombre: '',
+        apellido: '',
+        telefono: '',
+        direccion: ''
+      }),
+
+      detalles: ({
+        origen: 'Origen',
+        destino: 'Destino',
+        fechaEnvio: '',
+        tipoEnvio: 'Tipo de Envío'
+      }),
+
+      especificaciones: ({
+        descripcion: ''
+      }),
     });
   }
 
-  // Función que envía el modelo a la función de insertar método de envío en el service.
+  // Función que envía el modelo de creación de envíos de paquetes al service para lo ingrese en la BD.
   insertSubmit() {
     console.log('Insertando...');
     this._misEnvios.addEnvio(this.paquetesForm.value);
+    this.cleanForms();
+  }
+
+  // Función que envía el modelo de creación de envíos de documentos al service para lo ingrese en la BD.
+  insertSubmitDocumentos() {
+    console.log('Insertando...');
+    this._misEnvios.addEnvio(this.documentosForm.value);
+    this.cleanForms();
   }
 
 }

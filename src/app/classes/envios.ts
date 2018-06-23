@@ -1,5 +1,7 @@
 export class Envios {
         id: string;
+        estado: string;
+        tipo: string;
         numTracking: number;
         remitente: Remitente;
         destinatario: Destinatario;

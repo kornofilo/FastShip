@@ -106,15 +106,7 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
   }
 
   cleanForm() {
-    this.metodosEnvioForm.reset({
-      nombre: '',
-      tiempo: 'Horas',
-      tipos: ({
-        tierra: false,
-        mar: false,
-        aire: false
-      })
-    });
+    this.metodosEnvioForm.reset();
   }
 
 }

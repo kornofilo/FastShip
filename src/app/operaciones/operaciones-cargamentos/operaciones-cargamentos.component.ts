@@ -3,10 +3,11 @@ import { MetodosEnvio, TiposMetodosEnvio } from '../../classes/metodos-envio';
 declare let $: any;
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Cargamento } from '../../classes/cargamento';
 
 // Firebase
 import { AuthService } from '../../services/auth.service';
-import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-envio.service';
+import {  FirestoreCargamentoEnvioService} from '../../services/firestore-cargamento-envio.service';
 
 @Component({
   selector: 'app-operaciones-cargamentos',
@@ -14,26 +15,26 @@ import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-e
   styleUrls: ['./operaciones-cargamentos.component.css']
 })
 export class OperacionesCargamentosComponent implements  OnInit, OnDestroy, OnChanges {
-  arr: MetodosEnvio[] = [];
+  arr: Cargamento[] = [];
   updClicked = false;
   iME: string;
-  newMetodoEnvio: MetodosEnvio;
+  newMetodoCargamento: Cargamento;
   // Elementos del Form
   form: FormGroup;
-  metodosEnvioForm: FormGroup;
-  opcionesTipos = ['Aire', 'Mar', 'Tierra'];
+  cargamentoForm: FormGroup;
+
 
   // Suscripcipción
   private firebaseSubscription: Subscription;
 
-  constructor(public authService: AuthService, public _data: FirestoreMetodosEnvioService, private fb: FormBuilder) {
+  constructor(public authService: AuthService, public _data: FirestoreCargamentoEnvioService, private fb: FormBuilder) {
   }
 
   ngOnInit() {
       // Obtenemos los métodos envío registrados en la base de datos.
-      this.firebaseSubscription = this._data.getMetodosEnvio().subscribe(
-        (metodoEnvio: MetodosEnvio[]) => {
-         this.arr = metodoEnvio;
+      this.firebaseSubscription = this._data.getCargamento().subscribe(
+        (cargamento: Cargamento[]) => {
+         this.arr = cargamento;
        }
       );
 
@@ -43,6 +44,9 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy, OnCh
       $('select').formSelect();
       $('.dropdown-trigger').dropdown();
       $('.modal').modal();
+      $('.datepicker').datepicker({
+          container: 'body'
+        });
     });
 
     this.createForm();
@@ -55,7 +59,7 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy, OnCh
     //this.cleanForm();
   }
   createForm() {
-    this.metodosEnvioForm = this.fb.group({
+    this.cargamentoForm = this.fb.group({
       tipos: ['', Validators.required],
 
     });

@@ -28,14 +28,62 @@
   <div id="modalCrearCarga" class="modal modal-fixed-footer">
     <div class="modal-content row">
       <h4>Creación de Cargamento</h4>
-      <form [formGroup]="metodosEnvioForm">
-          <div class="input-field col s6">
-                <select class="form-control" formControlName="tipos">
-                    <option value="Tipos" disabled selected>Transportes</option>
-                    <option *ngFor="let opcion of opcionesTipos" [value]="opcion">{{opcion}}</option>
-                </select>
-              <label>Tipos de Transportes</label>
-            </div>
+      <form [formGroup]="cargamentoForm">
+
+  <!-- Campo de Fecha de Cargamento -->
+
+        <div class="input-field col s3">
+            <input type="text" name="fechaEnvio" class="datepicker">
+            <label for="fechaEnvio">Fecha de Cargamento</label>
+        </div>
+
+  <!-- Campo del Metodo de Envio -->
+
+        <div class="input-field col s3">
+            <select [(ngModel)]="modelPaquete.origen" name="origen" class="form-control validate" required #origen="ngModel">
+              <option disabled>Metodo de Envio</option>
+            </select>
+        </div>
+
+  <!-- Campo de Tipo de Transporte-->
+
+        <div class="input-field col s3">
+            <select [(ngModel)]="modelPaquete.origen" name="origen" class="form-control validate" required #origen="ngModel">
+              <option disabled>Tipo de Transporte</option>
+            </select>
+        </div>
+
+  <!-- Campo de Asignacion de Tienda Destino-->
+
+        <div class="input-field col s3">
+            <select [(ngModel)]="modelPaquete.origen" name="origen" class="form-control validate" required #origen="ngModel">
+              <option disabled>Tienda Destino</option>
+            </select>
+
+
+        </div>
+
+        <table class="responsive-table">
+               <thead>
+                 <tr>
+                     <th>Numero de Traking</th>
+                      <th>Tipo de Paquete</th>
+                     <th>Tienda Origen</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td>Alvin</td>
+                   <td>Eclair</td>
+                   <td>$0.87</td>
+                 </tr>
+                 <tr>
+                   <td>Alan</td>
+                   <td>Jellybean</td>
+                   <td>$3.76</td>
+                 </tr>
+               </tbody>
+         </table>
 
       </form>
 

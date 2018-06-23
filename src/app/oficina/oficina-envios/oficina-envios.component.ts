@@ -13,6 +13,7 @@ import { AuthService } from '../../services/auth.service';
 import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-envio.service';
 import { FirestoreEnviosService } from '../../services/firestore-envios.service';
 import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
+import { CalculoPesoService } from '../../services/calculo-peso.service';
 
 
 @Component({
@@ -38,7 +39,8 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
   private firestoreOficinasEnvioSubscription: Subscription;
 
   constructor(public authService: AuthService, public _misEnvios: FirestoreEnviosService,
-    public _misMetodosDeEnvio: FirestoreMetodosEnvioService, public _misTiendas: FirestoreOficinaService, private fb: FormBuilder) {}
+    public _misMetodosDeEnvio: FirestoreMetodosEnvioService, public _misTiendas: FirestoreOficinaService,
+    public pesaje: CalculoPesoService, private fb: FormBuilder) {}
 
 
   ngOnInit() {
@@ -94,8 +96,13 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
   createForms() {
     // Fomulario de creación de envío de paquetes.
     this.paquetesForm = this.fb.group({
-      estado: 'Creado',
+      estado: 'Recibido',
       tipo: 'Paquete',
+      historial: ({
+        estado: 'Recibido',
+        fecha: '',
+        tienda: ''
+      }),
       remitente: this.fb.group({
         nombre: ['', Validators.required],
         apellido: ['', Validators.required],
@@ -121,6 +128,7 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
         ancho: ['', Validators.required],
         alto: ['', Validators.required],
         peso: ['', Validators.required],
+        pesoFacturable: 0,
         descripcion: ['', Validators.required],
         perecedero: false
       })
@@ -129,7 +137,7 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
 
     // Fomulario de creación de envío de documentos.
     this.documentosForm = this.fb.group({
-      estado: 'Creado',
+      estado: 'Recibido',
       tipo: 'Documentos',
       remitente: this.fb.group({
         nombre: ['', Validators.required],
@@ -161,6 +169,8 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
   cleanForms() {
     // Fomulario de creación de envío de paquetes.
     this.paquetesForm.reset({
+      estado: 'Recibido',
+      tipo: 'Paquetes',
       remitente: ({
         nombre: '',
         apellido: '',
@@ -193,6 +203,8 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
 
     // Fomulario de creación de envío de documentos.
     this.documentosForm.reset({
+      estado: 'Recibido',
+      tipo: 'Documentos',
       remitente: ({
         nombre: '',
         apellido: '',
@@ -215,13 +227,27 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
 
       especificaciones: ({
         descripcion: ''
-      }),
+      })
     });
   }
 
   // Función que envía el modelo de creación de envíos de paquetes al service para lo ingrese en la BD.
   insertSubmit() {
     console.log('Insertando...');
+    const pesoFacturableValue = +this.getPesoFacturable();
+    this.paquetesForm.patchValue({
+      historial: ({
+        1: ({
+          tienda: this.paquetesForm.get('detalles.origen').value,
+          fecha: Date.now(),
+          estado: 'Recibido'
+        })
+      }),
+      especificaciones: {
+        pesoFacturable: pesoFacturableValue
+      }
+    });
+
     this._misEnvios.addEnvio(this.paquetesForm.value);
     this.cleanForms();
   }
@@ -229,8 +255,33 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
   // Función que envía el modelo de creación de envíos de documentos al service para lo ingrese en la BD.
   insertSubmitDocumentos() {
     console.log('Insertando...');
+    this.documentosForm.patchValue({
+      historial: ({
+        1: ({
+          tienda: this.documentosForm.get('detalles.origen').value,
+          fecha: Date.now(),
+          estado: 'Recibido'
+        })
+      })
+    });
+
+
     this._misEnvios.addEnvio(this.documentosForm.value);
     this.cleanForms();
+  }
+
+  // Función para determinar el peso facturable.
+  getPesoFacturable() {
+    const pesoDimensional = this.pesaje.getPesoDimensional((this.paquetesForm.get('especificaciones.largo').value *
+                                                    this.paquetesForm.get('especificaciones.ancho').value *
+                                                    this.paquetesForm.get('especificaciones.alto').value));
+
+    const pesoReal =  this.paquetesForm.get('especificaciones.peso').value;
+    if (pesoDimensional > pesoReal) {
+      return pesoDimensional;
+    } else {
+      return pesoReal;
+    }
   }
 
 }

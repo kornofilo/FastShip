@@ -49,7 +49,7 @@ export class OperacionesSubRutasComponent implements OnInit {
       horarioSalida: ['', Validators.required],
       tiempoRecorrido: ['', Validators.required],
       tipoRuta: ['', Validators.required],
-      
+
     });
   }
 
@@ -59,4 +59,3 @@ export class OperacionesSubRutasComponent implements OnInit {
   }
 
 }
-

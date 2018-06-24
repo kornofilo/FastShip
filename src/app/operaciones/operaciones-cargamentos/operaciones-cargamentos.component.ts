@@ -1,48 +1,55 @@
-import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { MetodosEnvio, TiposMetodosEnvio } from '../../classes/metodos-envio';
+import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 declare let $: any;
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Cargamento } from '../../classes/cargamento';
+import { Transporte } from '../../classes/transporte';
 
 // Firebase
 import { AuthService } from '../../services/auth.service';
 import {  FirestoreCargamentoEnvioService} from '../../services/firestore-cargamento-envio.service';
+import { FirestoreTransportesEnvioService} from '../../services/firestore-transportes-envio.service';
 
 @Component({
   selector: 'app-operaciones-cargamentos',
   templateUrl: './operaciones-cargamentos.component.html',
   styleUrls: ['./operaciones-cargamentos.component.css']
 })
-export class OperacionesCargamentosComponent implements  OnInit, OnDestroy, OnChanges {
+export class OperacionesCargamentosComponent implements  OnInit, OnDestroy,OnChanges {
   arr: Cargamento[] = [];
-  updClicked = false;
-  iME: string;
-  newMetodoCargamento: Cargamento;
+  arrTransporte: Transporte[] = [];
   // Elementos del Form
-  form: FormGroup;
   cargamentoForm: FormGroup;
-
+  tipoEnvio= ['Aereo', 'Terrestre', 'Maritimo'];
 
   // Suscripcipción
   private firebaseSubscription: Subscription;
+  private firestoreTransportesSubscription: Subscription;
 
-  constructor(public authService: AuthService, public _data: FirestoreCargamentoEnvioService, private fb: FormBuilder) {
+  constructor(public authService: AuthService, public _data: FirestoreCargamentoEnvioService,
+     public _misTransporte: FirestoreTransportesEnvioService,
+    private fb: FormBuilder) {
   }
 
   ngOnInit() {
       // Obtenemos los métodos envío registrados en la base de datos.
       this.firebaseSubscription = this._data.getCargamento().subscribe(
-        (cargamento: Cargamento[]) => {
+      (cargamento: Cargamento[]) => {
          this.arr = cargamento;
+           console.log(this.arr)
+       }
+      );
+      // Obtenemos los Transportes
+      this.firestoreTransportesSubscription = this._misTransporte.getTransporte().subscribe(
+        (transporte: Transporte[]) => {
+        this.arrTransporte = transporte;
        }
       );
 
     // Inicialización de los elementos de Materialize que requieren Jquery.
     $(function() {
-      $('.collapsible').collapsible();
+    $('.collapsible').collapsible();
       $('select').formSelect();
-      $('.dropdown-trigger').dropdown();
       $('.modal').modal();
       $('.datepicker').datepicker({
           container: 'body'
@@ -54,15 +61,33 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy, OnCh
   // Finalizamos la suscripción con el servicio al cerrar el componente.
   ngOnDestroy() {
     this.firebaseSubscription.unsubscribe();
+    this.firestoreTransportesSubscription.unsubscribe();
   }
+
   ngOnChanges() {
-    //this.cleanForm();
+    this.cleanForm();
   }
+
   createForm() {
     this.cargamentoForm = this.fb.group({
-      tipos: ['', Validators.required],
+
+
+      fechaCarga: ['', Validators.required],
+      tipoEnvio: ['', Validators.required],
+       idTransp: ['Transporte', Validators.required],
+      numTracking: ['', Validators.required],
+      estado: ['', Validators.required],
+
 
     });
   }
 
+  insertSubmit() {
+    console.log('Insertando...');
+    this._data.addCargamento(this.cargamentoForm.value);
+  }
+
+  cleanForm() {
+    this.cargamentoForm.reset();
+  }
 }

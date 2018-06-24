@@ -20,6 +20,7 @@ import { OperacionesSubRutasComponent } from './operaciones/operaciones-sub-ruta
 import { OperacionesNavbarComponent } from './operaciones/operaciones-navbar/operaciones-navbar.component';
 import { OperacionesSidenavComponent } from './operaciones/operaciones-sidenav/operaciones-sidenav.component';
 import { OperacionesCargamentosComponent } from './operaciones/operaciones-cargamentos/operaciones-cargamentos.component';
+import { OficinaEnviosEstadosComponent } from './oficina/oficina-envios-estados/oficina-envios-estados.component';
 
 // import { MaterializeModule } from 'angular2-materialize';
 import { AuthService } from './services/auth.service';
@@ -51,6 +52,7 @@ const routes: Routes = [
   {  path: 'oficina',  component: OficinaComponent, canActivate: [AuthGuard]},
   {  path: 'tiendas/:tipo',  component: OficinaRutasComponent, canActivate: [AuthGuard]},
   {  path: 'envios',  component: OficinaEnviosComponent, canActivate: [AuthGuard]},
+  {  path: 'envios-estados',  component: OficinaEnviosEstadosComponent, canActivate: [AuthGuard]},
   {  path: 'rutas',  component: OperacionesRutasComponent, canActivate: [AuthGuard]},
   {  path: 'subrutas',  component: OperacionesSubRutasComponent, canActivate: [AuthGuard]},
   {  path: 'cargamentos',  component: OperacionesCargamentosComponent, canActivate: [AuthGuard]}
@@ -72,7 +74,8 @@ const routes: Routes = [
     OficinaEnviosComponent,
     OperacionesRutasComponent,
     OperacionesSubRutasComponent,
-    OperacionesCargamentosComponent
+    OperacionesCargamentosComponent,
+    OficinaEnviosEstadosComponent
   ],
   imports: [
     BrowserModule,

@@ -71,13 +71,12 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
 
     $(function() {
       $('.collapsible').collapsible();
-      $('select').formSelect();
       $('.modal').modal();
       $('input#input_text, textarea#textarea2').characterCounter();
-       });
       $('.datepicker').datepicker({
         container: 'body'
       });
+    });
 
       this.createForms();
   }
@@ -237,10 +236,9 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
     const pesoFacturableValue = +this.getPesoFacturable();
     this.paquetesForm.patchValue({
       historial: ({
-        1: ({
+        Recibido: ({
           tienda: this.paquetesForm.get('detalles.origen').value,
           fecha: Date.now(),
-          estado: 'Recibido'
         })
       }),
       especificaciones: {

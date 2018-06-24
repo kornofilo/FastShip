@@ -12,6 +12,7 @@ export class OficinaSidenavComponent implements OnInit {
   ngOnInit() {
     $(document).ready(function() {
       $('.sidenav').sidenav();
+      $('.collapsible').collapsible();
     });
   }
 

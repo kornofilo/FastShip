@@ -42,7 +42,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 /* Array de Rutas */
 const routes: Routes = [
-  {  path: 'operaciones', component: OperacionesComponent, canActivate: [AuthGuard]},
+  {  path: '', component: OperacionesComponent, canActivate: [AuthGuard]},
   {  path: 'login', component: LoginComponent, canActivate: [IsLoggedGuard] },
   {  path: 'operaciones', component: OperacionesComponent, canActivate: [AuthGuard] },
   {  path: 'metodosEnvio', component: OperacionesMetodosEnvioComponent, canActivate: [AuthGuard]},

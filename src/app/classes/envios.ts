@@ -1,11 +1,19 @@
+
 export class Envios {
         id: string;
         estado: string;
         tipo: string;
+        historial: Historial[];
         numTracking: number;
         remitente: Remitente;
         destinatario: Destinatario;
         detalles: Detalles;
+}
+
+export class Historial {
+    estado: string;
+    tienda: string;
+    fecha: string;
 }
 
 
@@ -34,6 +42,7 @@ export class Especificaciones {
     ancho: number;
     alto: number;
     peso: number;
+    pesoFacturable: number;
     información: string;
     perecedero: boolean;
 }

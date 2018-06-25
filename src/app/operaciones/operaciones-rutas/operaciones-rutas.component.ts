@@ -17,6 +17,8 @@ import { FirestoreRutasService } from '../../services/firestore-rutas.service';
 })
 export class OperacionesRutasComponent implements OnInit {
   arr: Rutas[]=[];
+  updClicked = false;
+  iME: string;
   // Elementos del Form
   Rutaform: FormGroup;
    // Suscripcipción
@@ -49,6 +51,24 @@ export class OperacionesRutasComponent implements OnInit {
   insertSubmit() {
     console.log('Insertando...');
     this._data.addRutas(this.Rutaform.value);
+  }
+
+  onUpdate(Ruta) {
+    this.iME = Ruta.id;
+    this.updClicked = true;
+    this.Rutaform.patchValue({
+      tiendaOrigen: Ruta.tiendaOrigen,
+      tiendaDestino: Ruta.tiendaDestino,
+    });
+  }
+
+  updateSubmit() {
+    this._data.updateRuta(this.iME, this.Rutaform.value);
+    this.cleanForm();
+  }
+
+  cleanForm() {
+    this.Rutaform.reset();
   }
 
 }

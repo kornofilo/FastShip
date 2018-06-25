@@ -23,7 +23,7 @@
                       <p>- Estado Actual: {{item.estado}}</p>
                     </div>
                     <div class="card-action">                      
-                      <a class="pointer-delete modal-trigger"  href="#modalNE" materialize="modal">Actualizar Estado</a>
+                      <a class="pointer-delete modal-trigger" (click)="onUpdate(item)"  href="#modalNE" materialize="modal">Actualizar Estado</a>
                     </div>
                   </div>
                 </div>
@@ -43,18 +43,30 @@
   <!-- Modal que contiene el formulario de creación de los envíos (paquetes). -->
   <div id="modalNE" class="modal modal-fixed-footer">
       <div class="modal-content row">
-        <h4>Actualización de Estado</h4>    
+        <h4>Actualización de Estado</h4>  
+        <form [formGroup]="newEstadoForm">
+          <div class="input-field col s6">                         
+            <select class="form-control browser-default" formControlName="estado">
+                <option value="Estado" disabled selected>Estado</option>
+                <option *ngFor="let opcion of opcionesEstado" [value]="opcion">{{opcion}}</option>
+            </select>                      
+          </div>
+          <div class="input-field col s6" formGroupName="newEstado">
+            <select formControlName="tienda" class="browser-default form-control validate" required>
+              <option disabled>Tienda</option>  
+              <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre">{{oficina.nombre}}</option> 
+            </select>
+          </div>
+        </form>  
       </div>
-      <form [formGroup]="newEstadoForm">
-
-      </form>
+      
 
 
 
 
       <div class="modal-footer">
-        <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Actualizar</button>        
-        <a class="modal-close btn-flat red-text" (click)='cleanForms()'>Cancelar</a>
+        <button (click)='updateSubmit()'  class="modal-close btn-flat green-text">Actualizar</button>        
+        <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
       </div>
   </div>  <!-- Fin de modal de crear envío (paquete) -->   
 </body>

@@ -36,4 +36,13 @@ export class FirestoreEnviosService {
   addEnvio(newEnvio) {
     this.enviosCollection.doc('FS-' + this._afs.createId()).set(newEnvio);
   }
+
+  updateEstadoEnvio(iE, newHistorial, newEstado) {
+  console.log(newEstado , newHistorial);
+  this.enviosDoc = this._afs.doc('guias/' + iE);
+    this.enviosDoc.update({
+      estado: newEstado,
+      ['historial.' + newEstado]: newHistorial
+    });
+  }
 }

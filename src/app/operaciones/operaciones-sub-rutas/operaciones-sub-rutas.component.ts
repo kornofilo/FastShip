@@ -44,6 +44,7 @@ export class OperacionesSubRutasComponent implements OnInit {
 
   createForm() {
     this.subRutaform = this.fb.group({
+      nombreRuta: ['', Validators.required],
       tiendaOrigen: ['', Validators.required],
       tiendaDestino: ['', Validators.required],
       horarioSalida: ['', Validators.required],

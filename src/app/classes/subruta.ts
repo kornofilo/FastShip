@@ -1,5 +1,6 @@
 export class Subruta {
     id:String;
+    nombreRuta: String;
     tiendaOrigen:String;
     tiendaDestino:String;
     horarioSalida:String;

@@ -7,6 +7,9 @@ import { Subscription } from 'rxjs';
 //Firebase
 import { AuthService } from '../../services/auth.service';
 import { FirestoreSubrutasService } from '../../services/firestore-subrutas.service';
+import { FirestoreEnviosService } from '../../services/firestore-envios.service';
+import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
+import { Oficina } from '../../classes/oficina';
 
 //Services
 
@@ -18,13 +21,16 @@ import { FirestoreSubrutasService } from '../../services/firestore-subrutas.serv
 })
 export class OperacionesSubRutasComponent implements OnInit {
   arr: Subruta[] = [];
+  arrOficinas: Oficina[] = [];
   // Elementos del Form
   subRutaform: FormGroup;
   tipoRuta = ['Aereo', 'Terreste', 'Maritimo'];
   // Suscripcipción
   private firebaseSubscription: Subscription;
+  private firestoreOficinasEnvioSubscription: Subscription;
 
-  constructor(public authService: AuthService, public _data: FirestoreSubrutasService, private fb: FormBuilder) {
+  constructor(public authService: AuthService, public _data: FirestoreSubrutasService, private fb: FormBuilder, public _misTiendas: FirestoreOficinaService) {
+    
   }
 
   ngOnInit() {
@@ -33,6 +39,14 @@ export class OperacionesSubRutasComponent implements OnInit {
       console.log(this.arr)
     }
   );
+
+  //get oficina
+  this.firestoreOficinasEnvioSubscription = this._misTiendas.getOficinasNRT().subscribe(
+    (oficina: Oficina[]) => {
+    this.arrOficinas = oficina;
+   }
+  );
+
 
   $(function() {
     $('.modal').modal();

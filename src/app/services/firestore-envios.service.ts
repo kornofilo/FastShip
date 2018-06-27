@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
-import { map, take, last } from 'rxjs/operators';
+import { map, take, last, switchMap } from 'rxjs/operators';
 import { Envios } from '../classes/envios';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +17,10 @@ export class FirestoreEnviosService {
   arrEnvios: Envios[];
   newNumTracking: number;
   private ultNumTracking: number[];
+
   constructor(public _afs: AngularFirestore) {
     this.enviosCollection = this._afs.collection('/guias');
+
     this.envios = this.enviosCollection.snapshotChanges().pipe(map(
       changes => {
         return changes.map(
@@ -28,6 +32,8 @@ export class FirestoreEnviosService {
 
       }));
   }
+
+  
 
   getEnvios() {
     return this.envios;

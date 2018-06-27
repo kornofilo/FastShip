@@ -16,7 +16,8 @@
         <div class="col s4" *ngFor="let item of arr">
           <div class="card grey darken-4 white-text">
               <span class="card-title"></span>
-            <div class="card-content">                        
+            <div class="card-content">
+              <p>Nombre de la Sub-ruta: {{item.nombreRuta}}</p>
               <p>Horario Salida: {{item.horarioSalida}}</p>
               <p>Tiempo de Recorrido: {{item.tiempoRecorrido}}</p>
               <p>Tienda de Origen: {{item.tiendaOrigen}}</p>
@@ -48,6 +49,11 @@
         <h4>Crear Sub-Ruta</h4>
         
         <form [formGroup]="subRutaform">
+          
+          <div class="input-field col s6"> 
+                <label for="nombreRuta">Nombre de la Ruta</label>
+                <input class="form-control" id="nombreRuta" formControlName="nombreRuta" type="text" class="validate">
+          </div>
 
           <div class="input-field col s6"> 
             <label for="horarioSalida">Horario de Salida</label>

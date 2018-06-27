@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestoreCollection, AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Rutas } from '../classes/rutas';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { map, share } from 'rxjs/operators';
 export class FirestoreRutasService {
   Rutacollection: AngularFirestoreCollection<Rutas>;
   Rutas: Observable<Rutas[]>;
-  RutasDoc: AngularFirestoreCollection<Rutas>;
+  RutasDoc: AngularFirestoreDocument<Rutas>;
 
   constructor(public _afs: AngularFirestore) {
     this.Rutacollection = this._afs.collection('/rutas');
@@ -33,6 +33,11 @@ getRutas() {
 
 addRutas(rutas) {
   this.Rutacollection.add(rutas);
+}
+
+updateRuta(iME, rutas) {
+  this.RutasDoc = this._afs.doc('rutas/' + iME);
+  this.RutasDoc.update(rutas);
 }
 
 }

@@ -48,25 +48,33 @@
       <h4>Creación de Cargamento</h4>
 
       <form [formGroup]="cargamentoForm">
+
   <!-- Campo de Fecha de Cargamento -->
   <div class="input-field col s3">
     <input type="date" formControlName="fechaCarga">
     <label for="fechaCarga">Fecha de Envío</label>
   </div>
+
+
+
   <!-- Campo del Metodo de Envio -->
         <div class="input-field col s3">
-            <select formControlName="tipoEnvio"  class="form-control browser-default validate"  >
-              <option disabled selected>Metodo de Envio</option>
-              <option *ngFor="let opcion of tipoEnvio" [value]="opcion">{{opcion}}</option>
+            <select formControlName="metodoTransp"  class="form-control browser-default validate"  >
+              <option disabled selected>Tipo de Envio</option>
+              <option *ngFor="let opcion of   metodoTransp" [value]="opcion" (click)='selTransporte(idplaca)'>{{opcion}}</option>
+
             </select>
         </div>
 
         <div class="input-field col s3">
-          <select formControlName="idTransp" class="browser-default form-control validate" required>
-            <option disabled>Transporte</option>
-            <option *ngFor="let transporte of arrTransporte" [value]="transporte.Aereo">{{transporte.Aereo}}</option>
+          <select formControlName="idTransp"class="browser-default form-control validate" required>
+            <option disabled>ID Transporte</option>
+            <option *ngFor="let transporte of arrTipo " [value]="transporte.idplaca">{{transporte.idplaca}}</option>
           </select>
         </div>
+
+
+
 
         <table class="responsive-table">
                <thead>
@@ -77,10 +85,10 @@
                  </tr>
                </thead>
                <tbody>
-                 <tr>
-                   <td>Alvin</td>
-                   <td>Eclair</td>
-                   <td>$0.87</td>
+                 <tr *ngFor="let envios of arrEnvios">
+                   <td>{{envios.id}}</td>
+                   <td>{{envios.tipo}}</td>
+                   <td>{{envios.detalles.origen}}</td>
                  </tr>
                  <tr>
                    <td>Alan</td>

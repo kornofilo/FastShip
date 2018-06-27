@@ -107,9 +107,10 @@ constructor(public _misEnvios: FirestoreEnviosService, private fb: FormBuilder, 
     });
     newEH = {
       tienda: this.newEstadoForm.value.newEstado.tienda,
-      fecha: this.newEstadoForm.value.newEstado.fecha
+      fecha: this.newEstadoForm.value.newEstado.fecha,
+      estado: this.newEstadoForm.get('estado').value,
     };
-    this._misEnvios.updateEstadoEnvio(this.iE, newEH, this.newEstadoForm.value.estado);
+    this._misEnvios.updateEstadoEnvio(this.iE, newEH);
   }
 
 

@@ -1,13 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+   import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Oficina } from '../../classes/oficina';
 declare let $: any;
 
 // Firebase
-import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase/app';
-import { AuthService } from '../../services/auth.service';
 import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
-import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 import { Form } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -27,12 +23,11 @@ export class OficinaRutasComponent implements OnInit, OnDestroy {
   model = { nombre: '', tipo: '', direccion: '', posGeografica: {lat: 0, long: 0},
   horario: {diasLaborables: '', horaApertura: '', horaCierre: ''}, disponibilidad: {envia: false, recibe: false}};
 
-    constructor(public authService: AuthService, public _data: FirestoreOficinaService, public route: ActivatedRoute) {}
+    constructor(public _data: FirestoreOficinaService, public route: ActivatedRoute) {}
 
 
     ngOnInit() {
       this.tipo = this.route.snapshot.params['tipo'];
-      console.log(this.tipo);
       // Obtenemos las oficinas registradas en la base de datos.
       this.firebaseSubscription = this._data.getOficinasType(this.tipo).subscribe(
         (oficina: Oficina[]) => {

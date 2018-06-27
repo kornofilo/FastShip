@@ -6,5 +6,6 @@ export class Cargamento {
    idTransp: string;
     tiendaDestin: string;
     numTracking: string [];
+    tipoPaquete: string[];
     estado: string;
 }

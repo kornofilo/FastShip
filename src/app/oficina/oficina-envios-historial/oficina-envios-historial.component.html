@@ -1,0 +1,40 @@
+<!-- Barra de Navegación Superior -->
+<app-operaciones-navbar></app-operaciones-navbar>    
+<body>
+
+<div class="row">
+  <!-- Barra de Navegación Lateral -->
+  
+  <app-oficina-sidenav></app-oficina-sidenav>      
+
+      <!-- Cuerpo de la Sección -->
+      <div class="col s9 offset-s3">
+          <div class="row">
+              <h5 class="center-align">Historial del Envío: {{trackingNumber}} </h5>
+          </div> <hr>   
+          
+          <ul class="collection" *ngIf="arr.length>0;else noData">
+            <li class="collection-item avatar" *ngFor="let item of arr">
+              
+              <i class="medium material-icons circle green" *ngIf="item == arr[0];else noLast">arrow_upward</i>
+              <ng-template #noLast>
+                  <i class="medium material-icons circle green">check</i>
+              </ng-template>
+              <span class="title"><b>{{item.estado}} </b> </span>
+              <p> Fecha: {{item.fecha | date: 'dd/mm/yyyy h:mm:ss a'}} <br>
+                  Tienda: {{item.tienda}}
+              </p>
+            </li>
+          </ul>                          
+      </div>        
+    </div>
+
+  <!-- Mensaje en caso no existan envíos.-->
+  <div class="container">
+    <ng-template #noData>
+      
+      <h5 class="center-align">Este número de envío no se encuentra registrado.</h5>
+    </ng-template>
+  </div>
+  
+</body>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 import { Transporte } from '../classes/transporte';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,8 +12,12 @@ export class FirestoreTransportesEnvioService {
   transporteCollection: AngularFirestoreCollection<Transporte>;
   transporte: Observable<Transporte[]>;
   transporteDoc: AngularFirestoreDocument<Transporte>;
+
+
   constructor(public _afs: AngularFirestore) {
-    this.transporteCollection = this._afs.collection('/transporte', ref => ref.orderBy('id'));
+
+
+    this.transporteCollection = this._afs.collection('/transporte');
     this.transporte = this.transporteCollection.snapshotChanges().pipe(map(
       changes => {
         return changes.map(
@@ -24,7 +29,13 @@ export class FirestoreTransportesEnvioService {
 
       }));
   }
-
+  //////////
+  getTransporteType(idplaca: string) {
+    this.transporteCollection = this._afs.collection('/transporte', ref => ref.where('idplaca', '==', idplaca));
+    this.transporte = this.transporteCollection.valueChanges();
+    return this.transporte;
+  }
+/////////////
     getTransporte() {
       return this.transporte;
     }

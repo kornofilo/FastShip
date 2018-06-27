@@ -7,8 +7,10 @@ import { Subscription } from 'rxjs';
 //Firebase
 import { AuthService } from '../../services/auth.service';
 import { FirestoreSubrutasService } from '../../services/firestore-subrutas.service';
-import { FirestoreEnviosService } from '../../services/firestore-envios.service';
+
 import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
+
+//importamos la clase oficina para tener acceso a las oficinas regisradas
 import { Oficina } from '../../classes/oficina';
 
 //Services
@@ -26,9 +28,12 @@ export class OperacionesSubRutasComponent implements OnInit {
   subRutaform: FormGroup;
   tipoRuta = ['Aereo', 'Terreste', 'Maritimo'];
   // Suscripcipción
-  private firebaseSubscription: Subscription;
-  private firestoreOficinasEnvioSubscription: Subscription;
+  firebaseSubscription: Subscription;
 
+
+  //subcripcion de oficinas envios 
+  firestoreOficinasEnvioSubscription: Subscription;
+//agregamos mis tiendas al constructor
   constructor(public authService: AuthService, public _data: FirestoreSubrutasService, private fb: FormBuilder, public _misTiendas: FirestoreOficinaService) {
     
   }

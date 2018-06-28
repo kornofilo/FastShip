@@ -1644,7 +1644,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Barra de Navegación Superior -->\r\n<app-operaciones-navbar></app-operaciones-navbar>    \r\n\r\n<div class=\"row\">\r\n  <!-- Barra de Navegación Lateral -->\r\n  <app-operaciones-sidenav></app-operaciones-sidenav>      \r\n\r\n      <!-- Cuerpo de la Sección -->\r\n      <div class=\"col s9 offset-s3\">\r\n        <div class=\"row\">\r\n          <a class=\"btn-large col s3 offset-s1 green modal-trigger\" href=\"#modalruta\" materialize=\"modal\">Crear Ruta</a>      \r\n      </div>   \r\n      \r\n      <!-- Lista de oficinas -->\r\n      <div class=\"col s9\" *ngIf=\"arr.length>0;else noData\">\r\n        <div class=\"col s4\" *ngFor=\"let item of arr\">\r\n          <div class=\"card grey darken-4 white-text\">\r\n              <span class=\"card-title\"></span>\r\n            <div class=\"card-content\">                        \r\n              <p>Tienda de Origen: {{item.tiendaOrigen}}</p>\r\n              <p>Tienda de Destino: {{item.tiendaDestino}}</p>\r\n              <p>Opcion de Sub-ruta #1: {{item.Opcion1}}</p>\r\n              <p>Opcion de Sub-ruta #2: {{item.Opcion2}}</p>\r\n              <p>Opcion de Sub-ruta #3: {{item.Opcion3z}}</p>\r\n            </div>\r\n            <div class=\"card-action\">\r\n              <a class=\"modal-trigger\" (click)=\"onUpdate(item)\" href=\"#modalruta\">Modificar</a>\r\n            </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Mensaje en caso no existan métodos de envío -->\r\n  <div class=\"container\">\r\n    <ng-template #noData>\r\n      \r\n      <h5 class=\"center-align\">No existen Rutas registradas</h5>\r\n    </ng-template>\r\n  </div>\r\n  \r\n\r\n    <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->\r\n  <div id=\"modalruta\" class=\"modal modal-fixed-footer\">\r\n      <div class=\"modal-content row\">\r\n        <h4>Crear Ruta</h4>\r\n        \r\n        <form [formGroup]=\"Rutaform\">\r\n\r\n              <div class=\"input-field col s6\">\r\n                <label for=\"tiendaOrigen\">Tienda de Origen</label>\r\n                <input class=\"form-control\" formControlName=\"tiendaOrigen\" id=\"tiendaOrigen\" placeholde=\"Origen del Envio\" type=\"text\" class=\"validate\">\r\n              </div>\r\n              \r\n              <div class=\"input-field col s6\">\r\n                  <label for=\"tiendaDestino\">Tienda Destino</label>\r\n                  <input class=\"form-control\" formControlName=\"tiendaDestino\" id=\"tiendaDestino\" placeholde=\"Destino del Envio\" type=\"text\" class=\"validate\">\r\n                </div>\r\n\r\n        </form>       \r\n        <p>Form value: {{ Rutaform.value | json }}</p>\r\n        <p>Form status: {{ Rutaform.status | json }}</p>\r\n      </div>\r\n\r\n      <div class=\"modal-footer\">\r\n        <button (click)='insertSubmit()' type=\"submit\" *ngIf=\"Rutaform.status === 'VALID'\" class=\"modal-close btn-flat green-text\">Crear</button>        \r\n        <button (click)='updateSubmit(metodoEnvio)' *ngIf=\"updClicked === true\"  class=\"modal-close btn-flat green-text\">Actualizar</button>        \r\n        <a class=\"modal-close btn-flat red-text\" (click)='cleanForm()'>Cancelar</a>\r\n      </div>\r\n      \r\n    </div>      "
+module.exports = "<!-- Barra de Navegación Superior -->\r\n<app-operaciones-navbar></app-operaciones-navbar>    \r\n\r\n<div class=\"row\">\r\n  <!-- Barra de Navegación Lateral -->\r\n  <app-operaciones-sidenav></app-operaciones-sidenav>      \r\n\r\n      <!-- Cuerpo de la Sección -->\r\n      <div class=\"col s9 offset-s3\">\r\n        <div class=\"row\">\r\n          <a class=\"btn-large col s3 offset-s1 green modal-trigger\" href=\"#modalruta\" materialize=\"modal\">Crear Ruta</a>      \r\n      </div>   \r\n      \r\n      <!-- Lista de oficinas -->\r\n      <div class=\"col s9\" *ngIf=\"arr.length>0;else noData\">\r\n        <div class=\"col s4\" *ngFor=\"let item of arr\">\r\n          <div class=\"card grey darken-4 white-text\">\r\n              <span class=\"card-title\"></span>\r\n            <div class=\"card-content\">                        \r\n              <p>Tienda de Origen: {{item.tiendaOrigen}}</p>\r\n              <p>Tienda de Destino: {{item.tiendaDestino}}</p>\r\n              <p>Opcion de Sub-ruta #1: {{item.Opcion1}}</p>\r\n              <p>Opcion de Sub-ruta #2: {{item.Opcion2}}</p>\r\n              <p>Opcion de Sub-ruta #3: {{item.Opcion3}}</p>\r\n              <p>Opcion de Sub-ruta #4: {{item.Opcion4}}</p>\r\n            </div>\r\n            <div class=\"card-action\">\r\n              <a class=\"modal-trigger\" (click)=\"onUpdate(item)\" href=\"#modalruta\">Modificar</a>\r\n            </div>\r\n          </div>\r\n        </div>\r\n    </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Mensaje en caso no existan métodos de envío -->\r\n  <div class=\"container\">\r\n    <ng-template #noData>\r\n      \r\n      <h5 class=\"center-align\">No existen Rutas registradas</h5>\r\n    </ng-template>\r\n  </div>\r\n  \r\n\r\n    <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->\r\n  <div id=\"modalruta\" class=\"modal modal-fixed-footer\">\r\n      <div class=\"modal-content row\">\r\n        <h4>Crear Ruta</h4>\r\n        \r\n        <form [formGroup]=\"Rutaform\">\r\n\r\n              <div class=\"input-field col s6\">\r\n                  <div class=\"input-field col s3\">\r\n                      <select formControlName=\"tiendaOrigen\" class=\"browser-default form-control validate\" required>\r\n                        <option disabled>Origen</option>  \r\n                        <option *ngFor=\"let oficina of arrOficinas\" [value]=\"oficina.nombre\" id=\"tiendaOrigen\">{{oficina.nombre}}</option> \r\n                      </select>\r\n                    </div>\r\n\r\n                    <div class=\"input-field col s3\">\r\n                        <select formControlName=\"tiendaDestino\" class=\"browser-default form-control validate\" required>\r\n                          <option disabled>Destino</option>  \r\n                          <option *ngFor=\"let oficina of arrOficinas\" [value]=\"oficina.nombre\" id=\"tiendaDestino\">{{oficina.nombre}}</option> \r\n                        </select>\r\n                      </div>\r\n              </div>\r\n\r\n             \r\n          <div class=\"input-field col s3\">\r\n            <select formControlName=\"Opcion1\" class=\"browser-default form-control validate\" required>\r\n              <option disabled>Elejir sub-rutas</option>  \r\n              <option  *ngFor=\"let subruta of arrSubruta\" [value]=\"subruta.nombreRuta\" id=\"Opcion1\" >{{subruta.nombreRuta}}</option> \r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"input-field col s3\">\r\n            <select formControlName=\"Opcion2\" class=\"browser-default form-control validate\">\r\n              <option disabled>Elejir sub-rutas</option>  \r\n              <option  *ngFor=\"let subruta of arrSubruta\" [value]=\"subruta.nombreRuta\" id=\"Opcion2\" >{{subruta.nombreRuta}}</option> \r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"input-field col s3\">\r\n            <select formControlName=\"Opcion3\" class=\"browser-default form-control validate\" >\r\n              <option disabled>Elejir sub-rutas</option>  \r\n              <option  *ngFor=\"let subruta of arrSubruta\" [value]=\"subruta.nombreRuta\" id=\"Opcion3\" >{{subruta.nombreRuta}}</option> \r\n            </select>\r\n          </div>\r\n\r\n          <div class=\"input-field col s3\">\r\n            <select formControlName=\"Opcion4\" class=\"browser-default form-control validate\">\r\n              <option disabled>Elejir sub-rutas</option>  \r\n              <option  *ngFor=\"let subruta of arrSubruta\" [value]=\"subruta.nombreRuta\" id=\"Opcion4\" >{{subruta.nombreRuta}}</option> \r\n            </select>\r\n          </div>\r\n\r\n        </form>       \r\n        <p>Form value: {{ Rutaform.value | json }}</p>\r\n        <p>Form status: {{ Rutaform.status | json }}</p>\r\n      </div>\r\n\r\n      <div class=\"modal-footer\">\r\n        <button (click)='insertSubmit()' type=\"submit\" *ngIf=\"Rutaform.status === 'VALID'\" class=\"modal-close btn-flat green-text\">Crear</button>        \r\n        <button (click)='updateSubmit(metodoEnvio)' *ngIf=\"updClicked === true\"  class=\"modal-close btn-flat green-text\">Actualizar</button>        \r\n        <a class=\"modal-close btn-flat red-text\" (click)='cleanForm()'>Cancelar</a>\r\n      </div>\r\n      \r\n    </div>      "
 
 /***/ }),
 
@@ -1662,6 +1662,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _services_firestore_rutas_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/firestore-rutas.service */ "./src/app/services/firestore-rutas.service.ts");
+/* harmony import */ var _services_firestore_subrutas_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/firestore-subrutas.service */ "./src/app/services/firestore-subrutas.service.ts");
+/* harmony import */ var _services_firestore_oficina_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/firestore-oficina.service */ "./src/app/services/firestore-oficina.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1676,13 +1678,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 //Firebase
 
 
+
+
 //Services
 var OperacionesRutasComponent = /** @class */ (function () {
-    function OperacionesRutasComponent(authService, _data, fb) {
+    function OperacionesRutasComponent(authService, _data, _subruta, _misTiendas, fb) {
         this.authService = authService;
         this._data = _data;
+        this._subruta = _subruta;
+        this._misTiendas = _misTiendas;
         this.fb = fb;
         this.arr = [];
+        this.arrSubruta = [];
+        this.arrOficinas = [];
         this.updClicked = false;
     }
     OperacionesRutasComponent.prototype.ngOnInit = function () {
@@ -1690,6 +1698,13 @@ var OperacionesRutasComponent = /** @class */ (function () {
         this.firebaseSubscription = this._data.getRutas().subscribe(function (Ruta) {
             _this.arr = Ruta;
             console.log(_this.arr);
+        });
+        this.firestoreSubrutaSubscription = this._subruta.getSubRutas().subscribe(function (subruta) {
+            _this.arrSubruta = subruta;
+            console.log(_this.arrSubruta);
+        });
+        this.firestoreOficinasEnvioSubscription = this._misTiendas.getOficinasNRT().subscribe(function (oficina) {
+            _this.arrOficinas = oficina;
         });
         $(function () {
             $('.modal').modal();
@@ -1699,6 +1714,10 @@ var OperacionesRutasComponent = /** @class */ (function () {
     };
     OperacionesRutasComponent.prototype.createForm = function () {
         this.Rutaform = this.fb.group({
+            Opcion1: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            Opcion2: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"]],
+            Opcion3: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"]],
+            Opcion4: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"]],
             tiendaOrigen: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             tiendaDestino: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
         });
@@ -1728,7 +1747,7 @@ var OperacionesRutasComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./operaciones-rutas.component.html */ "./src/app/operaciones/operaciones-rutas/operaciones-rutas.component.html"),
             styles: [__webpack_require__(/*! ./operaciones-rutas.component.css */ "./src/app/operaciones/operaciones-rutas/operaciones-rutas.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _services_firestore_rutas_service__WEBPACK_IMPORTED_MODULE_3__["FirestoreRutasService"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]])
+        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _services_firestore_rutas_service__WEBPACK_IMPORTED_MODULE_3__["FirestoreRutasService"], _services_firestore_subrutas_service__WEBPACK_IMPORTED_MODULE_4__["FirestoreSubrutasService"], _services_firestore_oficina_service__WEBPACK_IMPORTED_MODULE_5__["FirestoreOficinaService"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"]])
     ], OperacionesRutasComponent);
     return OperacionesRutasComponent;
 }());

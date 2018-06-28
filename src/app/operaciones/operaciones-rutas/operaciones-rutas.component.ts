@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import {Rutas} from '../../classes/rutas';
 import {Subruta} from '../../classes/subruta';
+import { Oficina } from '../../classes/oficina';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 declare let $: any;
 import { Subscription } from 'rxjs';
@@ -9,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { FirestoreRutasService } from '../../services/firestore-rutas.service';
 import { FirestoreSubrutasService } from '../../services/firestore-subrutas.service';
+import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
 
 //Services
 
@@ -20,6 +22,7 @@ import { FirestoreSubrutasService } from '../../services/firestore-subrutas.serv
 export class OperacionesRutasComponent implements OnInit {
   arr: Rutas[]=[];
   arrSubruta: Subruta[]=[];
+  arrOficinas: Oficina[] = [];
   updClicked = false;
   iME: string;
   // Elementos del Form
@@ -27,8 +30,9 @@ export class OperacionesRutasComponent implements OnInit {
    // Suscripcipción
   firebaseSubscription: Subscription;
   firestoreSubrutaSubscription: Subscription;
+  firestoreOficinasEnvioSubscription: Subscription; 
 
-  constructor(public authService: AuthService, public _data: FirestoreRutasService,public _subruta: FirestoreSubrutasService, private fb: FormBuilder) { }
+  constructor(public authService: AuthService, public _data: FirestoreRutasService,public _subruta: FirestoreSubrutasService, public _misTiendas: FirestoreOficinaService,private fb: FormBuilder) { }
 
   ngOnInit() {
     this.firebaseSubscription=this._data.getRutas().subscribe((Ruta:Rutas[])=>{
@@ -41,6 +45,12 @@ export class OperacionesRutasComponent implements OnInit {
       this.arrSubruta= subruta;
       console.log(this.arrSubruta);
     }
+  );
+
+  this.firestoreOficinasEnvioSubscription = this._misTiendas.getOficinasNRT().subscribe(
+    (oficina: Oficina[]) => {
+    this.arrOficinas = oficina;
+   }
   );
 
 

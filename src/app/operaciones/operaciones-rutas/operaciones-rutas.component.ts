@@ -53,7 +53,6 @@ export class OperacionesRutasComponent implements OnInit {
    }
   );
 
-
   $(function() {
     $('.modal').modal();
     $('select').formSelect();
@@ -68,6 +67,7 @@ export class OperacionesRutasComponent implements OnInit {
       Opcion2:  ['', Validators],
       Opcion3:  ['', Validators],
       Opcion4:  ['', Validators],
+      tiempoRecorrido: ['', Validators.required],
       tiendaOrigen: ['', Validators.required],
       tiendaDestino: ['', Validators.required],
     });

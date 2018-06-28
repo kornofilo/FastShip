@@ -105,11 +105,12 @@ private firebaseSubscription: Subscription;
         fecha: Date.now()
       }
     });
+
     newEH = {
       idTransporte: this.newEstadoForm.value.newEstado.idTransporte,
       fecha: this.newEstadoForm.value.newEstado.fecha
     };
-    this._data.updateEstadoEnvio(this.iE, newEH, this.newEstadoForm.value.estado);
+    this._data.updateEstadoEnvio(this.iE,this.newEstadoForm.value.estado);
   }
 
 }

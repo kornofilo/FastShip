@@ -53,7 +53,6 @@ export class OperacionesRutasComponent implements OnInit {
    }
   );
 
-
   $(function() {
     $('.modal').modal();
     $('select').formSelect();

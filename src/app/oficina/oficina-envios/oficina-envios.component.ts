@@ -236,9 +236,10 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
     const pesoFacturableValue = +this.getPesoFacturable();
     this.paquetesForm.patchValue({
       historial: ({
-        Recibido: ({
+        [Date.now()]: ({
           tienda: this.paquetesForm.get('detalles.origen').value,
           fecha: Date.now(),
+          estado: 'Recibido'
         })
       }),
       especificaciones: {
@@ -255,7 +256,7 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
     console.log('Insertando...');
     this.documentosForm.patchValue({
       historial: ({
-        1: ({
+        [Date.now()]: ({
           tienda: this.documentosForm.get('detalles.origen').value,
           fecha: Date.now(),
           estado: 'Recibido'

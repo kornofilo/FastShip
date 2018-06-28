@@ -59,6 +59,7 @@
             <label for="horarioSalida">Horario de Salida</label>
             <input class="form-control" id="horarioSalida" formControlName="horarioSalida" type="text" class="validate">
           </div>
+          
 
             <div class="input-field col s6"> 
                 <label for="tiempoRecorrido">Tiempo Recorrido</label>
@@ -81,7 +82,13 @@
                   <option *ngFor="let opcion of tipoRuta" [value]="opcion">{{opcion}}</option>
               </select>             
               </div> 
-              
+<!-- drop down trae oficinas llegando -->
+          <div class="input-field col s3">
+            <select formControlName="origen" class="browser-default form-control validate" required>
+              <option disabled>Origen</option>  
+              <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre">{{oficina.nombre}}</option> 
+            </select>
+          </div>
              
         </form>       
         <p>Form value: {{ subRutaform.value | json }}</p>

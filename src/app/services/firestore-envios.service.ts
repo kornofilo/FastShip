@@ -12,6 +12,7 @@ import { Envios } from '../classes/envios';
 export class FirestoreEnviosService {
   public enviosCollection: AngularFirestoreCollection<Envios>;
   envios: Observable<Envios[]>;
+  envio: Observable<Envios>;
   enviosDoc: AngularFirestoreDocument<Envios>;
   arrEnvios: Envios[];
   newNumTracking: number;
@@ -42,17 +43,22 @@ export class FirestoreEnviosService {
     return this.envios;
   }
 
+  getHistorialEnvios(tn) {
+    this.enviosDoc = this._afs.doc('guias/' + tn);
+    this.envio = this.enviosDoc.valueChanges();
+    return this.envio;
+  }
+
 
   addEnvio(newEnvio) {
     this.enviosCollection.doc('FS-' + this._afs.createId()).set(newEnvio);
   }
 
-  updateEstadoEnvio(iE, newHistorial, newEstado) {
-  console.log(newEstado , newHistorial);
+  updateEstadoEnvio(iE, newHistorial) {
   this.enviosDoc = this._afs.doc('guias/' + iE);
     this.enviosDoc.update({
-      estado: newEstado,
-      ['historial.' + newEstado]: newHistorial
+      estado: newHistorial.estado,
+      ['historial.' + newHistorial.fecha]: newHistorial
     });
   }
 }

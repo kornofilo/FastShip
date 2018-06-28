@@ -39,6 +39,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { OperacionesTransporteComponent } from './operaciones/operaciones-transporte/operaciones-transporte.component';
 
 
 
@@ -58,7 +59,8 @@ const routes: Routes = [
   {  path: 'envios-estados/:tn',  component: OficinaEnviosHistorialComponent, canActivate: [AuthGuard]},
   {  path: 'rutas',  component: OperacionesRutasComponent, canActivate: [AuthGuard]},
   {  path: 'subrutas',  component: OperacionesSubRutasComponent, canActivate: [AuthGuard]},
-  {  path: 'cargamentos',  component: OperacionesCargamentosComponent, canActivate: [AuthGuard]}
+  {  path: 'cargamentos',  component: OperacionesCargamentosComponent, canActivate: [AuthGuard]},
+  {  path: 'cargamentos/:origen',  component: OperacionesTransporteComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -78,6 +80,8 @@ const routes: Routes = [
     OperacionesRutasComponent,
     OperacionesSubRutasComponent,
     OperacionesCargamentosComponent,
+    OficinaEnviosEstadosComponent,
+    OperacionesTransporteComponent
     OficinaEnviosEstadosComponent,
     OficinaEnviosHistorialComponent,
   ],

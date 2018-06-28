@@ -21,7 +21,8 @@
               <p>Tienda de Destino: {{item.tiendaDestino}}</p>
               <p>Opcion de Sub-ruta #1: {{item.Opcion1}}</p>
               <p>Opcion de Sub-ruta #2: {{item.Opcion2}}</p>
-              <p>Opcion de Sub-ruta #3: {{item.Opcion3z}}</p>
+              <p>Opcion de Sub-ruta #3: {{item.Opcion3}}</p>
+              <p>Opcion de Sub-ruta #4: {{item.Opcion4}}</p>
             </div>
             <div class="card-action">
               <a class="modal-trigger" (click)="onUpdate(item)" href="#modalruta">Modificar</a>
@@ -57,6 +58,35 @@
                   <label for="tiendaDestino">Tienda Destino</label>
                   <input class="form-control" formControlName="tiendaDestino" id="tiendaDestino" placeholde="Destino del Envio" type="text" class="validate">
                 </div>
+
+                <!-- drop down trae oficinas llegando -->
+          <div class="input-field col s3">
+            <select formControlName="Opcion1" class="browser-default form-control validate" required>
+              <option disabled>Elejir sub-rutas</option>  
+              <option  *ngFor="let subruta of arrSubruta" [value]="subruta.nombreRuta" id="Opcion1" >{{subruta.nombreRuta}}</option> 
+            </select>
+          </div>
+
+          <div class="input-field col s3">
+            <select formControlName="Opcion2" class="browser-default form-control validate">
+              <option disabled>Elejir sub-rutas</option>  
+              <option  *ngFor="let subruta of arrSubruta" [value]="subruta.nombreRuta" id="Opcion2" >{{subruta.nombreRuta}}</option> 
+            </select>
+          </div>
+
+          <div class="input-field col s3">
+            <select formControlName="Opcion3" class="browser-default form-control validate" >
+              <option disabled>Elejir sub-rutas</option>  
+              <option  *ngFor="let subruta of arrSubruta" [value]="subruta.nombreRuta" id="Opcion3" >{{subruta.nombreRuta}}</option> 
+            </select>
+          </div>
+
+          <div class="input-field col s3">
+            <select formControlName="Opcion4" class="browser-default form-control validate">
+              <option disabled>Elejir sub-rutas</option>  
+              <option  *ngFor="let subruta of arrSubruta" [value]="subruta.nombreRuta" id="Opcion4" >{{subruta.nombreRuta}}</option> 
+            </select>
+          </div>
 
         </form>       
         <p>Form value: {{ Rutaform.value | json }}</p>

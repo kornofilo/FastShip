@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import {Rutas} from '../../classes/rutas';
+import {Subruta} from '../../classes/subruta';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 declare let $: any;
 import { Subscription } from 'rxjs';
@@ -7,6 +8,7 @@ import { Subscription } from 'rxjs';
 //Firebase
 import { AuthService } from '../../services/auth.service';
 import { FirestoreRutasService } from '../../services/firestore-rutas.service';
+import { FirestoreSubrutasService } from '../../services/firestore-subrutas.service';
 
 //Services
 
@@ -17,14 +19,16 @@ import { FirestoreRutasService } from '../../services/firestore-rutas.service';
 })
 export class OperacionesRutasComponent implements OnInit {
   arr: Rutas[]=[];
+  arrSubruta: Subruta[]=[];
   updClicked = false;
   iME: string;
   // Elementos del Form
   Rutaform: FormGroup;
    // Suscripcipción
-   private firebaseSubscription: Subscription;
+  firebaseSubscription: Subscription;
+  firestoreSubrutaSubscription: Subscription;
 
-  constructor(public authService: AuthService, public _data: FirestoreRutasService, private fb: FormBuilder) { }
+  constructor(public authService: AuthService, public _data: FirestoreRutasService,public _subruta: FirestoreSubrutasService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.firebaseSubscription=this._data.getRutas().subscribe((Ruta:Rutas[])=>{
@@ -32,6 +36,13 @@ export class OperacionesRutasComponent implements OnInit {
       console.log(this.arr)
     }
   );
+
+    this.firestoreSubrutaSubscription=this._subruta.getSubRutas().subscribe((subruta:Subruta[])=>{
+      this.arrSubruta= subruta;
+      console.log(this.arrSubruta);
+    }
+  );
+
 
   $(function() {
     $('.modal').modal();
@@ -43,6 +54,10 @@ export class OperacionesRutasComponent implements OnInit {
 
   createForm() {
     this.Rutaform = this.fb.group({
+      Opcion1:  ['', Validators.required],
+      Opcion2:  ['', Validators],
+      Opcion3:  ['', Validators],
+      Opcion4:  ['', Validators],
       tiendaOrigen: ['', Validators.required],
       tiendaDestino: ['', Validators.required],
     });

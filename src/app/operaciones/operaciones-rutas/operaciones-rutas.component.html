@@ -50,14 +50,14 @@
         <form [formGroup]="Rutaform">
 
               <div class="input-field col s6">
-                  <div class="input-field col s3">
+                  <div class="input-field col s6">
                       <select formControlName="tiendaOrigen" class="browser-default form-control validate" required>
                         <option disabled>Origen</option>  
                         <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre" id="tiendaOrigen">{{oficina.nombre}}</option> 
                       </select>
                     </div>
 
-                    <div class="input-field col s3">
+                    <div class="input-field col s6">
                         <select formControlName="tiendaDestino" class="browser-default form-control validate" required>
                           <option disabled>Destino</option>  
                           <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre" id="tiendaDestino">{{oficina.nombre}}</option> 
@@ -65,7 +65,7 @@
                       </div>
               </div>
 
-             
+  
           <div class="input-field col s3">
             <select formControlName="Opcion1" class="browser-default form-control validate" required>
               <option disabled>Elejir sub-rutas</option>  

@@ -144,6 +144,12 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
         telefono: ['', Validators.required]
       }),
 
+      historial: ({
+        estado: 'Recibido',
+        fecha: '',
+        tienda: ''
+      }),
+
       destinatario: this.fb.group({
         nombre: ['', Validators.required],
         apellido: ['', Validators.required],
@@ -257,13 +263,12 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
     this.documentosForm.patchValue({
       historial: ({
         [Date.now()]: ({
-          tienda: this.documentosForm.get('detalles.origen').value,
+          tienda: this.paquetesForm.get('detalles.origen').value,
           fecha: Date.now(),
           estado: 'Recibido'
         })
       })
     });
-
 
     this._misEnvios.addEnvio(this.documentosForm.value);
     this.cleanForms();

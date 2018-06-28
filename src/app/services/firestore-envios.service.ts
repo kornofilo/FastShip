@@ -33,7 +33,11 @@ export class FirestoreEnviosService {
       }));
   }
 
-  
+  getTiendasType(origen: string) {
+    this.enviosCollection = this._afs.collection('/guias', ref => ref.where('detalles.origen', '==', origen));
+    this.envios = this.enviosCollection.valueChanges();
+    return this.envios;
+  }
 
   getEnvios() {
     return this.envios;

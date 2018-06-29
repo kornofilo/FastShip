@@ -121,8 +121,8 @@
         </div>
 
         <div class="modal-footer">
-          <button (click)='insertSubmit()' *ngIf="updClicked === false" class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Crear</button>        
-          <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Actualizar</button>        
+          <button (click)='insertSubmit()' *ngIf="addform.status === 'VALID' && updClicked === false" class="modal-close btn-flat green-text">Crear</button>        
+          <button (click)='updateSubmit(metodoEnvio)' *ngIf="addform.status === 'VALID' && updClicked === true"  class="modal-close btn-flat green-text">Actualizar</button>        
           <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
         </div>
         

@@ -1,13 +1,14 @@
 
 export class Envios {
-       id: string;
-      estado: string;
-       tipo: string;
-       historial: Historial[];
-         numTracking: number;
-         remitente: Remitente;
-         destinatario: Destinatario;
-        detalles: Detalles;
+    id: string;
+    estado: string;
+    tipo: string;
+    historial: Historial[];
+    numTracking: number;
+    remitente: Remitente;
+    destinatario: Destinatario;
+    idTransporte: string;
+    detalles: Detalles;
 }
 
 export class Historial {
@@ -35,7 +36,6 @@ export class Detalles {
     destino: string;
     fechaEnvio: Date;
     tipoEnvio: string;
-    idTransporte: string;
 }
 
 export class Especificaciones {

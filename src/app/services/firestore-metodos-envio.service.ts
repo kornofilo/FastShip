@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
-import { map, share } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { MetodosEnvio } from '../classes/metodos-envio';
-
-// Toast de Materialize para notificaciones de acciones.
-// import { toast } from 'angular2-materialize';
-
 
 @Injectable({
   providedIn: 'root'
@@ -34,13 +30,16 @@ export class FirestoreMetodosEnvioService {
   }
 
   addMetodosEnvio(metodosEnvio) {
-    this.metodosEnvioCollection.add(metodosEnvio);
+   this.metodosEnvioCollection.add(metodosEnvio).
+    then()
+    .catch();
   }
 
   deleteMetodosEnvio(metodosEnvio) {
     this.metodosEnvioDoc = this._afs.doc('metodosEnvio/' + metodosEnvio.id);
-    this.metodosEnvioDoc.delete();
-    // toast('Metodo de Envío eliminado de manera Exitosa.', 4000);
+    this.metodosEnvioDoc.delete()
+    .then(() => 'Eliminado')
+    .catch();
   }
 
   updateMetodosEnvio(iME, updMetodoEnvio) {

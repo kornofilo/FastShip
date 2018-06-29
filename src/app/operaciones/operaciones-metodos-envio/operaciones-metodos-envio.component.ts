@@ -3,6 +3,7 @@ import { MetodosEnvio } from '../../classes/metodos-envio';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 declare let $: any;
 import { Subscription } from 'rxjs';
+declare var M: any;
 
 // Firebase
 import { AuthService } from '../../services/auth.service';
@@ -21,7 +22,6 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
   arr: MetodosEnvio[] = [];
   updClicked = false;
   iME: string;
-  newMetodoEnvio: MetodosEnvio;
   // Elementos del Form
   form: FormGroup;
   metodosEnvioForm: FormGroup;
@@ -65,7 +65,6 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
   insertSubmit() {
     console.log('Insertando...');
     this._data.addMetodosEnvio(this.metodosEnvioForm.value);
-    this.newMetodoEnvio = new MetodosEnvio;
   }
 
   createForm() {

@@ -40,6 +40,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { OperacionesTransporteComponent } from './operaciones/operaciones-transporte/operaciones-transporte.component';
+import { OficinaEnviosDetalleComponent } from './oficina/oficina-envios-detalle/oficina-envios-detalle.component';
 
 
 
@@ -55,6 +56,7 @@ const routes: Routes = [
   {  path: 'oficina',  component: OficinaComponent, canActivate: [AuthGuard]},
   {  path: 'tiendas/:tipo',  component: OficinaRutasComponent, canActivate: [AuthGuard]},
   {  path: 'envios',  component: OficinaEnviosComponent, canActivate: [AuthGuard]},
+  {  path: 'envios/:tn',  component: OficinaEnviosDetalleComponent, canActivate: [AuthGuard]},
   {  path: 'envios-estados',  component: OficinaEnviosEstadosComponent, canActivate: [AuthGuard]},
   {  path: 'envios-estados/:tn',  component: OficinaEnviosHistorialComponent, canActivate: [AuthGuard]},
   {  path: 'rutas',  component: OperacionesRutasComponent, canActivate: [AuthGuard]},
@@ -83,7 +85,8 @@ const routes: Routes = [
     OficinaEnviosEstadosComponent,
     OperacionesTransporteComponent,
     OficinaEnviosEstadosComponent,
-    OficinaEnviosHistorialComponent
+    OficinaEnviosHistorialComponent,
+    OficinaEnviosDetalleComponent,
   ],
   imports: [
     BrowserModule,

@@ -35,7 +35,7 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy {
       this.firebaseSubscription = this._data.getCargamento().subscribe(
       (cargamento: Cargamento[]) => {
          this.arr = cargamento;
-           console.log(this.arr)
+           console.log(this.arr);
        }
       );
 

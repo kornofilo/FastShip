@@ -46,83 +46,86 @@
     <div id="modalCrearOficina" class="modal modal-fixed-footer">
         <div class="modal-content row">
           <h4>Creación de Oficina</h4>
-          <form name='formAddOficina' #addform="ngForm">
+          <form [formGroup]="oficinasForm">
               <!-- Campo de Nombre de la Oficina -->
               <div class="input-field col s6">
-                  <input [(ngModel)]="model.nombre" name="nombre" type="text" class="form-control validate" required #nombre="ngModel">
-                  <label for="nombre">Nombre de la Oficina</label>
-              </div>
-              
-              <!-- Campo de Tipo de la Oficina -->
-              <div class="input-field col s6">
-                  <select [(ngModel)]="model.tipo" class="form-control validate" name="tipo" required #tipo="ngModel">
-                      <option disabled></option>
-                      <option value="Centro de Distribución">Centro de Distribución</option>
-                      <option value="Tienda">Tienda</option>
-                      <option value="Mixta">Mixta</option>
-                    </select>
-                    <label>Tipo</label>
+                  <input formControlName="nombre" type="text" class="form-control">
+                  <label class="active" for="nombre">Nombre de la Oficina</label>
               </div>
 
               <!-- Campo de Dirección de la Oficina -->
               <div class="input-field col s6">
-                  <input [(ngModel)]="model.direccion"  name="direccion" class="form-control validate" type="text" required #direccion="ngModel">
-                  <label for="direccion">Dirección</label>
-              </div> <br>
-
-               <!-- Poscisión Geográfica -->              
-              <div class="input-field col s3">                
-                  <input [(ngModel)]="model.posGeografica.lat" name="latitud" type="number" class="form-control validate" required step="any" #latitud="ngModel">
-                  <label for="latitud">Latitud</label>                               
-              </div>
-
-              <div class="input-field col s3">                
-                  <input [(ngModel)]="model.posGeografica.long" name="longitud" type="number" step="any" class="form-control validate" required #longitud="ngModel">
-                  <label for="longitud">Longitud</label>                               
+                  <input formControlName="direccion" class="form-control" type="text">
+                  <label class="active" for="direccion">Dirección</label>
               </div>
               
-              <!-- Días Laborables -->              
-              <div class="input-field col s6">
-                  <select [(ngModel)]="model.horario.diasLaborables" name="diasLaborables" class="form-control validate" required #diasLaborables="ngModel">
-                      <option disabled></option>
-                      <option value="Lunes-Viernes">Lunes-Viernes</option>
-                      <option value="Lunes-Sábado">Lunes-Sábado</option>
-                      <option value="Todos los Días">Todos los Días</option>
+              <!-- Campo de Tipo de la Oficina -->
+              <div class="input-field col s4">
+                  <select formControlName="tipo" class="form-control browser-default">
+                    <option disabled selected>Tipo</option>
+                    <option *ngFor="let tipo of opcionesTipos" [value]="tipo">{{tipo}}</option>
+                  </select>
+              </div>
+            
+              <div formGroupName="posGeografica">
+                <!-- Poscisión Geográfica -->              
+                <div class="input-field col s4">                
+                  <input formControlName="lat" type="number" class="form-control" required step="any">
+                  <label class="active" for="latitud">Latitud</label>                               
+                </div>
+
+                <div class="input-field col s4">                
+                  <input formControlName="long" type="number" step="any" class="form-control">
+                  <label class="active" for="longitud">Longitud</label>                               
+                </div>
+              </div>
+              
+              <div formGroupName="horario">
+                <!-- Días Laborables -->              
+                <div class="input-field col s6">
+                    <select formControlName="diasLaborables" class="browser-default form-control">
+                        <option selected disabled>Días Laborables</option>
+                        <option *ngFor="let diasLab of opcionesDiasLaborables" [value]="diasLab">{{diasLab}}</option>
                     </select>
-                    <label>Días Laborables</label>
-              </div> <br>
+                </div> <br>
 
-              <!-- Hora de Apertura --> 
-              <div class="input-field col s3">
-                  <input [(ngModel)]="model.horario.horaApertura" type="time" name="horaApertura" class="form-control validate" required #horaApertura="ngModel">
-                  <label>Hora de Apertura</label>                                  
+                <!-- Hora de Apertura --> 
+                <div class="input-field col s3">
+                    <input formControlName="horaApertura" type="time" class="form-control">
+                    <label class="active">Hora de Apertura</label>                                  
+                </div>
+
+                <!-- Hora de Cierre --> 
+                <div class="input-field col s3">
+                    <input formControlName="horaCierre" type="time"  class="form-control">
+                  <label class="active">Hora de Cierre</label>                                  
+                </div>
               </div>
-
-              <!-- Hora de Cierre --> 
-              <div class="input-field col s3">
-                  <input [(ngModel)]="model.horario.horaCierre" type="time" name="horaCierre" class="form-control validate" required #horaCierre="ngModel">
-                <label>Hora de Cierre</label>                                  
-              </div>
-
-            <!-- Disponibilidad --> 
-            <label>Disponibilidad</label> 
-            <p>
-              <label>
-                <input [(ngModel)]="model.disponibilidad.envia" type="checkbox" name="envia" class="form-control validate" #envia="ngModel"/>
-                <span>Envía</span>
-              </label>
-            </p>
-              <label>
-                  <input [(ngModel)]="model.disponibilidad.recibe" type="checkbox" name="recibe" class="form-control validate" #recibe="ngModel"/>
-                  <span>Recibe</span>
-              </label>                                        
+              
+            <div class="col s6" formGroupName="disponibilidad">
+              <!-- Disponibilidad --> 
+              <h5>Disponibilidad</h5> 
+              <p>
+                <label>
+                  <input  type="checkbox" formControlName="envia" class="form-control"/>
+                  <span>Envía</span>
+                </label>
+              </p>
+              <p>
+                  <label>
+                      <input type="checkbox" formControlName="recibe" class="form-control"/>
+                      <span>Recibe</span>
+                  </label>     
+              </p>
+              
+            </div>
+                                              
           </form>          
-                        
         </div>
 
         <div class="modal-footer">
-          <button (click)='insertSubmit()' *ngIf="addform.status === 'VALID' && updClicked === false" class="modal-close btn-flat green-text">Crear</button>        
-          <button (click)='updateSubmit(metodoEnvio)' *ngIf="addform.status === 'VALID' && updClicked === true"  class="modal-close btn-flat green-text">Actualizar</button>        
+          <button (click)='insertSubmit()' *ngIf="oficinasForm.status === 'VALID' && updClicked === false" class="modal-close btn-flat green-text">Crear</button>        
+          <button (click)='updateSubmit(metodoEnvio)' *ngIf="oficinasForm.status === 'VALID' && updClicked === true"  class="modal-close btn-flat green-text">Actualizar</button>        
           <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
         </div>
         

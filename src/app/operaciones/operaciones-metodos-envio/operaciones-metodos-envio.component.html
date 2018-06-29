@@ -21,8 +21,7 @@
                         <th>Nombre</th>
                         <th>Tipos de Transporte</th>
                         <th>Modificar</th>
-                        <th>Eliminar</th>
-                        
+                        <th>Eliminar</th>                        
                     </tr>
                   </thead>
           
@@ -69,11 +68,11 @@
         <form [formGroup]="metodosEnvioForm"> 
             <div class="input-field col s12">
                 <input formControlName="nombre" type="text" class="validate">
-                <label for="nombre">Nombre</label>
+                <label class="active" for="nombre">Nombre</label>
             </div>         
             <div class="input-field col s6">                         
                   <select class="form-control browser-default" formControlName="tiempo">
-                      <option value="Horas" disabled selected>Horas</option>
+                      <option disabled selected>Horas</option>
                       <option *ngFor="let opcion of opcionesTiempo" [value]="opcion">{{opcion}}</option>
                   </select>                      
               </div>

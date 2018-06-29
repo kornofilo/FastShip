@@ -3,7 +3,6 @@ import { MetodosEnvio } from '../../classes/metodos-envio';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 declare let $: any;
 import { Subscription } from 'rxjs';
-declare var M: any;
 
 // Firebase
 import { AuthService } from '../../services/auth.service';
@@ -23,7 +22,6 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
   updClicked = false;
   iME: string;
   // Elementos del Form
-  form: FormGroup;
   metodosEnvioForm: FormGroup;
   opcionesTiempo = ['12 horas', '24 horas', '48 horas'];
 

@@ -1,6 +1,25 @@
 export class Oficina {
-    public constructor(public id: string,
-        public direccion: string, public disponibilidad: object,
-        horario: object, nombre: string, posGeografica: object, tipo: string) {
-    }
+    id: string;
+    direccion: string;
+    disponibilidad: Disponibilidad;
+    horario: Horario;
+    nombre: string;
+    posGeografica: PosGeografica;
+    tipo: string;
+}
+
+export class Disponibilidad {
+    envia: boolean;
+    recibe: boolean;
+}
+
+export class Horario {
+    diasLaborables: string;
+    horaApertura: string;
+    horaCierre: string;
+}
+
+export class PosGeografica {
+    lat: number;
+    long: number;
 }

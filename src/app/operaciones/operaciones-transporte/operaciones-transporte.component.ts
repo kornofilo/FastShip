@@ -25,7 +25,7 @@ arrTransporte:Transporte[] = [];
   // Inicialización de las variables de los elementos de los form.
   newEstadoForm: FormGroup;
   opcionesEstado = ['Enviado', 'Recibido', 'Detenido', 'Retornando al Remitente', 'En camino a ser entregado', 'Entregado'];
-  
+
 private firebaseSubscription: Subscription;
   private firestoreTransportesSubscription: Subscription;
 
@@ -70,10 +70,10 @@ private firebaseSubscription: Subscription;
   createForm() {
     this.newEstadoForm = this.fb.group({
       estado: ['Estado', Validators.required],
+      idTransporte: ['idTransporte', Validators.required],
       newEstado: this.fb.group({
         estado: '',
         fecha: '',
-        idTransporte: 'idTransporte'
       })
     });
   }
@@ -82,10 +82,10 @@ private firebaseSubscription: Subscription;
   cleanForm() {
     this.newEstadoForm.reset({
       estado: 'Estado',
+      idTransporte: 'idTransporte',
       newEstado: {
         estado: '',
         fecha: '',
-        idTransporte: 'idTransporte'
       }
     });
   }
@@ -109,7 +109,7 @@ private firebaseSubscription: Subscription;
       idTransporte: this.newEstadoForm.value.newEstado.idTransporte,
       fecha: this.newEstadoForm.value.newEstado.fecha
     };
-    this._data.updateEstadoEnvio(this.iE, newEH, this.newEstadoForm.value.estado);
+    this._data.updateEstadoEnvio(this.iE, newEH);
   }
 
 }

@@ -32,23 +32,14 @@
       <h4>Asignar Transporte</h4>
       <form [formGroup]="newEstadoForm">
 
-        <div class="input-field col s3">
-          <input type="date" formControlName="fecha">
-          <label for="fecha">Fecha de Carga</label>
-        </div>
 
-        <div class="input-field col s6">
-          <select class="form-control browser-default" formControlName="estado">
-              <option value="Estado" disabled selected>Estado</option>
-              <option *ngFor="let opcion of opcionesEstado" [value]="opcion">{{opcion}}</option>
-          </select>
-        </div>
-        <div class="input-field col s3" formGroupName="newEstado">
+        <div class="input-field col s3">
             <select formControlName="idTransporte" class="browser-default form-control validate" required>
               <option disabled>ID Transporte</option>
               <option *ngFor="let transporte of arrTransporte" [value]="transporte.idPlaca">{{transporte.idPlaca}}</option>
           </select>
           </div>
+
       </form>
     </div>
 

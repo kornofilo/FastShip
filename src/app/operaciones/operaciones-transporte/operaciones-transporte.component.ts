@@ -24,7 +24,6 @@ arrTransporte:Transporte[] = [];
   iE: string;
   // Inicialización de las variables de los elementos de los form.
   newEstadoForm: FormGroup;
-  opcionesEstado = ['Enviado', 'Recibido', 'Detenido', 'Retornando al Remitente', 'En camino a ser entregado', 'Entregado'];
 
 private firebaseSubscription: Subscription;
   private firestoreTransportesSubscription: Subscription;
@@ -51,10 +50,12 @@ private firebaseSubscription: Subscription;
     // Inicialización de los elementos de Materialize que requieren JQuery para su funcionamiento.
     $(function() {
       $('select').formSelect();
+        $('.modal').modal();
       $('.timepicker').timepicker({
         twelveHour:	false,
         container: 'body'
       });
+
     });
     this.createForm();
   }
@@ -69,10 +70,10 @@ private firebaseSubscription: Subscription;
 
   createForm() {
     this.newEstadoForm = this.fb.group({
-      estado: ['Estado', Validators.required],
+      estado:'Cargado',
       idTransporte: ['idTransporte', Validators.required],
       newEstado: this.fb.group({
-        estado: '',
+        estado: 'Cargado',
         fecha: '',
       })
     });
@@ -81,21 +82,16 @@ private firebaseSubscription: Subscription;
    de los estados de los envíos. */
   cleanForm() {
     this.newEstadoForm.reset({
-      estado: 'Estado',
       idTransporte: 'idTransporte',
       newEstado: {
-        estado: '',
         fecha: '',
       }
     });
   }
   onUpdate(envio) {
     this.iE = envio.id;
-    this.newEstadoForm.patchValue({
-      estado: envio.estado
-    });
-  }
 
+  }
   updateSubmit() {
     let newEH = {};
 
@@ -105,12 +101,13 @@ private firebaseSubscription: Subscription;
         fecha: Date.now()
       }
     });
-
+console.log(this.iE);
     newEH = {
-      idTransporte: this.newEstadoForm.value.newEstado.idTransporte,
+      estado: this.newEstadoForm.value.newEstado.estado,
       fecha: this.newEstadoForm.value.newEstado.fecha
     };
     this._data.updateEstadoEnvio(this.iE, newEH);
+    this._data.asignarTrasporte(this.iE,this.newEstadoForm.value.idTransporte)
   }
 
 }

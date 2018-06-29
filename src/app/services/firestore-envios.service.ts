@@ -35,7 +35,15 @@ export class FirestoreEnviosService {
 
   getTiendasType(origen: string) {
     this.enviosCollection = this._afs.collection('/guias', ref => ref.where('detalles.origen', '==', origen));
-    this.envios = this.enviosCollection.valueChanges();
+    this.envios = this.enviosCollection.snapshotChanges().pipe(map(
+      changes => {
+        return changes.map(
+          a => {
+            const data = a.payload.doc.data() as Envios;
+            data.id = a.payload.doc.id;
+            return data;
+        });
+      }));
     return this.envios;
   }
 

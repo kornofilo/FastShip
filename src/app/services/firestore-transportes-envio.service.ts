@@ -28,22 +28,7 @@ export class FirestoreTransportesEnvioService {
 
       }));
   }
-  //////////
-  getTransporteType(idplaca: string) {
-  this.transporteCollection = this._afs.collection('/transporte', ref => ref.where('idplaca', '==', idplaca));
-   this.transporte = this.transporteCollection.snapshotChanges().pipe(map(
-        changes => {
-          return changes.map(
-            a => {
-              const data = a.payload.doc.data() as Transporte;
-              data.id = a.payload.doc.id;
-              return data;
-            });
 
-        }));
-  return this.transporte;
-  }
-/////////////
     getTransporte() {
       return this.transporte;
     }

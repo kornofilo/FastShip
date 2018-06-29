@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 declare let $: any;
 
+// Firebase
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-operaciones-sidenav',
@@ -9,7 +11,7 @@ declare let $: any;
 })
 export class OperacionesSidenavComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {
     $(document).ready(function() {
@@ -17,5 +19,11 @@ export class OperacionesSidenavComponent implements OnInit {
       $('.collapsible').collapsible();
     });
   }
+
+  // Función que al ser activada, cierra la sesión de Firebase.
+  onClickLogout() {
+    this.authService.logout();
+  }
+
 
 }

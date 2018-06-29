@@ -16,7 +16,7 @@
           <ul class="collection" *ngIf="arr.length>0;else noData">
               <li class="collection-item avatar">    
                   <i class="medium material-icons circle green">access_time </i>
-                  <span class="title"> <b>Estado Actual</b> </span>          
+                  <span class="title"> <b>Detalles</b> </span>          
                   <p>Estado Actual: {{envioBusq.estado}} </p>
                   <p>Tipo: {{envioBusq.tipo}} </p>
               </li>
@@ -43,15 +43,36 @@
                       Dirección: {{envioBusq.destinatario.direccion}} 
                   </p>   
                 </li>
+                <li class="collection-item avatar">              
+                    <i class="medium material-icons circle green">details</i>
+                    <span class="title"> <b>Específicaciones</b> </span>
+                    <p *ngIf="envioBusq.especificaciones.alto != undefined">
+                        Alto: {{envioBusq.especificaciones.alto}} cm
+                    </p>
+                    <p *ngIf="envioBusq.especificaciones.ancho != undefined">
+                        Ancho: {{envioBusq.especificaciones.ancho}} cm
+                    </p> 
+                    <p *ngIf="envioBusq.especificaciones.largo != undefined">
+                        Largo: {{envioBusq.especificaciones.largo}} cm
+                    </p> 
+                    <p *ngIf="envioBusq.especificaciones.peso != undefined">
+                        Peso: {{envioBusq.especificaciones.peso}} kg
+                    </p> 
+                    <p *ngIf="envioBusq.especificaciones.peso != undefined">
+                        Peso Facturable: {{envioBusq.especificaciones.pesoFacturable}} kg
+                    </p>                    
+                    <p>
+                        Dirección: {{envioBusq.especificaciones.descripcion}} 
+                    </p>   
+                  </li>
             </ul>                           
       </div>        
     </div>
 
   <!-- Mensaje en caso no existan envíos.-->
   <div class="container">
-    <ng-template #noData>
-      
-      <h5 class="center-align">No existen envíos registrados.</h5>
+    <ng-template #noData>     
+      <h5 class="center-align">Este número de envío no se encuentra registrado.</h5>
     </ng-template>
   </div>
 </body>

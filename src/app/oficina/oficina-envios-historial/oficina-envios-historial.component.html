@@ -22,7 +22,8 @@
               </ng-template>
               <span class="title"><b>{{item.estado}} </b> </span>
               <p> Fecha: {{item.fecha | date: 'dd/mm/yyyy h:mm:ss a'}} <br>
-                  Tienda: {{item.tienda}}
+                 <span *ngIf="item.tienda != undefined;else tiendaOrigen"> Tienda: {{item.tienda}}</span> 
+                 <ng-template #tiendaOrigen> Tienda: {{envioBusq.detalles.origen}} </ng-template>
               </p>
             </li>
           </ul>                          

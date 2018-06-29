@@ -1,3 +1,57 @@
-<p>
-  oficina-envios-detalle works!
-</p>
+<!-- Barra de Navegación Superior -->
+<app-operaciones-navbar></app-operaciones-navbar>    
+<body>
+
+<div class="row">
+  <!-- Barra de Navegación Lateral -->
+  
+  <app-oficina-sidenav></app-oficina-sidenav>      
+
+      <!-- Cuerpo de la Sección -->
+      <div class="col s9 offset-s3">
+          <div class="row">
+              <h5 class="center-align"># de Tracking: {{trackingNumber}} </h5>
+          </div>   
+          <hr>
+          <ul class="collection" *ngIf="arr.length>0;else noData">
+              <li class="collection-item avatar">    
+                  <i class="medium material-icons circle green">access_time </i>
+                  <span class="title"> <b>Estado Actual</b> </span>          
+                  <p>Estado Actual: {{envioBusq.estado}} </p>
+                  <p>Tipo: {{envioBusq.tipo}} </p>
+              </li>
+              <li class="collection-item avatar">              
+                  <i class="medium material-icons circle green">account_circle</i>
+                  <span class="title"> <b>Remitente</b> </span>
+                  <p>
+                   Nombre: {{envioBusq.remitente.nombre}} {{envioBusq.remitente.apellido}}
+                  </p> 
+                  <p>
+                   Teléfono: {{envioBusq.remitente.telefono}} 
+                  </p>               
+              </li>
+              <li class="collection-item avatar">              
+                  <i class="medium material-icons circle green">account_circle</i>
+                  <span class="title"> <b>Destinatario</b> </span>
+                  <p>
+                    Nombre: {{envioBusq.destinatario.nombre}} {{envioBusq.destinatario.apellido}}
+                  </p> 
+                  <p>
+                      Teléfono: {{envioBusq.destinatario.telefono}} 
+                  </p> 
+                  <p>
+                      Dirección: {{envioBusq.destinatario.direccion}} 
+                  </p>   
+                </li>
+            </ul>                           
+      </div>        
+    </div>
+
+  <!-- Mensaje en caso no existan envíos.-->
+  <div class="container">
+    <ng-template #noData>
+      
+      <h5 class="center-align">No existen envíos registrados.</h5>
+    </ng-template>
+  </div>
+</body>

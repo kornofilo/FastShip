@@ -20,8 +20,8 @@ import { FirestoreEnviosService } from '../../services/firestore-envios.service'
 export class OperacionesCargamentosComponent implements  OnInit, OnDestroy,OnChanges {
 
   arr: Cargamento[] = [];
-  arrTransporte:Transporte[] = [];
-  arrTiendas:Envios[] = [];
+  arrTransporte: Transporte[] = [];
+  arrTiendas: Envios[] = [];
   // Elementos del Form
   cargamentoForm: FormGroup;
   metodoTransp = ['FastShip por tren', 'Fastship - 12 horas', 'Fastship - 24 horas','Fastship - 48 horas'];
@@ -33,7 +33,7 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy,OnCha
 
 
   constructor(public authService: AuthService, public _data: FirestoreCargamentoEnvioService,
-     public _misTransporte: FirestoreTransportesEnvioService,public _mistiendas:FirestoreEnviosService,
+     public _misTransporte: FirestoreTransportesEnvioService, public _mistiendas: FirestoreEnviosService,
        private fb: FormBuilder) {
   }
 
@@ -42,7 +42,7 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy,OnCha
       this.firebaseSubscription = this._data.getCargamento().subscribe(
       (cargamento: Cargamento[]) => {
          this.arr = cargamento;
-           console.log(this.arr)
+           console.log(this.arr);
        }
       );
       // Obtenemos los Transportes
@@ -50,11 +50,12 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy,OnCha
         (transporte: Transporte[]) => {
         this.arrTransporte = transporte;
           }
-      );
+        );
       this.firestoretiendaSubscription = this._mistiendas.getEnvios().subscribe(
         (tiendas: Envios[]) => {
         this.arrTiendas = tiendas;
-          }
+        console.log(this.arrTiendas);
+         }
       );
 
     // Inicialización de los elementos de Materialize que requieren Jquery.
@@ -74,7 +75,7 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy,OnCha
   ngOnDestroy() {
     this.firebaseSubscription.unsubscribe();
     this.firestoreTransportesSubscription.unsubscribe();
-
+    this.firestoretiendaSubscription.unsubscribe();
   }
 
   ngOnChanges() {

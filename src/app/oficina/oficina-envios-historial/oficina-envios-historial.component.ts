@@ -3,11 +3,9 @@ declare let $: any;
 
 // Firebase
 import { FirestoreEnviosService } from '../../services/firestore-envios.service';
-import { Form } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Envios } from '../../classes/envios';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -38,17 +36,10 @@ export class OficinaEnviosHistorialComponent implements OnInit, OnDestroy {
       this.arr.reverse();
      }
     );
-
-     // Inicialización de los elementos de Materialize que requieren JQuery para su funcionamiento.
-     $(function() {
-    });
   }
 
   ngOnDestroy() {
     this.firestoreEnviosSubscription.unsubscribe();
-  }
-
-  objectValues(envio) {
   }
 
 }

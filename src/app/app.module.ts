@@ -41,6 +41,8 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { OperacionesTransporteComponent } from './operaciones/operaciones-transporte/operaciones-transporte.component';
 import { OficinaEnviosDetalleComponent } from './oficina/oficina-envios-detalle/oficina-envios-detalle.component';
+import { OperacionesVercargamentoComponent } from './operaciones/operaciones-vercargamento/operaciones-vercargamento.component';
+import { OperacionesCreartransporteComponent } from './operaciones/operaciones-creartransporte/operaciones-creartransporte.component';
 
 
 
@@ -62,7 +64,8 @@ const routes: Routes = [
   {  path: 'rutas',  component: OperacionesRutasComponent, canActivate: [AuthGuard]},
   {  path: 'subrutas',  component: OperacionesSubRutasComponent, canActivate: [AuthGuard]},
   {  path: 'cargamentos',  component: OperacionesCargamentosComponent, canActivate: [AuthGuard]},
-  {  path: 'cargamentos/:origen',  component: OperacionesTransporteComponent, canActivate: [AuthGuard]}
+  {  path: 'cargamentos/:origen',  component: OperacionesTransporteComponent, canActivate: [AuthGuard]},
+  {  path: 'vercargamento',  component:  OperacionesVercargamentoComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -87,6 +90,8 @@ const routes: Routes = [
     OficinaEnviosEstadosComponent,
     OficinaEnviosHistorialComponent,
     OficinaEnviosDetalleComponent,
+    OperacionesVercargamentoComponent,
+    OperacionesCreartransporteComponent
   ],
   imports: [
     BrowserModule,

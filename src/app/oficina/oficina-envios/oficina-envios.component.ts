@@ -263,7 +263,7 @@ export class OficinaEnviosComponent implements OnInit, OnDestroy, OnChanges {
     this.documentosForm.patchValue({
       historial: ({
         [Date.now()]: ({
-          tienda: this.paquetesForm.get('detalles.origen').value,
+          tienda: this.documentosForm.get('detalles.origen').value,
           fecha: Date.now(),
           estado: 'Recibido'
         })

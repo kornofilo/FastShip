@@ -1,6 +1,6 @@
 <ul id="slide-out" class="sidenav sidenav-fixed yellow darken-2">
     <div class="logo center-align">
-        <h4>FastShip</h4>
+        <img class="logo-img" src="assets/img/logo.png" alt="Logo"> 
     </div>
 
     <ul class="collapsible grey darken-3 center-align">
@@ -45,6 +45,13 @@
      <ul class="collapsible grey darken-4 white-text center-align">
         <li>
             <a class="white-text sidenav-close" routerLink="/oficina">Oficina</a>
+        </li>
+    </ul>
+
+    <li><a class="subheader sidenav-close">Mi Cuenta</a></li>
+    <ul class="collapsible grey darken-4 white-text center-align">
+        <li>
+            <a class="white-text sidenav-close cursor-pointer" (click)='onClickLogout()'>Cerrar Sesión</a>
         </li>
     </ul>
 </ul>

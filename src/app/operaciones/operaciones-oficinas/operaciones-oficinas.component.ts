@@ -139,7 +139,8 @@ export class OperacionesOficinasComponent implements OnInit, OnDestroy {
   }
 
   updateSubmit() {
-  this._data.updateOficina(this.idOficina, this.oficinasForm.value);
+    this._data.updateOficina(this.idOficina, this.oficinasForm.value);
+    this.cleanForm();
   }
 
 

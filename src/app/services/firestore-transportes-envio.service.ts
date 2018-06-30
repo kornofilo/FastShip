@@ -34,7 +34,9 @@ export class FirestoreTransportesEnvioService {
     }
 
     addTransporte(transporte) {
-      this.transporteCollection.add(transporte);
+      this.transporteCollection.add(transporte).
+      then()
+      .catch();
     }
 
     deleteTransporte(transporte) {

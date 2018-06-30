@@ -65,7 +65,8 @@ const routes: Routes = [
   {  path: 'subrutas',  component: OperacionesSubRutasComponent, canActivate: [AuthGuard]},
   {  path: 'cargamentos',  component: OperacionesCargamentosComponent, canActivate: [AuthGuard]},
   {  path: 'cargamentos/:origen',  component: OperacionesTransporteComponent, canActivate: [AuthGuard]},
-  {  path: 'vercargamento',  component:  OperacionesVercargamentoComponent, canActivate: [AuthGuard]}
+  {  path: 'vercargamento',  component:  OperacionesVercargamentoComponent, canActivate: [AuthGuard]},
+  {  path: 'creartransporte',  component:  OperacionesCreartransporteComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

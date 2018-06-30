@@ -31,7 +31,7 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy {
   }
 
   ngOnInit() {
-      // Obtenemos los métodos envío registrados en la base de datos.
+      // Obtenemos los cargameto
       this.firebaseSubscription = this._data.getCargamento().subscribe(
       (cargamento: Cargamento[]) => {
          this.arr = cargamento;
@@ -39,7 +39,7 @@ export class OperacionesCargamentosComponent implements  OnInit, OnDestroy {
        }
       );
 
-      // Obtenemos los Transportes
+      // Obtenemos las Oficinas
       this.firestoremiTiendaSubscription = this._mistienda.getOficinas().subscribe(
         (oficinas: Oficina[]) => {
         this.arrmiTienda = oficinas;

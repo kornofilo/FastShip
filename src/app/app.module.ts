@@ -74,7 +74,7 @@ const routes: Routes = [
   {  path: 'vercargamento',  component:  OperacionesVercargamentoComponent, canActivate: [AuthGuard]},
   {  path: 'detalle/:transporte',  component:  OperacionesDetalletransporteComponent , canActivate: [AuthGuard]},
   {  path: 'creartransporte',  component:  OperacionesCreartransporteComponent, canActivate: [AuthGuard]},
-  {  path: 'usuario/tracking/:tn',  component:  UsuarioTrackingComponent , canActivate: [AuthGuard]},
+  {  path: 'usuario/tracking/:tn',  component:  UsuarioTrackingComponent},
 
 ];
 

@@ -3,28 +3,33 @@
   <app-usuario-navbar></app-usuario-navbar> 
 
   <main>
-    <div class="center backgroundImg">
+    <div class="center">
       <div class="row center">
-          <div class="col s6 m6"> <br><br>
-            <div class="card">
-              <div class="card-content grey darken-4 yellow-text text-darken-2">
-                <h2 class="card-title">Bienvenido a FastShip</h2>
-                <p>FastShip es un servicio completo que le permite enviar y recibir paquetes de manera segura</p>
-                <p>Para hacerle seguimiento a un paquete, inserte su número de tracking.</p>
+        <div class="col s4 m4"> <br><br>
+          <div class="card card-align">
+            <div class="card-content grey darken-4 yellow-text text-darken-2">
+                <h2 class="card-title"><b> Bienvenido a FastShip </b> </h2> <br>
+                <div class="row">
+                    <i class="fas fa-box fa-5x col s3"></i>
+                    <p class="col s9 center-align">FastShip es un servicio completo que le permite enviar y recibir paquetes de manera segura. <br><br>
+                      Para hacerle seguimiento a un paquete, inserte su número de tracking.</p>
+                </div>
+                   
               </div>
               <div class="card-action yellow darken-2">
-                  <div class="input-field grey darken-4 white-text">                       
-                      <input id="search" class="center-align grey-text text-darken-4" type="search" aria-controls="finalizadaTable" placeholder="Introduzca su número de tracking"> 
-                      <label class="label-icon cyan-darken" for="search"><i class="material-icons">search</i></label> 
-                      <i class="material-icons">close</i> 
-                  </div> 
-              </div>
-              
+                  <form [formGroup]="bTrackingForm">
+                      <div class="input-field grey darken-4 white-text" >                       
+                          <input id="search" class="center-align grey-text text-darken-4" formControlName="numTracking" type="search" placeholder="Introduzca su número de tracking" required>
+                          <i class="material-icons">close</i>
+                      </div> 
+                      <button class="btn grey darken-4 yellow-text text-darken-2" *ngIf="bTrackingForm.status === 'VALID'" type="submit" (click)="onSubmit()">Rastrear
+                          <i class="material-icons right">send</i>
+                      </button>
+                  </form>      
+              </div>              
             </div>
           </div>
         </div>
-
-    </div>
-    
+    </div>    
   </main>
 </body>

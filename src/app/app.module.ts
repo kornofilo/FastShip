@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 
 
+
 // Componentes
 import { UsuarioComponent } from './usuario/usuario.component';
 import { LoginComponent } from './login/login.component';
@@ -72,7 +73,9 @@ const routes: Routes = [
   {  path: 'transporte/:transporte',  component: OperacionesAsigtransporteComponent, canActivate: [AuthGuard]},
   {  path: 'vercargamento',  component:  OperacionesVercargamentoComponent, canActivate: [AuthGuard]},
   {  path: 'detalle/:transporte',  component:  OperacionesDetalletransporteComponent , canActivate: [AuthGuard]},
-  {  path: 'creartransporte',  component:  OperacionesCreartransporteComponent, canActivate: [AuthGuard]}
+  {  path: 'creartransporte',  component:  OperacionesCreartransporteComponent, canActivate: [AuthGuard]},
+  {  path: 'usuario/tracking/:tn',  component:  UsuarioTrackingComponent , canActivate: [AuthGuard]},
+
 ];
 
 @NgModule({
@@ -100,7 +103,7 @@ const routes: Routes = [
     OperacionesVercargamentoComponent,
     OperacionesCreartransporteComponent,
     UsuarioNavbarComponent,
-    UsuarioTrackingComponent
+    UsuarioTrackingComponent,
     OperacionesAsigtransporteComponent,
     OperacionesDetalletransporteComponent,
     OperacionesCreartransporteComponent,

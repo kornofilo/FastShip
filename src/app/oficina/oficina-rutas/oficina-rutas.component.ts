@@ -1,10 +1,9 @@
-   import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Oficina } from '../../classes/oficina';
 declare let $: any;
 
 // Firebase
 import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
-import { Form } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,7 +13,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./oficina-rutas.component.css']
 })
 export class OficinaRutasComponent implements OnInit, OnDestroy {
-  formAddOficina: Form;
   arr: Oficina[] = [];
   idOficina: string;
   tipo: string;

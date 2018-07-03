@@ -14,7 +14,7 @@
                             <i class="medium material-icons circle green">check</i>
                         </ng-template>
                         <span class="title"><b>{{item.estado}} </b> </span>
-                        <p> Fecha: {{item.fecha | date: 'long'}} <br>
+                        <p> Fecha: {{item.fecha | date: 'short'}} <br>
                            <span *ngIf="item.tienda != undefined;else tiendaOrigen"> Tienda: {{item.tienda}}</span> 
                            <ng-template #tiendaOrigen> Tienda: {{envioBusq.detalles.origen}} </ng-template>
                         </p>

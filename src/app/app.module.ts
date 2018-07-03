@@ -99,7 +99,7 @@ const routes: Routes = [
     OperacionesVercargamentoComponent,
     OperacionesCreartransporteComponent,
     OperacionesAsigtransporteComponent,
-    OperacionesDetalletransporteComponent
+    OperacionesDetalletransporteComponent,
     OperacionesCreartransporteComponent,
     UsuarioNavbarComponent
   ],

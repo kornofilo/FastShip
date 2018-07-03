@@ -19,7 +19,7 @@
             <div class="card-content">
               <p>Nombre de la Sub-ruta: {{item.nombreRuta}}</p>
               <p>Horario Salida: {{item.horarioSalida}}</p>
-              <p>Tiempo de Recorrido: {{item.tiempoRecorrido}}</p>
+              <p>Tiempo de Recorrido: {{item.tiempoRecorrido}} horas</p>
               <p>Tienda de Origen: {{item.tiendaOrigen}}</p>
               <p>Tienda de Destino: {{item.tiendaDestino}}</p>
               <p>Tipo de Ruta: {{item.tipoRuta}}</p>
@@ -78,13 +78,10 @@
                   <option *ngFor="let opcion of tipoRuta" [value]="opcion">{{opcion}}</option>
               </select>             
               </div> 
-<!-- drop down trae oficinas llegando -->
-          <div class="input-field col s3">
-            <select formControlName="origen" class="browser-default form-control validate" required>
-              <option disabled>Origen</option>  
-              <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre">{{oficina.nombre}}</option> 
-            </select>
-          </div>
+              <div class="input-field col s6"> 
+                  <label for="tiempoRecorrido">Tiempo Recorrido</label>
+                  <input class="form-control" id="tiempoRecorrido" formControlName="tiempoRecorrido" type="text" class="validate">
+                </div>
              
         </form>       
         <p>Form value: {{ subRutaform.value | json }}</p>

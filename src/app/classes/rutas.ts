@@ -3,3 +3,4 @@ export class Rutas {
     tiendaOrigen:String;
     tiendaDestino:String;
 }
+

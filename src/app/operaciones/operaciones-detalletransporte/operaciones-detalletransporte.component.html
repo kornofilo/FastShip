@@ -13,6 +13,7 @@
                 <div class="card-content">
                   <p>- # de Tracking: {{envio.id}}</p>
                   <p>Destinatario: {{envio.destinatario.nombre}}  {{envio.destinatario.apellido}}</p>
+                    <p>Origen: {{envio.detalles.origen}} </p>
                   <p>Destino: {{envio.detalles.destino}} </p>
                   <p>Tipo de Carga: {{envio.tipo}} </p>
                   <p>Metodo de Envio: {{envio.detalles.tipoEnvio}} </p>
@@ -26,26 +27,4 @@
 </div>
 </div>
 
-<!-- Modal que contiene el formulario de asignacio del transporte. -->
-<div id="modalNE" class="modal modal-fixed-footer">
-    <div class="modal-content row">
-      <h4>Asignar Transporte</h4>
-      <form [formGroup]="newEstadoForm">
-
-
-        <div class="input-field col s3">
-            <select formControlName="idTransporte" class="browser-default form-control validate" required>
-              <option disabled>ID Transporte</option>
-              <option *ngFor="let transporte of arrTransporte" [value]="transporte.idPlaca">{{transporte.idPlaca}}</option>
-          </select>
-          </div>
-
-      </form>
-    </div>
-
-    <div class="modal-footer">
-      <button (click)='updateSubmit()'  class="modal-close btn-flat green-text">Asignar</button>
-      <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
-    </div>
-</div>  <!-- Fin de modal de crear envío (paquete) -->
 </body>

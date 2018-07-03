@@ -4,8 +4,11 @@ import { Transporte } from '../../classes/transporte';
 import { Oficina } from '../../classes/oficina';
 declare let $: any;
 //Firebase
+import { AngularFireAuth } from 'angularfire2/auth';
+import { auth } from 'firebase/app';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
+import { FindValueSubscriber } from 'rxjs/internal/operators/find';
 import { FirestoreTransportesEnvioService} from '../../services/firestore-transportes-envio.service';
 import { FirestoreOficinaService } from '../../services/firestore-oficina.service';
 @Component({
@@ -66,6 +69,7 @@ tipo = ['Terrestre', 'Maritimo', 'Aerio'];
       idPlaca:  ['', Validators.required],
       tipo: ['', Validators.required],
       oficinaAsig: ['', Validators.required],
+      destinoAsig: 'Por Asignar',
       estado: 'vacio',
     });
   }
@@ -85,7 +89,6 @@ this.crearTransporteform.reset();
       idPlaca: transp.idPlaca,
       tipo: transp.tipo,
      oficinaAsig: transp.oficinaAsig,
-
     });
   }
 

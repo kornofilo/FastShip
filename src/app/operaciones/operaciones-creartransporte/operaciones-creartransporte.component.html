@@ -18,6 +18,7 @@
                 <p>ID Placa: {{item.idPlaca}}</p>
                 <p>Tipo: {{item.tipo}}</p>
                 <p>Oficina Asignado: {{item.oficinaAsig}}</p>
+                <p>Oficina Destino: {{item.destinoAsig}}</p>
                 <p>Estado del Transporte: {{item.estado}}</p>
               </div>
               <div class="card-action">
@@ -61,6 +62,7 @@
             </div>
 
         </form>
+        <p>Form value: {{ crearTransporteform.value | json }}</p>
       </div>
       <div class="modal-footer">
         <button (click)='insertSubmit()' type="submit" *ngIf="crearTransporteform.status === 'VALID' && updClicked === false" class="modal-close btn-flat green-text">Crear</button>

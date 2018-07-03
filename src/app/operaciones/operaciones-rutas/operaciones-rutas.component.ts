@@ -62,12 +62,13 @@ export class OperacionesRutasComponent implements OnInit {
   }
 
   createForm() {
+    
+
     this.Rutaform = this.fb.group({
       Opcion1:  ['', Validators.required],
       Opcion2:  ['', Validators],
       Opcion3:  ['', Validators],
       Opcion4:  ['', Validators],
-      tiempoRecorrido: ['', Validators.required],
       tiendaOrigen: ['', Validators.required],
       tiendaDestino: ['', Validators.required],
     });

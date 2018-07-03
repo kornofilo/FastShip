@@ -45,6 +45,7 @@ import { OperacionesVercargamentoComponent } from './operaciones/operaciones-ver
 import { OperacionesCreartransporteComponent } from './operaciones/operaciones-creartransporte/operaciones-creartransporte.component';
 import { OperacionesAsigtransporteComponent } from './operaciones/operaciones-asigtransporte/operaciones-asigtransporte.component';
 import { OperacionesDetalletransporteComponent } from './operaciones/operaciones-detalletransporte/operaciones-detalletransporte.component';
+import { UsuarioNavbarComponent } from './usuario/usuario-navbar/usuario-navbar.component';
 
 
 
@@ -99,6 +100,8 @@ const routes: Routes = [
     OperacionesCreartransporteComponent,
     OperacionesAsigtransporteComponent,
     OperacionesDetalletransporteComponent
+    OperacionesCreartransporteComponent,
+    UsuarioNavbarComponent
   ],
   imports: [
     BrowserModule,

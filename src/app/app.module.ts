@@ -44,6 +44,7 @@ import { OficinaEnviosDetalleComponent } from './oficina/oficina-envios-detalle/
 import { OperacionesVercargamentoComponent } from './operaciones/operaciones-vercargamento/operaciones-vercargamento.component';
 import { OperacionesCreartransporteComponent } from './operaciones/operaciones-creartransporte/operaciones-creartransporte.component';
 import { UsuarioNavbarComponent } from './usuario/usuario-navbar/usuario-navbar.component';
+import { UsuarioTrackingComponent } from './usuario/usuario-tracking/usuario-tracking.component';
 
 
 
@@ -94,7 +95,8 @@ const routes: Routes = [
     OficinaEnviosDetalleComponent,
     OperacionesVercargamentoComponent,
     OperacionesCreartransporteComponent,
-    UsuarioNavbarComponent
+    UsuarioNavbarComponent,
+    UsuarioTrackingComponent
   ],
   imports: [
     BrowserModule,

@@ -51,6 +51,24 @@ export class FirestoreEnviosService {
     return this.envios;
   }
 
+  getDetalleType(transporte: string) {
+    this.enviosCollection = this._afs.collection('/guias', ref => {
+      return ref
+              .where('idTransporte', '==', transporte);
+
+      });
+    this.envios = this.enviosCollection.snapshotChanges().pipe(map(
+      changes => {
+        return changes.map(
+          a => {
+            const data = a.payload.doc.data() as Envios;
+            data.id = a.payload.doc.id;
+            return data;
+        });
+      }));
+    return this.envios;
+  }
+
   getEnvios() {
     return this.envios;
   }

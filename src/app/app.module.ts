@@ -43,6 +43,8 @@ import { OperacionesTransporteComponent } from './operaciones/operaciones-transp
 import { OficinaEnviosDetalleComponent } from './oficina/oficina-envios-detalle/oficina-envios-detalle.component';
 import { OperacionesVercargamentoComponent } from './operaciones/operaciones-vercargamento/operaciones-vercargamento.component';
 import { OperacionesCreartransporteComponent } from './operaciones/operaciones-creartransporte/operaciones-creartransporte.component';
+import { OperacionesAsigtransporteComponent } from './operaciones/operaciones-asigtransporte/operaciones-asigtransporte.component';
+import { OperacionesDetalletransporteComponent } from './operaciones/operaciones-detalletransporte/operaciones-detalletransporte.component';
 
 
 
@@ -65,7 +67,9 @@ const routes: Routes = [
   {  path: 'subrutas',  component: OperacionesSubRutasComponent, canActivate: [AuthGuard]},
   {  path: 'cargamentos',  component: OperacionesCargamentosComponent, canActivate: [AuthGuard]},
   {  path: 'cargamentos/:origen',  component: OperacionesTransporteComponent, canActivate: [AuthGuard]},
+  {  path: 'transporte/:transporte',  component: OperacionesAsigtransporteComponent, canActivate: [AuthGuard]},
   {  path: 'vercargamento',  component:  OperacionesVercargamentoComponent, canActivate: [AuthGuard]},
+  {  path: 'detalle/:transporte',  component:  OperacionesDetalletransporteComponent , canActivate: [AuthGuard]},
   {  path: 'creartransporte',  component:  OperacionesCreartransporteComponent, canActivate: [AuthGuard]}
 ];
 
@@ -92,7 +96,9 @@ const routes: Routes = [
     OficinaEnviosHistorialComponent,
     OficinaEnviosDetalleComponent,
     OperacionesVercargamentoComponent,
-    OperacionesCreartransporteComponent
+    OperacionesCreartransporteComponent,
+    OperacionesAsigtransporteComponent,
+    OperacionesDetalletransporteComponent
   ],
   imports: [
     BrowserModule,

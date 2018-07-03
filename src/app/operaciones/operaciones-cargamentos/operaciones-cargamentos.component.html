@@ -8,8 +8,8 @@
     <!-- Cuerpo de la Sección -->
     <div class="col s9 offset-s3">
 
-      <div class="col s9" *ngIf="arrmiTienda.length>0;else noData">
-            <div class="col s4" *ngFor="let item of arrmiTienda">
+      <div class="col s9" *ngIf="arrmiTienda.length>0;else noData" >
+            <div class="col s4" *ngFor="let item of arrmiTienda" >
               <div class="card grey darken-4 white-text">
                   <span class="card-title">{{item.nombre}}</span>
                 <div class="card-content">
@@ -19,10 +19,13 @@
                   <p>Horario: {{item.horario.horaApertura}}-{{item.horario.horaCierre}}</p>
                 </div>
                 <div class="card-action">
-                  <a routerLink="/cargamentos/{{item.nombre}}">Ver más</a>
-                </div>
+                  <a routerLink="/cargamentos/{{item.nombre}}">Cargamento</a>
+                  <a routerLink="/transporte/{{item.nombre}}">Transporte</a>
+
               </div>
             </div>
+          </div>
+
         </div>
       </div>
       </div>

@@ -5,7 +5,26 @@
     <!-- Barra de Navegación Lateral -->
     <app-operaciones-sidenav></app-operaciones-sidenav>
 
-    
+    <!-- Cuerpo de la Sección -->
+    <div class="col s9 offset-s3">
+
+      <div class="col s9" *ngIf="arrtranspCarga.length>0;else noData" >
+            <div class="col s4" *ngFor="let item of arrtranspCarga" >
+              <div class="card grey darken-4 white-text">
+                <div class="card-content">
+                  <p>ID Placa: {{item.idPlaca}}</p>
+                  <p>Tipo: {{item.tipo}}</p>
+                  <p>Oficina Origen: {{item.oficinaAsig}}</p>
+                  <p>Oficina Destino: {{item.destinoAsig}}</p>
+                </div>
+                <div class="card-action">
+                  <a routerLink="/detalle/{{item.idPlaca}}">Detalle de Cargamento</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
       </div>
   <!-- Mensaje en caso no existan métodos de envío -->
   <div class="container">

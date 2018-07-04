@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 
 
+
 // Componentes
 import { UsuarioComponent } from './usuario/usuario.component';
 import { LoginComponent } from './login/login.component';
@@ -46,6 +47,7 @@ import { OperacionesCreartransporteComponent } from './operaciones/operaciones-c
 import { OperacionesAsigtransporteComponent } from './operaciones/operaciones-asigtransporte/operaciones-asigtransporte.component';
 import { OperacionesDetalletransporteComponent } from './operaciones/operaciones-detalletransporte/operaciones-detalletransporte.component';
 import { UsuarioNavbarComponent } from './usuario/usuario-navbar/usuario-navbar.component';
+import { UsuarioTrackingComponent } from './usuario/usuario-tracking/usuario-tracking.component';
 
 
 
@@ -71,7 +73,9 @@ const routes: Routes = [
   {  path: 'transporte/:transporte',  component: OperacionesAsigtransporteComponent, canActivate: [AuthGuard]},
   {  path: 'vercargamento',  component:  OperacionesVercargamentoComponent, canActivate: [AuthGuard]},
   {  path: 'detalle/:transporte',  component:  OperacionesDetalletransporteComponent , canActivate: [AuthGuard]},
-  {  path: 'creartransporte',  component:  OperacionesCreartransporteComponent, canActivate: [AuthGuard]}
+  {  path: 'creartransporte',  component:  OperacionesCreartransporteComponent, canActivate: [AuthGuard]},
+  {  path: 'usuario/tracking/:tn',  component:  UsuarioTrackingComponent},
+
 ];
 
 @NgModule({
@@ -98,6 +102,8 @@ const routes: Routes = [
     OficinaEnviosDetalleComponent,
     OperacionesVercargamentoComponent,
     OperacionesCreartransporteComponent,
+    UsuarioNavbarComponent,
+    UsuarioTrackingComponent,
     OperacionesAsigtransporteComponent,
     OperacionesDetalletransporteComponent,
     OperacionesCreartransporteComponent,

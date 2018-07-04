@@ -1,0 +1,35 @@
+<body>
+    <!-- Barra de Navegación -->
+    <app-usuario-navbar></app-usuario-navbar> 
+  
+    <main>
+        <div class="row">                              
+                <!-- Cuerpo de la Sección -->
+                <div>                                            
+                    <ul class="collection" *ngIf="arr.length>0;else noData">
+                        <h5 class="center-align">Historial del Envío: {{trackingNumber}} </h5><hr>  
+                        <li class="collection-item avatar" *ngFor="let item of arr">                        
+                        <i class="medium material-icons circle green" *ngIf="item == arr[0];else noLast">arrow_upward</i>
+                        <ng-template #noLast>
+                            <i class="medium material-icons circle green">check</i>
+                        </ng-template>
+                        <span class="title"><b>{{item.estado}} </b> </span>
+                        <p> Fecha: {{item.fecha | date: 'short'}} <br>
+                           <span *ngIf="item.tienda != undefined;else tiendaOrigen"> Tienda: {{item.tienda}}</span> 
+                           <ng-template #tiendaOrigen> Tienda: {{envioBusq.detalles.origen}} </ng-template>
+                        </p>
+                      </li>
+                    </ul>                          
+                </div>        
+              </div>
+          
+            <!-- Mensaje en caso no existan envíos.-->
+            <div class="container">
+              <ng-template #noData>
+                
+                <h5 class="center-align">Este número de envío no se encuentra registrado.</h5>
+              </ng-template>
+            </div>
+    </main>
+  </body>
+  

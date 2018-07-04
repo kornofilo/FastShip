@@ -4,9 +4,6 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 declare let $: any;
 import { Subscription } from 'rxjs';
 
-// Firebase
-import { AuthService } from '../../services/auth.service';
-
 // Servicios
 import { FirestoreMetodosEnvioService } from '../../services/firestore-metodos-envio.service';
 
@@ -28,7 +25,7 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
   // Suscripcipción
   private firebaseSubscription: Subscription;
 
-  constructor(public authService: AuthService, public _data: FirestoreMetodosEnvioService, private fb: FormBuilder) {
+  constructor(public _data: FirestoreMetodosEnvioService, private fb: FormBuilder) {
   }
 
   ngOnInit() {

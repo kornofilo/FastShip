@@ -107,7 +107,7 @@ const routes: Routes = [
     OperacionesAsigtransporteComponent,
     OperacionesDetalletransporteComponent,
     OperacionesCreartransporteComponent,
-    UsuarioNavbarComponent
+    UsuarioNavbarComponent,
   ],
   imports: [
     BrowserModule,

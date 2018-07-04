@@ -20,6 +20,7 @@ import { FirestoreTransportesEnvioService} from '../../services/firestore-transp
 export class OperacionesAsigtransporteComponent implements OnInit, OnDestroy, OnChanges {
   arrTransporte:Transporte [] = [];
   arr: Envios[] = [];
+    arre: Envios[] = [];
     transporte: string;
     updClicked = false;
     iME: string;
@@ -27,10 +28,11 @@ export class OperacionesAsigtransporteComponent implements OnInit, OnDestroy, On
     crearTransporteform: FormGroup;
 
 private firebaseEnvioSubscription: Subscription;
-    private firestoreTransportesSubscription: Subscription;
+private firebaseDestinoSubscription: Subscription;
+private firestoreTransportesSubscription: Subscription;
 
   constructor(public authService: AuthService ,public _misTransporte: FirestoreTransportesEnvioService,  public route: ActivatedRoute
-    , public _miDestino:  FirestoreEnviosService,private fb: FormBuilder,
+    , public _miDestino:  FirestoreEnviosService,private fb: FormBuilder
   ) {}
 
   ngOnInit() {
@@ -49,6 +51,15 @@ private firebaseEnvioSubscription: Subscription;
       this.arr = envios;
         }
     );
+    this.transporte = this.route.snapshot.params['transporte'];
+    console.log(this.transporte);
+    // Obtenemos las guias registradas en la base de datos.
+    this.firebaseDestinoSubscription = this._miDestino.getTiendasType(this.transporte).subscribe(
+      (envio: Envios[]) => {
+      this.arre = envio;
+      console.log(this.arre);
+     }
+    );
     // Inicialización de los elementos de Materialize que requieren JQuery para su funcionamiento.
     $(function() {
       $('select').formSelect();
@@ -64,6 +75,8 @@ private firebaseEnvioSubscription: Subscription;
   ngOnDestroy() {
     this.firestoreTransportesSubscription.unsubscribe();
       this.firebaseEnvioSubscription.unsubscribe();
+        this.firebaseDestinoSubscription.unsubscribe();
+
   }
   ngOnChanges() {
     this.cleanForm();
@@ -78,7 +91,6 @@ private firebaseEnvioSubscription: Subscription;
 this.crearTransporteform.reset();
 }
 
-
   onUpdate(transp) {
     this.iME = transp.id;
     this.updClicked = true;
@@ -92,4 +104,6 @@ this.crearTransporteform.reset();
     this._misTransporte.updateTransporte(this.iME, this.crearTransporteform.value);
     this.cleanForm();
   }
+
+
 }

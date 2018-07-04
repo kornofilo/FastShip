@@ -41,6 +41,7 @@ private firebaseSubscription: Subscription;
       console.log(this.arr);
      }
     );
+
     // Obtenemos los Transportes
     this.firestoreTransportesSubscription = this._misTransporte.getTransporte().subscribe(
       (transporte: Transporte[]) => {

@@ -28,7 +28,7 @@ export class OperacionesCreartransporteComponent implements OnInit, OnDestroy, O
   private firebasemiOficinaSubscription: Subscription;
     private firestorecrearTransportesSubscription: Subscription;
 
-tipo = ['Terrestre', 'Maritimo', 'Aerio'];
+tipo = ['Terrestre', 'Maritimo', 'Aereo'];
 
   constructor(public authService: AuthService, public _data: FirestoreTransportesEnvioService,public _miOficina: FirestoreOficinaService,
      private fb: FormBuilder) { }
@@ -37,11 +37,11 @@ tipo = ['Terrestre', 'Maritimo', 'Aerio'];
     this.firestorecrearTransportesSubscription=this._data.getTransporte().subscribe(
       (transporte:Transporte[])=>{
       this.arrmiTransporte=transporte;
-      console.log(this.arrmiTransporte)
+      console.log(this.arrmiTransporte);
     }
   );
 
-    this.firebasemiOficinaSubscription=this._miOficina.getOficinasNRT().subscribe(
+    this.firebasemiOficinaSubscription=this._miOficina.getOficinas().subscribe(
       (oficina:Oficina[])=>{
       this.arrmiOficina= oficina;
       console.log(this.arrmiTransporte);

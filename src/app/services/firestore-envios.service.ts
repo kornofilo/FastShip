@@ -19,18 +19,7 @@ export class FirestoreEnviosService {
   private ultNumTracking: number[];
 
   constructor(public _afs: AngularFirestore) {
-    this.enviosCollection = this._afs.collection('/guias');
 
-    this.envios = this.enviosCollection.snapshotChanges().pipe(map(
-      changes => {
-        return changes.map(
-          a => {
-            const data = a.payload.doc.data() as Envios;
-            data.id = a.payload.doc.id;
-            return data;
-          });
-
-      }));
   }
 
   getTiendasType(origen: string) {
@@ -70,6 +59,18 @@ export class FirestoreEnviosService {
   }
 
   getEnvios() {
+    this.enviosCollection = this._afs.collection('/guias');
+
+    this.envios = this.enviosCollection.snapshotChanges().pipe(map(
+      changes => {
+        return changes.map(
+          a => {
+            const data = a.payload.doc.data() as Envios;
+            data.id = a.payload.doc.id;
+            return data;
+          });
+
+      }));
     return this.envios;
   }
 
@@ -78,7 +79,6 @@ export class FirestoreEnviosService {
     this.envio = this.enviosDoc.valueChanges();
     return this.envio;
   }
-
 
   addEnvio(newEnvio) {
     this.enviosCollection.doc('FS-' + this._afs.createId()).set(newEnvio);

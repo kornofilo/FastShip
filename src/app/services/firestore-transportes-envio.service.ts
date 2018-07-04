@@ -15,25 +15,12 @@ export class FirestoreTransportesEnvioService {
 
 
   constructor(public _afs: AngularFirestore) {
-
-    this.transporteCollection = this._afs.collection('/transporte');
-    this.transporte = this.transporteCollection.snapshotChanges().pipe(map(
-      changes => {
-        return changes.map(
-          a => {
-            const data = a.payload.doc.data() as Transporte;
-            data.id = a.payload.doc.id;
-            return data;
-          });
-
-      }));
   }
 
   getTransporteType(transporte: string) {
     this.transporteCollection = this._afs.collection('/transporte', ref => {
       return ref
               .where('oficinaAsig', '==', transporte)
-
       });
     this.transporte = this.transporteCollection.snapshotChanges().pipe(map(
       changes => {
@@ -65,9 +52,21 @@ export class FirestoreTransportesEnvioService {
   }
 
     getTransporte() {
+      this.transporteCollection = this._afs.collection('/transporte');
+      this.transporte = this.transporteCollection.snapshotChanges().pipe(map(
+        changes => {
+          return changes.map(
+            a => {
+              const data = a.payload.doc.data() as Transporte;
+              data.id = a.payload.doc.id;
+              return data;
+            });
+
+        }));
+        
       return this.transporte;
     }
-  
+
     addTransporte(transporte) {
       this.transporteCollection.add(transporte).
       then()

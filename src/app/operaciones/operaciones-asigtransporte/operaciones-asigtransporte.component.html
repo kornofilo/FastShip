@@ -1,3 +1,4 @@
+
 <body>
   <!-- Barra de Navegación Superior -->
   <app-operaciones-navbar></app-operaciones-navbar>
@@ -41,10 +42,9 @@
         <div class="input-field col s4">
             <select formControlName="destinoAsig" class="browser-default form-control validate" required>
               <option disabled>Destino Asigndo</option>
-              <option *ngFor="let envios of arr" [value]="envios.detalles.destino">{{envios.detalles.destino}}</option>
-          </select>
-          </div>
-
+              <option  *ngFor="let envios of arre" [value]="envios.detalles.destino">{{envios.detalles.destino}}</option>
+            </select>
+        </div>
 
       </form>
               <p>Form value: {{ crearTransporteform.value | json }}</p>

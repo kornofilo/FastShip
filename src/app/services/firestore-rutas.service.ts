@@ -39,6 +39,11 @@ updateRuta(iME, rutas) {
   this.RutasDoc = this._afs.doc('rutas/' + iME);
   this.RutasDoc.update(rutas);
 }
+onInsert(iME, rutas) {
+  this.RutasDoc = this._afs.doc('rutas/' + iME);
+  this.RutasDoc.update(rutas);
+  return this.Rutas;
+}
 
 }
 

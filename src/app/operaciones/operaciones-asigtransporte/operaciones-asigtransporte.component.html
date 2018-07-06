@@ -41,8 +41,8 @@
 
         <div class="input-field col s4">
             <select formControlName="destinoAsig" class="browser-default form-control validate" required>
-              <option disabled>Destino Asigndo</option>
-              <option  *ngFor="let envios of arre" [value]="envios.detalles.destino">{{envios.detalles.destino}}</option>
+              <option disabled>Destino Asignado</option>
+              <option  *ngFor="let destino of destinosU" [value]="destino">{{destino}}</option>
             </select>
         </div>
 

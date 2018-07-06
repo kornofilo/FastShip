@@ -56,9 +56,11 @@ private firestoreTransportesSubscription: Subscription;
     this.firebaseDestinoSubscription = this._miDestino.getTiendasType(this.transporte).subscribe(
       (envio: Envios[]) => {
       this.arre = envio;
-      this.arre.forEach( (element) => {
-        });
-      console.log(this.arre);
+      this.arre.forEach( (element, i) => {
+        this.destinos[i] = element.detalles.destino;
+      });
+      this.destinosU = Array.from(new Set(this.destinos));
+      console.log(this.destinosU);
      }
     );
     // Inicialización de los elementos de Materialize que requieren JQuery para su funcionamiento.
@@ -80,6 +82,7 @@ private firestoreTransportesSubscription: Subscription;
   ngOnChanges() {
     this.cleanForm();
   }
+
   createForm() {
     this.crearTransporteform = this.fb.group({
       destinoAsig: ['', Validators.required],

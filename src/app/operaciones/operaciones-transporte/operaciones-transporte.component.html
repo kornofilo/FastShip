@@ -6,6 +6,9 @@
     <app-operaciones-sidenav></app-operaciones-sidenav>
 
     <!-- Lista de oficinas -->
+    <div class="col s9 offset-s6">
+      <h4>Cargamentos en Bodega</h4>
+      </div>
     <div class="col s9 offset-s3" *ngIf="arr.length>0;else noData">
           <div class="col s12 l4" *ngFor="let envio of arr">
             <div class="card-stacked">
@@ -17,35 +20,13 @@
                   <p>Tipo de Carga: {{envio.tipo}} </p>
                   <p>Metodo de Envio: {{envio.detalles.tipoEnvio}} </p>
                 </div>
-              <div class="card-action">
-                <a class="pointer-delete modal-trigger" (click)="onUpdate(envio)"  href="#modalNE" materialize="modal">Asignar Transporte</a>
-              </div>
+
       </div>
           </div>
+
   </div>
 </div>
 </div>
 
-<!-- Modal que contiene el formulario de asignacio del transporte. -->
-<div id="modalNE" class="modal modal-fixed-footer">
-    <div class="modal-content row">
-      <h4>Asignar Transporte</h4>
-      <form [formGroup]="newEstadoForm">
 
-
-        <div class="input-field col s3">
-            <select formControlName="idTransporte" class="browser-default form-control validate" required>
-              <option disabled>ID Transporte</option>
-              <option *ngFor="let transporte of arrTransporte" [value]="transporte.idPlaca">{{transporte.idPlaca}}</option>
-          </select>
-          </div>
-
-      </form>
-    </div>
-
-    <div class="modal-footer">
-      <button (click)='updateSubmit()'  class="modal-close btn-flat green-text">Asignar</button>
-      <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
-    </div>
-</div>  <!-- Fin de modal de crear envío (paquete) -->
 </body>

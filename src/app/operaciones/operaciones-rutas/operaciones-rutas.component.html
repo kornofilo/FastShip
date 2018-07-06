@@ -16,7 +16,8 @@
         <div class="col  l4" *ngFor="let item of arr">
           <div class="card grey darken-4 white-text">
               <span class="card-title"></span>
-            <div class="card-content">                        
+            <div class="card-content">
+              <p>Nombre de la Ruta: {{item.Rutapadre}}</p>
               <p>Tienda de Origen: {{item.tiendaOrigen}}</p>
               <p>Tienda de Destino: {{item.tiendaDestino}}</p>
               <p>Opcion de Sub-ruta #1: {{item.Opcion1}}</p>
@@ -50,6 +51,11 @@
         
         <form [formGroup]="Rutaform">
 
+            <div class="input-field col s6">
+                <input formControlName="rutapadre" id="rutapadre" type="text" class="validate">
+                <label for="rutapadre">Nombre de la Ruta</label>
+              </div>
+
               <div class="input-field col s6">
                   <div class="input-field col s6">
                       <select formControlName="tiendaOrigen" class="browser-default form-control validate" required>
@@ -64,8 +70,7 @@
                           <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre" id="tiendaDestino">{{oficina.nombre}}</option> 
                         </select>
                       </div>
-              </div>
-              
+              </div>              
               
          <!-- Aqui podemos ver las opciones de suburutas que se pueden elegir dentro de las rutas-->
           <div class="input-field col s3">

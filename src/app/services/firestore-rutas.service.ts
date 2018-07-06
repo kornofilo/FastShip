@@ -18,7 +18,7 @@ export class FirestoreRutasService {
     this.Rutacollection = this._afs.collection('/rutas');
     this.Rutas = this.Rutacollection.snapshotChanges().pipe(map(
       changes =>{
-        return changes.map(
+        return changes.map(   
           a =>{
             const data = a.payload.doc.data() as Rutas;
             data.id = a.payload.doc.id;

@@ -65,6 +65,7 @@ export class OperacionesRutasComponent implements OnInit {
     
 
     this.Rutaform = this.fb.group({
+      rutapadre: ['', Validators.required],
       Opcion1:  ['', Validators.required],
       Opcion2:  ['', Validators],
       Opcion3:  ['', Validators],

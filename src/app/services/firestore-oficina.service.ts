@@ -12,6 +12,15 @@ export class FirestoreOficinaService {
   oficinas: Observable<Oficina[]>;
   oficinasDoc: AngularFirestoreDocument<Oficina>;
   constructor(public _afs: AngularFirestore) {
+  }
+
+  getOficinasType(tipo: string) {
+    this.oficinasCollection = this._afs.collection('/oficinas', ref => ref.where('tipo', '==', tipo));
+    this.oficinas = this.oficinasCollection.valueChanges();
+    return this.oficinas;
+  }
+
+  getOficinas() {
     this.oficinasCollection = this._afs.collection('/oficinas');
     this.oficinas = this.oficinasCollection.snapshotChanges().pipe(map(
       changes => {
@@ -23,15 +32,6 @@ export class FirestoreOficinaService {
           });
 
       }));
-  }
-
-  getOficinasType(tipo: string) {
-    this.oficinasCollection = this._afs.collection('/oficinas', ref => ref.where('tipo', '==', tipo));
-    this.oficinas = this.oficinasCollection.valueChanges();
-    return this.oficinas;
-  }
-
-  getOficinas() {
     return this.oficinas;
   }
 

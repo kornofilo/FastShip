@@ -102,7 +102,7 @@
 
       <div class="modal-footer">
         <button (click)='insertSubmit()' type="submit" *ngIf="metodosEnvioForm.status === 'VALID' && updClicked === false" class="modal-close btn-flat green-text">Crear</button>        
-        <button (click)='updateSubmit()' *ngIf="updClicked === true"  class="modal-close btn-flat green-text">Crear</button>        
+        <button (click)='updateSubmit()' *ngIf="updClicked === true"  class="modal-close btn-flat green-text">Actualizar</button>        
         <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
       </div>
       

@@ -28,8 +28,9 @@
               <p>tiempoRecorrido: {{item.tiempoRecorrido}}</p>
             </div>
             <div class="card-action">
+              <a routerLink="/ruta/{{item.nombre}}">Detalle</a>
               <a class="modal-trigger" (click)="onUpdate(item)" href="#modalruta">Modificar</a>
-              <a class="modal-trigger" (click)="onInsert(item)" href="#modaltiempo">Tiempo</a>
+              <!--<a class="modal-trigger" (click)="onInsert(item)" href="#modaltiempo">Tiempo</a>-->
              <!-- <a class="modal-trigger" (click)=" onInsert(item)" >Tiempo</a>-->
             </div>
           </div>

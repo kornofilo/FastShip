@@ -48,6 +48,7 @@ import { OperacionesAsigtransporteComponent } from './operaciones/operaciones-as
 import { OperacionesDetalletransporteComponent } from './operaciones/operaciones-detalletransporte/operaciones-detalletransporte.component';
 import { UsuarioNavbarComponent } from './usuario/usuario-navbar/usuario-navbar.component';
 import { UsuarioTrackingComponent } from './usuario/usuario-tracking/usuario-tracking.component';
+import { OperacionesNombrerutaComponent } from './operaciones/operaciones-nombreruta/operaciones-nombreruta.component';
 
 
 
@@ -73,6 +74,7 @@ const routes: Routes = [
   {  path: 'transporte/:transporte',  component: OperacionesAsigtransporteComponent, canActivate: [AuthGuard]},
   {  path: 'vercargamento',  component:  OperacionesVercargamentoComponent, canActivate: [AuthGuard]},
   {  path: 'detalle/:transporte',  component:  OperacionesDetalletransporteComponent , canActivate: [AuthGuard]},
+  {  path: 'ruta/:nombre',  component:  OperacionesNombrerutaComponent , canActivate: [AuthGuard]},
   {  path: 'creartransporte',  component:  OperacionesCreartransporteComponent, canActivate: [AuthGuard]},
   {  path: 'usuario/tracking/:tn',  component:  UsuarioTrackingComponent},
 
@@ -108,6 +110,7 @@ const routes: Routes = [
     OperacionesDetalletransporteComponent,
     OperacionesCreartransporteComponent,
     UsuarioNavbarComponent,
+    OperacionesNombrerutaComponent,
   ],
   imports: [
     BrowserModule,

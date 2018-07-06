@@ -17,7 +17,23 @@ export class FirestoreSubrutasService {
 
   constructor(public _afs: AngularFirestore) {
    }
-
+   getFiltroruta(nombre: string) {
+    this.subRutacollection = this._afs.collection('/subrutas', ref => {
+      return ref
+              .where('rutapadre', '==', nombre);
+      });
+      this.subRutas = this.subRutacollection.snapshotChanges().pipe(map(
+        changes => {
+          return changes.map(
+            a => {
+              const data = a.payload.doc.data() as Subruta;
+              data.id = a.payload.doc.id;
+              return data;
+            });
+  
+        }));
+    return this.subRutas;
+  }
 
 getSubRutas() {
   this.subRutacollection = this._afs.collection('/subrutas');

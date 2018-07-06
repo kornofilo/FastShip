@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 import { Subruta } from '../classes/subruta';
+import { Rutas } from '../classes/rutas';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { Subruta } from '../classes/subruta';
 export class FirestoreSubrutasService {
   subRutacollection: AngularFirestoreCollection<Subruta>;
   subRutas: Observable<Subruta[]>;
+  Rutas: Observable<Rutas[]>;
   subRiutaDoc: AngularFirestoreDocument<Subruta>;
 
   constructor(public _afs: AngularFirestore) {
@@ -31,7 +33,9 @@ export class FirestoreSubrutasService {
 getSubRutas() {
   return this.subRutas;
 }
-
+getRutas() {
+  
+}
 addSubruta(subruta) {
   this.subRutacollection.add(subruta);
 }

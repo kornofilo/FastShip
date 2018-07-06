@@ -29,7 +29,8 @@
             </div>
             <div class="card-action">
               <a class="modal-trigger" (click)="onUpdate(item)" href="#modalruta">Modificar</a>
-              <a class="modal-trigger" (click)=" onInsert(item)" >Tiempo</a>
+              <a class="modal-trigger" (click)="onInsert(item)" href="#modaltiempo">Tiempo</a>
+             <!-- <a class="modal-trigger" (click)=" onInsert(item)" >Tiempo</a>-->
             </div>
           </div>
         </div>
@@ -45,7 +46,7 @@
     </ng-template>
   </div>
   
-
+  
     <!-- Modal que contiene el formulario de inserción y actualización de métodos de envío. -->
   <div id="modalruta" class="modal modal-fixed-footer">
       <div class="modal-content row">
@@ -116,7 +117,8 @@
               </div>
             </div>
           
-         
+            <p>Form value: {{ Rutaform.value | json }}</p>
+            <p>Form status: {{ Rutaform.status | json }}</p>
         </form>       
       
       </div>
@@ -128,4 +130,41 @@
       </div>
       <!--Hasta aqui las opciones de asignarle subrutas a las rutas-->
       
-    </div>      
+    </div>   
+    
+    
+
+
+
+<!--Hasta aqui tiempo-->
+    <div id="modaltiempo" class="modal modal-fixed-footer">
+        <div class="modal-content row">
+          <h4>Crear Ruta</h4>
+          
+          <form [formGroup]="Rutaform">
+  
+              <div class="input-field col s6">
+                  <input formControlName="nombre" id="nombre" type="text" class="validate">
+                  <label for="rutapadre">Nombre de la Ruta</label>
+                </div>
+               
+                
+           <!-- Aqui podemos ver las opciones de suburutas que se pueden elegir dentro de las rutas-->
+           
+  
+           
+            
+              <p>Form value: {{ Rutaform.value | json }}</p>
+              <p>Form status: {{ Rutaform.status | json }}</p>
+          </form>       
+        
+        </div>
+  
+        <div class="modal-footer">
+          <button (click)='insertSubmit()' type="submit" *ngIf="Rutaform.status === 'VALID'" class="modal-close btn-flat green-text">Crear</button>        
+          <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text">calcular</button>        
+          <a class="modal-close btn-flat red-text" (click)='cleanForm()'>Cancelar</a>
+        </div>
+        <!--Hasta aqui las opciones de asignarle subrutas a las rutas-->
+        
+      </div> 

@@ -65,27 +65,38 @@ export class OperacionesRutasComponent implements OnInit {
     
 
     this.Rutaform = this.fb.group({
+      rutapadre: ['', Validators.required],
       Opcion1:  ['', Validators.required],
       Opcion2:  ['', Validators],
       Opcion3:  ['', Validators],
       Opcion4:  ['', Validators],
       tiendaOrigen: ['', Validators.required],
+      tiempoRecorrido:['', Validators.required],
       tiendaDestino: ['', Validators.required],
     });
   }
 
-  insertSubmit() {
+ 
+ insertSubmit() {
     console.log('Insertando...');
     this._data.addRutas(this.Rutaform.value);
   }
-
+  
   onUpdate(Ruta) {
     this.iME = Ruta.id;
     this.updClicked = true;
     this.Rutaform.patchValue({
-      tiendaOrigen: Ruta.tiendaOrigen,
+      tiendaOrigen: Ruta.tiendaOrigen,                  
       tiendaDestino: Ruta.tiendaDestino,
     });
+  }
+  onInsert(Ruta) {
+    this.iME = Ruta.id;
+    this.updClicked = true;
+    this.Rutaform.patchValue({
+      tiempoRecorrido: Ruta.Opcion1,
+    })
+    
   }
 
   updateSubmit() {

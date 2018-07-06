@@ -17,7 +17,7 @@ import { FirestoreTransportesEnvioService} from '../../services/firestore-transp
   templateUrl: './operaciones-transporte.component.html',
   styleUrls: ['./operaciones-transporte.component.css']
 })
-export class OperacionesTransporteComponent implements OnInit, OnDestroy, OnChanges{
+export class OperacionesTransporteComponent implements OnInit, OnDestroy{
 arr: Envios[] = [];
 arrTransporte:Transporte[] = [];
   origen: string;
@@ -28,8 +28,7 @@ arrTransporte:Transporte[] = [];
 private firebaseSubscription: Subscription;
   private firestoreTransportesSubscription: Subscription;
 
-  constructor(public authService: AuthService, public _data:  FirestoreEnviosService , public route: ActivatedRoute,private fb: FormBuilder,
-  public _misTransporte: FirestoreTransportesEnvioService) {}
+  constructor(public authService: AuthService, public _data:  FirestoreEnviosService , public route: ActivatedRoute,private fb: FormBuilder) {}
 
   ngOnInit() {
     this.origen = this.route.snapshot.params['origen'];
@@ -42,73 +41,16 @@ private firebaseSubscription: Subscription;
      }
     );
 
-    // Obtenemos los Transportes
-    this.firestoreTransportesSubscription = this._misTransporte.getTransporte().subscribe(
-      (transporte: Transporte[]) => {
-      this.arrTransporte = transporte;
-        }
-    );
     // Inicialización de los elementos de Materialize que requieren JQuery para su funcionamiento.
     $(function() {
       $('select').formSelect();
         $('.modal').modal();
-      $('.timepicker').timepicker({
-        twelveHour:	false,
-        container: 'body'
-      });
+        });
 
-    });
-    this.createForm();
   }
   // Finalizamos la suscripción con el servicio al cerrar el componente.
   ngOnDestroy() {
     this.firebaseSubscription.unsubscribe();
-    this.firestoreTransportesSubscription.unsubscribe();
-  }
-  ngOnChanges() {
-    this.cleanForm();
-  }
-
-  createForm() {
-    this.newEstadoForm = this.fb.group({
-      estado:'Cargado',
-      idTransporte: ['idTransporte', Validators.required],
-      newEstado: this.fb.group({
-        estado: 'Cargado',
-        fecha: '',
-      })
-    });
-  }
-  /* Función que limpia el modelo del formulario para la actualización
-   de los estados de los envíos. */
-  cleanForm() {
-    this.newEstadoForm.reset({
-      idTransporte: 'idTransporte',
-      newEstado: {
-        fecha: '',
-      }
-    });
-  }
-  onUpdate(envio) {
-    this.iE = envio.id;
 
   }
-  updateSubmit() {
-    let newEH = {};
-
-    this.newEstadoForm.patchValue({
-      newEstado: {
-        estado: this.newEstadoForm.get('estado').value,
-        fecha: Date.now()
-      }
-    });
-console.log(this.iE);
-    newEH = {
-      estado: this.newEstadoForm.value.newEstado.estado,
-      fecha: this.newEstadoForm.value.newEstado.fecha
-    };
-    this._data.updateEstadoEnvio(this.iE, newEH);
-    this._data.asignarTrasporte(this.iE,this.newEstadoForm.value.idTransporte)
-  }
-
 }

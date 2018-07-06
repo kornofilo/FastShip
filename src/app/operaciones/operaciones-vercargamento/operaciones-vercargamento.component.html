@@ -6,10 +6,13 @@
     <app-operaciones-sidenav></app-operaciones-sidenav>
 
     <!-- Cuerpo de la Sección -->
+    <div class="col s9 offset-s6">
+      <h4>Transportes Cargados</h4>
+      </div>
     <div class="col s9 offset-s3">
 
       <div class="col s9" *ngIf="arrtranspCarga.length>0;else noData" >
-            <div class="col s4" *ngFor="let item of arrtranspCarga" >
+            <div class="col l4" *ngFor="let item of arrtranspCarga" >
               <div class="card grey darken-4 white-text">
                 <div class="card-content">
                   <p>ID Placa: {{item.idPlaca}}</p>

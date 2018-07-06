@@ -40,6 +40,25 @@ export class FirestoreEnviosService {
     return this.envios;
   }
 
+  getEnviosByOrigAndDest(origen,destino) {
+    console.log(origen,destino);
+    this.enviosCollection = this._afs.collection('/guias', ref => {
+      return ref
+              .where('detalles.origen', '==', origen)
+              .where('detalles.destino', '==', destino);
+      });
+    this.envios = this.enviosCollection.snapshotChanges().pipe(map(
+      changes => {
+        return changes.map(
+          a => {
+            const data = a.payload.doc.data() as Envios;
+            data.id = a.payload.doc.id;
+            return data;
+        });
+      }));
+    return this.envios;
+  }
+
   getDetalleType(transporte: string) {
     this.enviosCollection = this._afs.collection('/guias', ref => {
       return ref

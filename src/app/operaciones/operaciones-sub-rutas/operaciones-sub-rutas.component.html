@@ -6,14 +6,17 @@
   <app-operaciones-sidenav></app-operaciones-sidenav>      
 
       <!-- Cuerpo de la Sección -->
+      
       <div class="col s9 offset-s3">
-        <div class="row">
+        <div class="row"><div>
+            <h4 col s3>Administracion de Sub rutas</h4>
+          </div>
           <a class="btn-large col s3 offset-s1 green modal-trigger" href="#modalsubruta" materialize="modal">Crear Sub-Ruta</a>      
       </div>   
       
       <!-- Lista de oficinas -->
       <div class="col s9" *ngIf="arr.length>0;else noData">
-        <div class="col m4" *ngFor="let item of arr">
+        <div class="col l4" *ngFor="let item of arr">
           <div class="card grey darken-4 white-text">
               <span class="card-title"></span>
             <div class="card-content">
@@ -22,7 +25,7 @@
               <p>Tiempo de Recorrido: {{item.tiempoRecorrido}} horas</p>
               <p>Tienda de Origen: {{item.tiendaOrigen}}</p>
               <p>Tienda de Destino: {{item.tiendaDestino}}</p>
-              <p>Tipo de Ruta: {{item.tipoRuta}}</p>
+              <p>Ruta padre: {{item.rutapadre}}</p>
             </div>
             <div class="card-action">
             </div>
@@ -49,23 +52,27 @@
         <form [formGroup]="subRutaform">
           
           <div class="input-field col s6"> 
-                <label for="nombreRuta">Nombre de la Ruta</label>
+                <label for="nombreRuta">Nombre de la Sub-ruta</label>
                 <input class="form-control" id="nombreRuta" formControlName="nombreRuta" type="text" class="validate">
           </div>
 
           <div class="input-field col s6"> 
+            
             <label for="horarioSalida">Horario de Salida</label>
             <input class="form-control" id="horarioSalida" formControlName="horarioSalida" type="text" class="validate">
           </div>
 
               <div class="input-field col s6">
+                  <p>Tienda Origen</p>
                 <select formControlName="tiendaOrigen" class="browser-default form-control validate" required>
+                    
                   <option disabled>Tienda de Origen</option>  
                   <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre" id="tiendaOrigen">{{oficina.nombre}}</option> 
                 </select>
               </div>
 
               <div class="input-field col s6">
+                  <p>Tienda Destino</p>
                   <select formControlName="tiendaDestino" class="browser-default form-control validate" required>
                     <option disabled>Tienda de Destino</option>  
                     <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre" id="tiendaDestino">{{oficina.nombre}}</option> 
@@ -74,18 +81,25 @@
 
               <div class="col s6" >
                 <select class="form-control" formControlName="tipoRuta">
-                  <option disabled selected>Tipo de Ruta</option>
+                  <option disabled selected>Tipo de Trasporte</option>
                   <option *ngFor="let opcion of tipoRuta" [value]="opcion">{{opcion}}</option>
               </select>             
               </div> 
+              <div class="input-field col s6">
+                  <p>Ruta a la cual pertenece</p>
+                <select formControlName="rutapadre" class="browser-default form-control validate" required>
+                  <option disabled>ruta a la cual pertenece</option>  
+                  <option *ngFor="let rutas of Ruta" [value]="rutas.nombre" id="rutapadre">{{rutas.nombre}}</option> 
+                </select>
+              </div>
               <div class="input-field col s6"> 
                   <label for="tiempoRecorrido">Tiempo Recorrido</label>
                   <input class="form-control" id="tiempoRecorrido" formControlName="tiempoRecorrido" type="text" class="validate">
                 </div>
+
              
         </form>       
-        <p>Form value: {{ subRutaform.value | json }}</p>
-        <p>Form status: {{ subRutaform.status | json }}</p>
+        
       </div>
 
       <div class="modal-footer">

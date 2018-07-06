@@ -3,5 +3,6 @@ export class Rutas {
     nombre:String;
     tiendaOrigen:String;
     tiendaDestino:String;
+    tiempoRecorrido:number;
 }
 

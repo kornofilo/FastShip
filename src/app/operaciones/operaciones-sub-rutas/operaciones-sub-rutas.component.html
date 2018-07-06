@@ -22,7 +22,7 @@
               <p>Tiempo de Recorrido: {{item.tiempoRecorrido}} horas</p>
               <p>Tienda de Origen: {{item.tiendaOrigen}}</p>
               <p>Tienda de Destino: {{item.tiendaDestino}}</p>
-              <p>Tipo de Ruta: {{item.tipoRuta}}</p>
+              <p>Tipo de Ruta: {{item.rutapadre}}</p>
             </div>
             <div class="card-action">
             </div>
@@ -49,7 +49,7 @@
         <form [formGroup]="subRutaform">
           
           <div class="input-field col s6"> 
-                <label for="nombreRuta">Nombre de la Ruta</label>
+                <label for="nombreRuta">Nombre de la Sub-ruta</label>
                 <input class="form-control" id="nombreRuta" formControlName="nombreRuta" type="text" class="validate">
           </div>
 
@@ -78,10 +78,17 @@
                   <option *ngFor="let opcion of tipoRuta" [value]="opcion">{{opcion}}</option>
               </select>             
               </div> 
+              <div class="input-field col s6">
+                <select formControlName="rutapadre" class="browser-default form-control validate" required>
+                  <option disabled>Tienda de Destino</option>  
+                  <option *ngFor="let rutas of Ruta" [value]="rutas.nombre" id="rutapadre">{{rutas.nombre}}</option> 
+                </select>
+              </div>
               <div class="input-field col s6"> 
                   <label for="tiempoRecorrido">Tiempo Recorrido</label>
                   <input class="form-control" id="tiempoRecorrido" formControlName="tiempoRecorrido" type="text" class="validate">
                 </div>
+
              
         </form>       
         <p>Form value: {{ subRutaform.value | json }}</p>

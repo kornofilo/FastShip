@@ -6,4 +6,5 @@ export class Subruta {
     horarioSalida:String;
     tiempoRecorrido:String;
     tipoRuta:String;
+    rutapadre:String;
 }

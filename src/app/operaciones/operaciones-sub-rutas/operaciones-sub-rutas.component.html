@@ -22,7 +22,7 @@
               <p>Tiempo de Recorrido: {{item.tiempoRecorrido}} horas</p>
               <p>Tienda de Origen: {{item.tiendaOrigen}}</p>
               <p>Tienda de Destino: {{item.tiendaDestino}}</p>
-              <p>Tipo de Ruta: {{item.rutapadre}}</p>
+              <p>Ruta padre: {{item.rutapadre}}</p>
             </div>
             <div class="card-action">
             </div>
@@ -74,7 +74,7 @@
 
               <div class="col s6" >
                 <select class="form-control" formControlName="tipoRuta">
-                  <option disabled selected>Tipo de Ruta</option>
+                  <option disabled selected>Nombre de la Ruta</option>
                   <option *ngFor="let opcion of tipoRuta" [value]="opcion">{{opcion}}</option>
               </select>             
               </div> 

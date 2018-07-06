@@ -24,6 +24,9 @@ export class OperacionesAsigtransporteComponent implements OnInit, OnDestroy, On
     transporte: string;
     updClicked = false;
     iME: string;
+    placa: string;
+    destinos = [];
+    destinosU = [];
     // Elementos del Form
     crearTransporteform: FormGroup;
 
@@ -45,18 +48,16 @@ private firestoreTransportesSubscription: Subscription;
       console.log(this.arrTransporte);
      }
     );
-    // Obtenemos los Transportes
-    this.firebaseEnvioSubscription = this._miDestino.getEnvios().subscribe(
-      (envios: Envios[]) => {
-      this.arr = envios;
-        }
-    );
+
+
     this.transporte = this.route.snapshot.params['transporte'];
     console.log(this.transporte);
     // Obtenemos las guias registradas en la base de datos.
     this.firebaseDestinoSubscription = this._miDestino.getTiendasType(this.transporte).subscribe(
       (envio: Envios[]) => {
       this.arre = envio;
+      this.arre.forEach( (element) => {
+        });
       console.log(this.arre);
      }
     );
@@ -74,9 +75,8 @@ private firestoreTransportesSubscription: Subscription;
   // Finalizamos la suscripción con el servicio al cerrar el componente.
   ngOnDestroy() {
     this.firestoreTransportesSubscription.unsubscribe();
-      this.firebaseEnvioSubscription.unsubscribe();
-        this.firebaseDestinoSubscription.unsubscribe();
-
+    this.firebaseEnvioSubscription.unsubscribe();
+    this.firebaseDestinoSubscription.unsubscribe();
   }
   ngOnChanges() {
     this.cleanForm();
@@ -87,12 +87,15 @@ private firestoreTransportesSubscription: Subscription;
       estado: 'cargado',
     });
   }
+
+
   cleanForm() {
 this.crearTransporteform.reset();
 }
 
   onUpdate(transp) {
     this.iME = transp.id;
+    this.placa = transp.idPlaca;
     this.updClicked = true;
     this.crearTransporteform.patchValue({
      destinoAsig: transp.destinoAsig,
@@ -100,8 +103,26 @@ this.crearTransporteform.reset();
     });
   }
 
+
   updateSubmit() {
+
+    //Actualizamos el destino del transporte.
     this._misTransporte.updateTransporte(this.iME, this.crearTransporteform.value);
+
+    this.firebaseEnvioSubscription = this._miDestino.getEnviosByOrigAndDest(this.transporte,this.crearTransporteform.get('destinoAsig').value).subscribe(
+      (envio: Envios[]) => {
+      this.arr = envio;
+      console.log(this.arr);
+      let newEH = {
+        estado: 'Cargado',
+        fecha: Date.now()
+      }
+      this.arr.forEach( (element) => {
+          console.log(element.id,newEH,this.placa);
+          this._miDestino.updateEstadoEnvio(element.id, newEH);
+          this._miDestino.asignarTrasporte(element.id,this.placa);
+        });
+    });
     this.cleanForm();
   }
 

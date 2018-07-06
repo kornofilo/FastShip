@@ -15,19 +15,19 @@ export class FirestoreRutasService {
   RutasDoc: AngularFirestoreDocument<Rutas>;
 
   constructor(public _afs: AngularFirestore) {
-    this.Rutacollection = this._afs.collection('/rutas');
+}
+
+getRutas() {
+  this.Rutacollection = this._afs.collection('/rutas');
     this.Rutas = this.Rutacollection.snapshotChanges().pipe(map(
-      changes =>{
-        return changes.map(   
-          a =>{
+      changes => {
+        return changes.map(
+          a => {
             const data = a.payload.doc.data() as Rutas;
             data.id = a.payload.doc.id;
             return data;
           });
     }));
-}
-
-getRutas() {
   return this.Rutas;
 }
 

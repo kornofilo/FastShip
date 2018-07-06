@@ -16,7 +16,11 @@ export class FirestoreSubrutasService {
   subRiutaDoc: AngularFirestoreDocument<Subruta>;
 
   constructor(public _afs: AngularFirestore) {
-    this.subRutacollection = this._afs.collection('/subrutas');
+   }
+
+
+getSubRutas() {
+  this.subRutacollection = this._afs.collection('/subrutas');
     this.subRutas = this.subRutacollection.snapshotChanges().pipe(map(
       changes => {
         return changes.map(
@@ -27,14 +31,10 @@ export class FirestoreSubrutasService {
           });
 
       }));
-   }
-
-
-getSubRutas() {
   return this.subRutas;
 }
 getRutas() {
-  
+
 }
 addSubruta(subruta) {
   this.subRutacollection.add(subruta);

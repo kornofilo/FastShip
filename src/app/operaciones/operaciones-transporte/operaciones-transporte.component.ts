@@ -42,12 +42,15 @@ private firebaseSubscription: Subscription;
      }
     );
 
-    // Obtenemos los Transportes
-    this.firestoreTransportesSubscription = this._misTransporte.getTransporte().subscribe(
-      (transporte: Transporte[]) => {
-      this.arrTransporte = transporte;
-        }
-    );
+    this.origen = this.route.snapshot.params['origen'];
+  console.log(this.origen);
+  // Obtenemos los transporte registradas en la base de datos.
+  this.firestoreTransportesSubscription = this._misTransporte.getTransporteRegType(this.origen).subscribe(
+  (transporte: Transporte[]) => {
+  this.arrTransporte = transporte;
+    console.log(this.arrTransporte);
+   }
+  );
     // Inicialización de los elementos de Materialize que requieren JQuery para su funcionamiento.
     $(function() {
       $('select').formSelect();

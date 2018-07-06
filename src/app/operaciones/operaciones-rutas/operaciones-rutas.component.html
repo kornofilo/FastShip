@@ -8,6 +8,7 @@
       <!-- Cuerpo de la Sección -->
       <div class="col s9 offset-s3">
         <div class="row">
+            <h4 col s3>Administracion de Rutas</h4>
           <a class="btn-large col s3 offset-s1 green modal-trigger" href="#modalruta" materialize="modal">Crear Ruta</a>      
       </div>   
       
@@ -59,6 +60,7 @@
 
               <div class="input-field col s6">
                   <div class="input-field col s6">
+                      <p>Tienda Origen</p>
                       <select formControlName="tiendaOrigen" class="browser-default form-control validate" required>
                         <option disabled>Origen</option>  
                         <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre" id="tiendaOrigen">{{oficina.nombre}}</option> 
@@ -66,6 +68,7 @@
                     </div>
 
                     <div class="input-field col s6">
+                        <p>Tienda Destino</p>
                         <select formControlName="tiendaDestino" class="browser-default form-control validate" required>
                           <option disabled>Destino</option>  
                           <option *ngFor="let oficina of arrOficinas" [value]="oficina.nombre" id="tiendaDestino">{{oficina.nombre}}</option> 
@@ -74,6 +77,8 @@
               </div>              
               
          <!-- Aqui podemos ver las opciones de suburutas que se pueden elegir dentro de las rutas-->
+         <div class="center-align">
+            <p>Rutas por las que pasa</p>
           <div class="input-field col s3">
             <select formControlName="Opcion1" class="browser-default form-control validate" required>
               <option disabled>Elejir sub-rutas</option>  
@@ -109,12 +114,11 @@
                 <label for="tiempoRecorrido">Tiempo Recorrido</label>
                 <input class="form-control" id="tiempoRecorrido" formControlName="tiempoRecorrido" type="text" class="validate">
               </div>
-
+            </div>
           
          
         </form>       
-        <p>Form value: {{ Rutaform.value | json }}</p>
-        <p>Form status: {{ Rutaform.status | json }}</p>
+      
       </div>
 
       <div class="modal-footer">

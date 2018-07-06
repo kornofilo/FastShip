@@ -62,8 +62,8 @@ export class FirestoreEnviosService {
   getDetalleType(transporte: string) {
     this.enviosCollection = this._afs.collection('/guias', ref => {
       return ref
-              .where('idTransporte', '==', transporte);
-
+              .where('idTransporte', '==', transporte)
+              .where('estado', '==', 'Cargado');
       });
     this.envios = this.enviosCollection.snapshotChanges().pipe(map(
       changes => {

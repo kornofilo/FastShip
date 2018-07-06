@@ -7,6 +7,9 @@
     <app-operaciones-sidenav></app-operaciones-sidenav>
 
     <!-- Lista de oficinas -->
+    <div class="col s9 offset-s6">
+      <h4>Transportes de la Oficina</h4>
+      </div>
     <div class="col s9 offset-s3" *ngIf="arrTransporte.length>0;else noData">
           <div class="col s12 l4" *ngFor="let item of arrTransporte">
             <div class="card-stacked">
@@ -47,7 +50,7 @@
         </div>
 
       </form>
-              <p>Form value: {{ crearTransporteform.value | json }}</p>
+
     </div>
     <div class="modal-footer">
       <button (click)='updateSubmit()' *ngIf="updClicked === true"  class="modal-close btn-flat green-text">Asignar</button>

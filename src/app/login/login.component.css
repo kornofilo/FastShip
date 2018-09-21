@@ -1,18 +1,12 @@
-.logo {
-  height: 64px;
-}
-
-.logo-img {
-  height: 100%;
-  width: 18%;
-}
-
+/* Configuración de la imagen de fondo */ 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+  background-image: url("../../assets/img/usuario/background.jpg");    
+  height: 100vh;
+  background-size: cover;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+#body:after {
+  content : "";
+  opacity : 0.2;
+  z-index: -1;
+}

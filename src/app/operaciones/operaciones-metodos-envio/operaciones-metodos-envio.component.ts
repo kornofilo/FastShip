@@ -74,12 +74,16 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
     });
   }
 
+  // Función que envía el id del Método de Envío seleccionado al service para que lo elimine de la base de datos.
   onDelete(metodoEnvio) {
     if (confirm('¿Está seguro que desea borrar este método de envío?')) {
       this._data.deleteMetodosEnvio(metodoEnvio);
     }
   }
 
+  /* Función que constuye el objeto del método de envío seleccionado con los datos modificados por el usuario que será enviado 
+  al service en la función updateSubmit.
+  */
   onUpdate(metodoEnvio) {
     this.iME = metodoEnvio.id;
     this.updClicked = true;
@@ -94,13 +98,16 @@ export class OperacionesMetodosEnvioComponent implements OnInit, OnDestroy, OnCh
     });
   }
 
+  /* Función que envía al service de métodos de envío el objeto construido en la función 'onUpdate' para que actualice 
+  los campos actualizados del Método de Envío seleccionado. */
   updateSubmit() {
     this._data.updateMetodosEnvio(this.iME, this.metodosEnvioForm.value);
     this.cleanForm();
   }
 
+  //Función que se encarga de limpiar el Formulario de Métodos de Envío.
   cleanForm() {
     this.metodosEnvioForm.reset();
   }
 
-}
+}//Fin de la clase 'OperacionesMetodosEnvioComponent'. 

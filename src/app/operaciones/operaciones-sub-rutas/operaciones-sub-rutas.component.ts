@@ -73,6 +73,10 @@ export class OperacionesSubRutasComponent implements OnInit {
   this.createForm();
   }
 
+  ngOnChanges() {
+    this.cleanForm();
+  }
+
   createForm() {
     this.subRutaform = this.fb.group({
       nombreRuta: ['', Validators.required],
@@ -90,6 +94,11 @@ export class OperacionesSubRutasComponent implements OnInit {
   insertSubmit() {
     console.log('Insertando...');
     this._data.addSubruta(this.subRutaform.value);
+  }
+
+  //Función que se encarga de limpiar el Formulario de Métodos de Envío.
+  cleanForm() {
+    this.subRutaform.reset();
   }
 
 }

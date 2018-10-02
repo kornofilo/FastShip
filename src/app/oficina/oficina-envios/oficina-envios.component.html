@@ -158,7 +158,6 @@
 
       <div class="modal-footer">
         <button (click)='insertSubmit()' class="modal-close btn-flat green-text" *ngIf="paquetesForm.status === 'VALID'">Crear</button>        
-        <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Actualizar</button>        
         <a class="modal-close btn-flat red-text" (click)='cleanForms()'>Cancelar</a>
       </div>
   </div>  <!-- Fin de modal de crear envío (paquete) -->   
@@ -256,7 +255,6 @@
 
       <div class="modal-footer">
         <button (click)='insertSubmitDocumentos()' class="modal-close btn-flat green-text" *ngIf="documentosForm.status === 'VALID'">Crear</button>        
-        <button (click)='updateSubmit(metodoEnvio)' *ngIf="updClicked === true"  class="modal-close btn-flat green-text" [disabled]="!addform.form.valid">Actualizar</button>        
         <a class="modal-close btn-flat red-text" (click)='cleanForms()'>Cancelar</a>
       </div>
   </div>  <!-- Fin de modal de crear envío (documentos) --> 

@@ -1,0 +1,61 @@
+<nav>
+  <div class="nav-wrapper yellow darken-2">
+      <a class="brand-logo">
+          <img class="logo-img" src="assets/img/logo.png" alt="Logo">
+      </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="grey-text text-darken-4  modal-trigger" href="#modalLogin"> <b> Iniciar Sesión </b></a></li>
+        <li><a class="grey-text text-darken-4 modal-trigger" href="#modalPackageTracking"> <b>Rastrear Paquete</b></a></li>
+      </ul>
+  </div>
+</nav>
+
+<!-- Modal de Login -->
+<div id="modalLogin" class="modal">
+  <div class="modal-content">
+     <!-- Formulario de Inicio de Sesión -->                                
+     <form [formGroup]="loginForm">
+      <!-- Text input del email -->                                
+        <div class='row'>                      
+          <div class='input-field'>
+            <i class="material-icons prefix">email</i>
+            <input id="email" class="icon_prefix" type="email" formControlName="email" required>
+            <label class="active" for="email">Correo Electrónico</label>
+          </div>
+        </div>
+
+        <!-- Text input de la contrañesa -->                                
+        <div class='row'>
+          <div class='input-field'>
+              <i class="material-icons prefix">lock</i>
+              <input id="password" class="icon_prefix" type="password" formControlName="password" required>
+              <label class="active" for="password">Contraseña</label>
+          </div>                                                          
+        </div>
+
+        <!-- Botón que al ser presionado, llama a la función "onSubmit" que valida las credenciales ingresadas por el usuario. -->                                
+        <div class='row'>
+            <button (click)='onLogin()' type='submit' name='btn_login' class='col s12 btn btn-large yellow darken-2 grey-text text-darken-4'><b>Iniciar Sesión</b></button>
+        </div> 
+    </form> 
+  </div>  
+</div>
+
+<!--  Modal de Rastreo de Paquetes -->
+<div id="modalPackageTracking" class="modal">
+  <div class="modal-content">
+    <!-- Fomulario de Rastreo de Packetes-->
+    <form [formGroup]="packagesTrackingForm">
+      <div class="row">
+          <div class="input-field" >                       
+              <input id="search" class="center-align" formControlName="numTracking" type="search" required>
+              <label class="active" for="search"># de Tracking</label>
+              <i class="material-icons">close</i>
+          </div> 
+      </div>      
+      <div class="row">
+          <button (click)='onTracking()' type='submit' class='col s12 btn btn-large yellow darken-2 grey-text text-darken-4'><b>Rastrear</b>  <i class="material-icons right">search</i> </button>          
+      </div>     
+  </form>      
+  </div>  
+</div>

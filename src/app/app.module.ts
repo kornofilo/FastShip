@@ -9,7 +9,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 // Componentes
 import { UsuarioComponent } from './usuario/usuario.component';
-import { LoginComponent } from './login/login.component';
 import {OficinaComponent} from './oficina/oficina.component';
 import { OperacionesMetodosEnvioComponent } from './operaciones/operaciones-metodos-envio/operaciones-metodos-envio.component';
 import { OperacionesOficinasComponent } from './operaciones/operaciones-oficinas/operaciones-oficinas.component';
@@ -49,14 +48,15 @@ import { OperacionesDetalletransporteComponent } from './operaciones/operaciones
 import { UsuarioNavbarComponent } from './usuario/usuario-navbar/usuario-navbar.component';
 import { UsuarioTrackingComponent } from './usuario/usuario-tracking/usuario-tracking.component';
 import { OperacionesNombrerutaComponent } from './operaciones/operaciones-nombreruta/operaciones-nombreruta.component';
+import { IndexComponent } from './index/index.component';
+import { IndexNavbarComponent } from './index/index-navbar/index-navbar.component';
 
 
 
 
-/* Array de Rutas */
+// Array de Rutas
 const routes: Routes = [
-  {  path: '', component: OperacionesComponent, canActivate: [AuthGuard]},
-  {  path: 'login', component: LoginComponent },
+  {  path: '', component: IndexComponent},
   {  path: 'operaciones', component: OperacionesComponent, canActivate: [AuthGuard] },
   {  path: 'metodosEnvio', component: OperacionesMetodosEnvioComponent, canActivate: [AuthGuard]},
   {  path: 'admOficinas', component: OperacionesOficinasComponent, canActivate: [AuthGuard]},
@@ -76,8 +76,7 @@ const routes: Routes = [
   {  path: 'detalle/:transporte',  component:  OperacionesDetalletransporteComponent , canActivate: [AuthGuard]},
   {  path: 'ruta/:nombre',  component:  OperacionesNombrerutaComponent , canActivate: [AuthGuard]},
   {  path: 'creartransporte',  component:  OperacionesCreartransporteComponent, canActivate: [AuthGuard]},
-  {  path: 'usuario/tracking/:tn',  component:  UsuarioTrackingComponent},
-
+  {  path: 'tracking/:tn',  component:  UsuarioTrackingComponent},
 ];
 
 @NgModule({
@@ -85,7 +84,6 @@ const routes: Routes = [
     AppComponent,
     OperacionesComponent,
     UsuarioComponent,
-    LoginComponent,
     OficinaComponent,
     OperacionesNavbarComponent,
     OperacionesSidenavComponent,
@@ -111,6 +109,8 @@ const routes: Routes = [
     OperacionesCreartransporteComponent,
     UsuarioNavbarComponent,
     OperacionesNombrerutaComponent,
+    IndexComponent,
+    IndexNavbarComponent,
   ],
   imports: [
     BrowserModule,

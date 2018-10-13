@@ -1,24 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+declare let $: any;
+import { AuthService } from '../../services/auth.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-index-navbar',
+  templateUrl: './index-navbar.component.html',
+  styleUrls: ['./index-navbar.component.css']
 })
+export class IndexNavbarComponent implements OnInit {
 
-export class LoginComponent implements OnInit {
-  constructor(public authService: AuthService, private fb: FormBuilder) {}  
+  constructor(public authService: AuthService, private fb: FormBuilder, private router: Router) {}  
   loginForm: FormGroup;
+  packagesTrackingForm: FormGroup;
+
 
   ngOnInit() {
+
     this.createForm();
+
+    // Inicialización de los elementos de Materialize que requieren Jquery.
+    $(function() {      
+      $('.modal').modal();
+    });
   }
 
   //Función que se encarga de llamar al servicio de autenticación de Firebase para validar las credenciales ingresadas por el usuario.
-  onSubmit() {
+  onLogin() {
     this.authService.login(this.loginForm.get('email').value, this.loginForm.get('password').value)      
     .then(res => {
       console.log(res);
@@ -36,11 +47,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // Función para la creación del FormGroup que contiene las credenciales de inicio de sesión.
+  onTracking() {
+    this.router.navigate(['/tracking/', this.packagesTrackingForm.get('numTracking').value]);
+  }
+
+  // Función para la creación de los FormGroup de Inicio de Sesión y Rastreo de Paquetes.
   createForm() {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],      
     });
+
+    this.packagesTrackingForm = this.fb.group({
+      numTracking: ['', Validators.required],
+    });
   }
+
+
+
 }
